@@ -10,7 +10,8 @@ import time
 import json
 import os
 import asyncio
-
+import discord
+from discord.ext import commands
 
 class FailedToConnect(Exception):
     pass
@@ -433,11 +434,31 @@ class Auth:
             last_sold
         ]
 
+
+TOKEN = 'your_token_from_discord'
+
+intents = discord.Intents.default()
+intents.message_content = True
+
+client = commands.Bot(command_prefix='.', intents=intents)
+
+#####
+#####
+## Insert other functions here
+#####
+#####
+
+client.run(TOKEN)
+
 async def main():
     print("Starting Query Test...")
     print(time.time())
 
-    auth = Auth("***REMOVED***", "***REMOVED***")
+    pw_file = open("pw.txt", "r")
+    pw = pw_file.read()
+    pw_file.close()
+
+    auth = Auth("***REMOVED***", pw)
 
     while (True):
         item_id_file = open("assets/ids.txt", "r")
@@ -465,13 +486,19 @@ async def main():
                     "sold": [],
                     "data": []
                 }
-            if len(data[res[0]]["data"]) == 0 or data[res[0]]["data"][len(data[res[0]]["data"]) - 1] != [res[3], res[4], res[5], res[6], res[7], res[8]]:
-                data[res[0]]["data"] = data[res[0]]["data"] + [[res[3], res[4], res[5], res[6], res[7], res[8]]]
-                print("NEW PRIMARY DATA")
+
+            #if len(data[res[0]]["data"]) == 0 or data[res[0]]["data"][len(data[res[0]]["data"]) - 1] != [res[3], res[4], res[5], res[6], res[7], res[8]]:
+            #    data[res[0]]["data"] = data[res[0]]["data"] + [[res[3], res[4], res[5], res[6], res[7], res[8]]]
+            #    print("NEW PRIMARY DATA")
             
             if len(data[res[0]]["sold"]) == 0 or data[res[0]]["sold"][len(data[res[0]]["sold"]) - 1] != res[9]:
                 data[res[0]]["sold"] = data[res[0]]["sold"] + [res[9]]
                 print("NEW LAST SOLD")
+
+            sold_len = len(data[res[0]]["sold"])
+            ten_RAP = sum(data[res[0]]["sold"][-10:]) / min(10, sold_len)
+            hundred_RAP = sum(data[res[0]]["sold"][-100:]) / min(100, sold_len)
+            all_time_RAP = sum(data[res[0]]["sold"]) / sold_len
 
             #print(f'{res[0]} ({res[1]}) ({res[2]})')
             #print(f'Current Buy: {res[3]}-{res[4]} [Volume of {res[5]}] R6 credits')
@@ -483,7 +510,7 @@ async def main():
         data_file.write(json.dumps(data, indent=2))
         data_file.close()
 
-        time.sleep(5 * 60)
+        time.sleep(60)
     await auth.close()
 
 
