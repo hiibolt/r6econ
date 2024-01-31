@@ -13,6 +13,10 @@ import asyncio
 import discord
 from discord.ext import commands
 
+import matplotlib.pyplot as plt
+import numpy as np
+from math import sin, cos, radians
+
 class FailedToConnect(Exception):
     pass
 class InvalidRequest(Exception):
@@ -534,7 +538,8 @@ async def on_ready():
 
 @client.event
 async def on_message(message):
-    if message.author != client.user and message.content[:5] == "econ ":
+    if message.author != client.user:
+        cmd = message.content.split(" ")
 
         data_file = open("assets/data.json", "r")
         data = json.loads(data_file.read())
@@ -544,37 +549,69 @@ async def on_message(message):
         name_map = json.loads(name_map_file.read())
         name_map_file.close()
 
-        if message.content[:9] == "econ list":
-            msg = ""
-            for key, value in name_map.items():
-                msg += f'{key}\n'
-            embed=discord.Embed(title=f'Tracked Skins', description=f'# Ask Bolt for new Items.\n\n# Skins:\n{msg}', color=0xFF5733)
-            embed.set_thumbnail(url="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwallpapercave.com%2Fwp%2Fwp7511401.png&f=1&nofb=1&ipt=774c2f1e44a99d33a82af5645f290c48fb316c0f43af86f11b4f167eb70d8a0a&ipo=images")
-            await message.channel.send(embed=embed)
-            return
-            
+        match cmd.pop(0):
+            case "econ":
+                match cmd.pop(0):
+                    case "list":
+                        msg = ""
+                        for key, value in name_map.items():
+                            msg += f'{key}\n'
+                        embed=discord.Embed(title=f'Tracked Skins', description=f'# Ask Bolt for new Items.\n\n# Skins:\n{msg}', color=0xFF5733)
+                        embed.set_thumbnail(url="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwallpapercave.com%2Fwp%2Fwp7511401.png&f=1&nofb=1&ipt=774c2f1e44a99d33a82af5645f290c48fb316c0f43af86f11b4f167eb70d8a0a&ipo=images")
+                        await message.channel.send(embed=embed)
+                        return
+                    case "id":
+                        item_id = " ".join(cmd).lower()
+                        data = data[item_id]
 
-        item_id = None
-        if message.content[:8] == "econ id ":
-            item_id = message.content[8:].lower()
-        else:
-            item_id = name_map[message.content[5:].lower()]
-        data = data[item_id]
+                        cleaned_data = [x for x in data["sold"] if x]
+                        sold_len = len(cleaned_data)
+                        ten_RAP = sum(cleaned_data[-10:]) / max(1, min(10, sold_len))
+                        hundred_RAP = sum(cleaned_data[-100:]) / max(1, min(100, sold_len))
+                        all_time_RAP = sum(cleaned_data) / max(1, sold_len)
 
-        cleaned_data = [x for x in data["sold"] if x]
-        sold_len = len(cleaned_data)
-        ten_RAP = sum(cleaned_data[-10:]) / max(1, min(10, sold_len))
-        hundred_RAP = sum(cleaned_data[-100:]) / max(1, min(100, sold_len))
-        all_time_RAP = sum(cleaned_data) / max(1, sold_len)
+                        msg = f'# Buy:\n\tMinimum Buyer: **{data["data"][0]}** R6 credits\n\tMaximum Buyer: **{data["data"][1]}** R6 credits\n\tVolume Buyers: **{data["data"][2]}**\n'
+                        msg += f'# Sell:\n\tMinimum Seller: **{data["data"][3]}** R6 credits\n\tMaximum Seller: **{data["data"][4]}** R6 credits\n\tVolume Buyers: **{data["data"][5]}**\n\tLast Sold: **{data["sold"][-1]}**\n'
+                        msg += f'### RAP:\n\t10 - **{ten_RAP}**\n\t100 - **{hundred_RAP}**\n\tAll Time - **{all_time_RAP}**\n\n\t*(Total Data: {sold_len})*\n### Tags:\n\n{data["tags"]}:'
+                        embed=discord.Embed(title=f'{data["name"]} ({data["type"]})', url=f'https://www.ubisoft.com/en-us/game/rainbow-six/siege/marketplace?route=buy%252Fitem-details&itemId={item_id}', description=f'{msg}', color=0xFF5733)
+                        embed.set_thumbnail(url=data["asset_url"])
+                        await message.channel.send(embed=embed)
+                    case "name":
+                        item_id = name_map[" ".join(cmd).lower()]
+                        data = data[item_id]
 
-        msg = f'# Buy:\n\tMinimum Buyer: **{data["data"][0]}** R6 credits\n\tMaximum Buyer: **{data["data"][1]}** R6 credits\n\tVolume Buyers: **{data["data"][2]}**\n'
-        msg += f'# Sell:\n\tMinimum Seller: **{data["data"][3]}** R6 credits\n\tMaximum Seller: **{data["data"][4]}** R6 credits\n\tVolume Buyers: **{data["data"][5]}**\n\tLast Sold: **{data["sold"][-1]}**\n'
-        msg += f'### RAP:\n\t10 - **{ten_RAP}**\n\t100 - **{hundred_RAP}**\n\tAll Time - **{all_time_RAP}**\n\n\t*(Total Data: {sold_len})*\n### Tags:\n\n{data["tags"]}:'
-        embed=discord.Embed(title=f'{data["name"]} ({data["type"]})', url=f'https://www.ubisoft.com/en-us/game/rainbow-six/siege/marketplace?route=buy%252Fitem-details&itemId={item_id}', description=f'{msg}', color=0xFF5733)
-        embed.set_thumbnail(url=data["asset_url"])
-        await message.channel.send(embed=embed)
+                        cleaned_data = [x for x in data["sold"] if x]
+                        sold_len = len(cleaned_data)
+                        ten_RAP = sum(cleaned_data[-10:]) / max(1, min(10, sold_len))
+                        hundred_RAP = sum(cleaned_data[-100:]) / max(1, min(100, sold_len))
+                        all_time_RAP = sum(cleaned_data) / max(1, sold_len)
+
+                        msg = f'# Buy:\n\tMinimum Buyer: **{data["data"][0]}** R6 credits\n\tMaximum Buyer: **{data["data"][1]}** R6 credits\n\tVolume Buyers: **{data["data"][2]}**\n'
+                        msg += f'# Sell:\n\tMinimum Seller: **{data["data"][3]}** R6 credits\n\tMaximum Seller: **{data["data"][4]}** R6 credits\n\tVolume Buyers: **{data["data"][5]}**\n\tLast Sold: **{data["sold"][-1]}**\n'
+                        msg += f'### RAP:\n\t10 - **{ten_RAP}**\n\t100 - **{hundred_RAP}**\n\tAll Time - **{all_time_RAP}**\n\n\t*(Total Data: {sold_len})*\n### Tags:\n\n{data["tags"]}:'
+                        embed=discord.Embed(title=f'{data["name"]} ({data["type"]})', url=f'https://www.ubisoft.com/en-us/game/rainbow-six/siege/marketplace?route=buy%252Fitem-details&itemId={item_id}', description=f'{msg}', color=0xFF5733)
+                        embed.set_thumbnail(url=data["asset_url"])
+                        await message.channel.send(embed=embed)
+                    case "graph":
+                        match cmd.pop(0):
+                            case "all":
+                                item_id = " ".join(cmd).lower()
+                                data = data[item_id]
+                                cleaned_data = [x for x in data["sold"] if x]
+                                print(f'{len(cleaned_data)} vs {cleaned_data}')
+
+                                plt.scatter( np.array(range(0, len(cleaned_data))), np.array(cleaned_data) )
+                                plt.xlabel( " Sale # " )
+                                plt.ylabel( " Purchase Amount " )
+
+                                plt.title( f'{data["name"]} ({data["type"]})' )
+                                plt.savefig( f"graphs/{item_id}.png" )
+                                plt.clf()
+
+                                file = discord.File(f'graphs/{item_id}.png')
+                                e = discord.Embed()
+                                e.set_image(url=f'attachment://{item_id}.png')
+                                await message.channel.send(file = file, embed=e)
 
 
 client.run(os.environ["TOKEN"])
-
-
