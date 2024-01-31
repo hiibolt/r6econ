@@ -528,10 +528,11 @@ async def on_message(message):
             item_id = name_map[message.content[5:].lower()]
         data = data[item_id]
 
-        sold_len = len(data["sold"])
-        ten_RAP = sum(data["sold"][-10:]) / min(10, sold_len)
-        hundred_RAP = sum(data["sold"][-100:]) / min(100, sold_len)
-        all_time_RAP = sum(data["sold"]) / sold_len
+        cleaned_data = [x for x in data["sold"] if x]
+        sold_len = len(cleaned_data)
+        ten_RAP = sum(cleaned_data[-10:]) / max(1, min(10, sold_len))
+        hundred_RAP = sum(cleaned_data[-100:]) / max(1, min(100, sold_len))
+        all_time_RAP = sum(cleaned_data) / max(1, sold_len)
 
         msg = f'## Tags:\n{data["tags"]}:\n### RAP:\n\t10 - {ten_RAP}\n\t100 - {hundred_RAP}\n\tAll Time - {all_time_RAP}\n\n\t*(Total Data: {sold_len})*'
 
