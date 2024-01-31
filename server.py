@@ -390,10 +390,10 @@ class Auth:
     
     async def try_query_db(self):
         res = await self.get_db(f"https://public-ubiservices.ubi.com/v1/profiles/me/uplay/graphql")
-
-        name = res["data"]["game"]["marketableItem"]["item"]["name"]
-        tags = res["data"]["game"]["marketableItem"]["item"]["tags"]
-        item_type = res["data"]["game"]["marketableItem"]["item"]["type"]
+        
+        name = None
+        tags = None
+        item_type = None
 
         lowest_buyer = None
         highest_buyer = None
@@ -407,6 +407,10 @@ class Auth:
         
         asset_url = None
         try:
+            name = res["data"]["game"]["marketableItem"]["item"]["name"]
+            tags = res["data"]["game"]["marketableItem"]["item"]["tags"]
+            item_type = res["data"]["game"]["marketableItem"]["item"]["type"]
+
             lowest_buyer = res["data"]["game"]["marketableItem"]["marketData"]["buyStats"][0]["lowestPrice"]
             highest_buyer = res["data"]["game"]["marketableItem"]["marketData"]["buyStats"][0]["highestPrice"]
             volume_buyers = res["data"]["game"]["marketableItem"]["marketData"]["buyStats"][0]["activeCount"]
@@ -496,9 +500,13 @@ async def on_ready():
                 data[item_id]["sold"] = data[item_id]["sold"] + [res[9]]
                 print("NEW LAST SOLD")
 
+        print("[ WRITING TO 'data.json' ]")
+
         data_file = open("assets/data.json", "w")
         data_file.write(json.dumps(data, indent=2))
         data_file.close()
+
+        print("[ FINISHED WRITING TO 'data.json' ]")
 
         await asyncio.sleep(60)
     await auth.close()
