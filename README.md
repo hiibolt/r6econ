@@ -34,6 +34,7 @@ Much of the data this gathers can be used to manipulate the market to your advan
 ### Prequisites
 - [python](https://www.python.org/)
 - [pip](https://pypi.org/project/pip/)
+- [A discord bot and its token](https://www.writebots.com/discord-bot-token/)
   
 ### Windows Command Prompt
 ```bat
@@ -69,6 +70,7 @@ python3 server.py
 
 - [nix](https://nixos.org/)
 - [nix flakes](https://nixos.wiki/wiki/Flakes)
+- [A discord bot and its token](https://www.writebots.com/discord-bot-token/)
 
 ### Instructions
 
