@@ -434,23 +434,15 @@ class Auth:
             last_sold
         ]
 
-
-TOKEN = 'your_token_from_discord'
+TOKEN = 'MTA4MjgzMjQ5MTg5Njg5NzYxNg.GQdyVl.bIkGfzoiMdeQoxtJgBjZjWGxdwqEfPuklw9YNs'
 
 intents = discord.Intents.default()
 intents.message_content = True
 
 client = commands.Bot(command_prefix='.', intents=intents)
 
-#####
-#####
-## Insert other functions here
-#####
-#####
-
-client.run(TOKEN)
-
-async def main():
+@client.event
+async def on_ready():
     print("Starting Query Test...")
     print(time.time())
 
@@ -476,13 +468,12 @@ async def main():
 
             # Meta: NAME | TYPE | TAGS - Buyers: LOW | HIGH | VOL - Sellers: LOW | HIGH | VOL
             try:
-                data[res[0]]
+                data[item_id]
             except:
-                data[res[0]] = {
+                data[item_id] = {
                     "name": res[0],
                     "type": res[1],
                     "tags": res[2],
-                    "item_id": item_id,
                     "sold": [],
                     "data": []
                 }
@@ -491,14 +482,9 @@ async def main():
             #    data[res[0]]["data"] = data[res[0]]["data"] + [[res[3], res[4], res[5], res[6], res[7], res[8]]]
             #    print("NEW PRIMARY DATA")
             
-            if len(data[res[0]]["sold"]) == 0 or data[res[0]]["sold"][len(data[res[0]]["sold"]) - 1] != res[9]:
-                data[res[0]]["sold"] = data[res[0]]["sold"] + [res[9]]
+            if len(data[item_id]["sold"]) == 0 or data[item_id]["sold"][len(data[item_id]["sold"]) - 1] != res[9]:
+                data[item_id]["sold"] = data[item_id]["sold"] + [res[9]]
                 print("NEW LAST SOLD")
-
-            sold_len = len(data[res[0]]["sold"])
-            ten_RAP = sum(data[res[0]]["sold"][-10:]) / min(10, sold_len)
-            hundred_RAP = sum(data[res[0]]["sold"][-100:]) / min(100, sold_len)
-            all_time_RAP = sum(data[res[0]]["sold"]) / sold_len
 
             #print(f'{res[0]} ({res[1]}) ({res[2]})')
             #print(f'Current Buy: {res[3]}-{res[4]} [Volume of {res[5]}] R6 credits')
@@ -510,9 +496,29 @@ async def main():
         data_file.write(json.dumps(data, indent=2))
         data_file.close()
 
-        time.sleep(60)
+        await asyncio.sleep(60)
     await auth.close()
 
+@client.event
+async def on_message(message):
+    if message.author != client.user:
+
+        data_file = open("assets/data.json", "r")
+        data = json.loads(data_file.read())
+        data_file.close()
+
+        data = data[message.content]
+
+        sold_len = len(data["sold"])
+        ten_RAP = sum(data["sold"][-10:]) / min(10, sold_len)
+        hundred_RAP = sum(data["sold"][-100:]) / min(100, sold_len)
+        all_time_RAP = sum(data["sold"]) / sold_len
+
+        msg = f'# {data["name"]} ({data["type"]})\n## Tags:\n{data["tags"]}:\n### RAP:\n\t10 - {ten_RAP}\n\t100 - {hundred_RAP}\n\tAll Time - {all_time_RAP}\n\n\t*(Total Data: {sold_len})*'
+
+        await message.channel.send(msg)
 
 
-asyncio.run(main())
+client.run(TOKEN)
+
+
