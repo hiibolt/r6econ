@@ -4,3 +4,5 @@ data.json
 creds
 .venv
 .env
+.envrc
+.direnv
