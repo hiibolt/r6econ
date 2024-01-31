@@ -534,7 +534,7 @@ async def on_ready():
                 data[item_id]["data"] = [res[3], res[4], res[5], res[6], res[7], res[8]]
                 print("NEW PRIMARY DATA")
             
-            if len(data[item_id]["sold"]) == 0 or data[item_id]["sold"][len(data[item_id]["sold"]) - 1] != res[9]:
+            if len(data[item_id]["sold"]) == 0 or data[item_id]["sold"][len(data[item_id]["sold"]) - 1][0] != res[9]:
                 data[item_id]["sold"] = data[item_id]["sold"] + [[res[9], time.time()]]
                 print("NEW LAST SOLD")
 
@@ -651,6 +651,11 @@ async def on_message(message):
                         e = discord.Embed()
                         e.set_image(url=f'attachment://{item_id}.png')
                         await message.channel.send(file = file, embed=e)
+                    case _:
+                        msg = "The following commands are available:\n\tecon name <item name>\n\tecon id <item id>\n\tecon graph <# entries (1, 2, ... | all)> <unit (days | hours | minutes)>"
+                        embed=discord.Embed(title=f'Help', description=f'# Ask @hiibolt on GH/DC for help!\n\n# Skins:\n{msg}', color=0xFF5733)
+                        embed.set_thumbnail(url="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwallpapercave.com%2Fwp%2Fwp7511401.png&f=1&nofb=1&ipt=774c2f1e44a99d33a82af5645f290c48fb316c0f43af86f11b4f167eb70d8a0a&ipo=images")
+                        await message.channel.send(embed=embed)
                             
 
 
