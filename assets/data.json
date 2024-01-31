@@ -298,7 +298,8 @@
     ],
     "asset_url": "https://ubiservices.cdn.ubi.com/0d2ae42d-4c27-4cb7-af6c-2099062302bb/DeployerAssetsJune2023/5bc65865_1fec_5c18_f351_d9b5cd7df318.png",
     "sold": [
-      5400
+      5400,
+      6000
     ],
     "data": []
   },
@@ -842,7 +843,8 @@
     ],
     "asset_url": "https://ubiservices.cdn.ubi.com/0d2ae42d-4c27-4cb7-af6c-2099062302bb/DeployerAssetsJune2023/0b320ec5_3da2_fea7_21a0_d3bec7b40f4d.png",
     "sold": [
-      3500
+      3500,
+      5000
     ],
     "data": []
   },
@@ -1027,7 +1029,8 @@
     "asset_url": "https://ubiservices.cdn.ubi.com/0d2ae42d-4c27-4cb7-af6c-2099062302bb/DeployerAssetsJune2023/51e13369_472f_725e_860d_9d15c0a9316c.png",
     "sold": [
       14000,
-      12250
+      12250,
+      12000
     ],
     "data": []
   },
@@ -1068,7 +1071,8 @@
     "asset_url": "https://ubiservices.cdn.ubi.com/0d2ae42d-4c27-4cb7-af6c-2099062302bb/DeployerAssetsJune2023/1afa74f7_f336_afae_7e37_11f1164a7c16.png",
     "sold": [
       9000,
-      7999
+      7999,
+      6000
     ],
     "data": []
   },
@@ -1474,7 +1478,8 @@
     "sold": [
       1799,
       1600,
-      1880
+      1880,
+      1850
     ],
     "data": []
   },
