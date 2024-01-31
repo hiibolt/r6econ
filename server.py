@@ -393,8 +393,20 @@ class Auth:
         return players
     
     async def try_query_db(self):
+        await asyncio.sleep(0.05)
+
         res = await self.get_db(f"https://public-ubiservices.ubi.com/v1/profiles/me/uplay/graphql")
 
+        failed = False
+        try:
+            res["errors"]
+            failed = True
+            print("Rate Limited!")
+        except:
+            pass
+        if (failed):
+            return
+        
         name = None
         tags = None
         item_type = None
@@ -503,6 +515,8 @@ async def on_ready():
         for key, item_id in item_ids.items():
             auth.item_id = item_id
             res = await auth.try_query_db()
+            if (not res):
+                continue
 
             # Meta: NAME | TYPE | TAGS - Buyers: LOW | HIGH | VOL - Sellers: LOW | HIGH | VOL
             try:
@@ -516,13 +530,12 @@ async def on_ready():
                     "sold": [],
                     "data": None
                 }
-
             if data[item_id]["data"] == None or data[item_id]["data"] != [res[3], res[4], res[5], res[6], res[7], res[8]]:
                 data[item_id]["data"] = [res[3], res[4], res[5], res[6], res[7], res[8]]
                 print("NEW PRIMARY DATA")
             
             if len(data[item_id]["sold"]) == 0 or data[item_id]["sold"][len(data[item_id]["sold"]) - 1] != res[9]:
-                data[item_id]["sold"] = data[item_id]["sold"] + [res[9]]
+                data[item_id]["sold"] = data[item_id]["sold"] + [[res[9], time.time()]]
                 print("NEW LAST SOLD")
 
         print("[ WRITING TO 'data.json' ]")
@@ -564,14 +577,14 @@ async def on_message(message):
                         item_id = " ".join(cmd).lower()
                         data = data[item_id]
 
-                        cleaned_data = [x for x in data["sold"] if x]
+                        cleaned_data = [x[0] for x in data["sold"] if x]
                         sold_len = len(cleaned_data)
                         ten_RAP = sum(cleaned_data[-10:]) / max(1, min(10, sold_len))
                         hundred_RAP = sum(cleaned_data[-100:]) / max(1, min(100, sold_len))
                         all_time_RAP = sum(cleaned_data) / max(1, sold_len)
 
                         msg = f'# Buy:\n\tMinimum Buyer: **{data["data"][0]}** R6 credits\n\tMaximum Buyer: **{data["data"][1]}** R6 credits\n\tVolume Buyers: **{data["data"][2]}**\n'
-                        msg += f'# Sell:\n\tMinimum Seller: **{data["data"][3]}** R6 credits\n\tMaximum Seller: **{data["data"][4]}** R6 credits\n\tVolume Buyers: **{data["data"][5]}**\n\tLast Sold: **{data["sold"][-1]}**\n'
+                        msg += f'# Sell:\n\tMinimum Seller: **{data["data"][3]}** R6 credits\n\tMaximum Seller: **{data["data"][4]}** R6 credits\n\tVolume Buyers: **{data["data"][5]}**\n\tLast Sold: **{data["sold"][-1][0]}**\n'
                         msg += f'### RAP:\n\t10 - **{ten_RAP}**\n\t100 - **{hundred_RAP}**\n\tAll Time - **{all_time_RAP}**\n\n\t*(Total Data: {sold_len})*\n### Tags:\n\n{data["tags"]}:'
                         embed=discord.Embed(title=f'{data["name"]} ({data["type"]})', url=f'https://www.ubisoft.com/en-us/game/rainbow-six/siege/marketplace?route=buy%252Fitem-details&itemId={item_id}', description=f'{msg}', color=0xFF5733)
                         embed.set_thumbnail(url=data["asset_url"])
@@ -580,38 +593,62 @@ async def on_message(message):
                         item_id = name_map[" ".join(cmd).lower()]
                         data = data[item_id]
 
-                        cleaned_data = [x for x in data["sold"] if x]
+                        cleaned_data = [x[0] for x in data["sold"] if x[0]]
                         sold_len = len(cleaned_data)
                         ten_RAP = sum(cleaned_data[-10:]) / max(1, min(10, sold_len))
                         hundred_RAP = sum(cleaned_data[-100:]) / max(1, min(100, sold_len))
                         all_time_RAP = sum(cleaned_data) / max(1, sold_len)
 
                         msg = f'# Buy:\n\tMinimum Buyer: **{data["data"][0]}** R6 credits\n\tMaximum Buyer: **{data["data"][1]}** R6 credits\n\tVolume Buyers: **{data["data"][2]}**\n'
-                        msg += f'# Sell:\n\tMinimum Seller: **{data["data"][3]}** R6 credits\n\tMaximum Seller: **{data["data"][4]}** R6 credits\n\tVolume Buyers: **{data["data"][5]}**\n\tLast Sold: **{data["sold"][-1]}**\n'
+                        msg += f'# Sell:\n\tMinimum Seller: **{data["data"][3]}** R6 credits\n\tMaximum Seller: **{data["data"][4]}** R6 credits\n\tVolume Buyers: **{data["data"][5]}**\n\tLast Sold: **{data["sold"][-1][0]}**\n'
                         msg += f'### RAP:\n\t10 - **{ten_RAP}**\n\t100 - **{hundred_RAP}**\n\tAll Time - **{all_time_RAP}**\n\n\t*(Total Data: {sold_len})*\n### Tags:\n\n{data["tags"]}:'
                         embed=discord.Embed(title=f'{data["name"]} ({data["type"]})', url=f'https://www.ubisoft.com/en-us/game/rainbow-six/siege/marketplace?route=buy%252Fitem-details&itemId={item_id}', description=f'{msg}', color=0xFF5733)
                         embed.set_thumbnail(url=data["asset_url"])
                         await message.channel.send(embed=embed)
                     case "graph":
-                        match cmd.pop(0):
+                        num = cmd.pop(0)
+                        unit_type = cmd.pop(0)
+
+                        item_id = " ".join(cmd).lower()
+                        data = data[item_id]
+                        unit = "days"
+                        dividend = 86400
+                        
+                        match num:
                             case "all":
-                                item_id = " ".join(cmd).lower()
-                                data = data[item_id]
-                                cleaned_data = [x for x in data["sold"] if x]
-                                print(f'{len(cleaned_data)} vs {cleaned_data}')
+                                pass
+                            case _:
+                                data["sold"] = [x for x in data["sold"] if x[0]]
+                                data["sold"] = data["sold"][-int(num):]
+                                
+                        match unit_type:
+                            case "days":
+                                pass
+                            case "hours":
+                                unit = "hours"
+                                dividend = 86400 / 24
+                            case "minutes":
+                                unit = "minutes"
+                                dividend = 86400 / 24 / 60
 
-                                plt.scatter( np.array(range(0, len(cleaned_data))), np.array(cleaned_data) )
-                                plt.xlabel( " Sale # " )
-                                plt.ylabel( " Purchase Amount " )
+                        cleaned_data = [x[0] for x in data["sold"] if x[0]]
+                        cleaned_times = [(time.time() - x[1]) / dividend for x in data["sold"] if x[0]]
+                     
+                        print(f'{cleaned_times} vs {cleaned_data}')
 
-                                plt.title( f'{data["name"]} ({data["type"]})' )
-                                plt.savefig( f"graphs/{item_id}.png" )
-                                plt.clf()
+                        plt.scatter( np.array(cleaned_times), np.array(cleaned_data) )
+                        plt.xlabel( f' Time ({unit} ago) ' )
+                        plt.ylabel( " Purchase Amount " )
 
-                                file = discord.File(f'graphs/{item_id}.png')
-                                e = discord.Embed()
-                                e.set_image(url=f'attachment://{item_id}.png')
-                                await message.channel.send(file = file, embed=e)
+                        plt.title( f'{data["name"]} ({data["type"]})' )
+                        plt.savefig( f"graphs/{item_id}.png" )
+                        plt.clf()
+
+                        file = discord.File(f'graphs/{item_id}.png')
+                        e = discord.Embed()
+                        e.set_image(url=f'attachment://{item_id}.png')
+                        await message.channel.send(file = file, embed=e)
+                            
 
 
 client.run(os.environ["TOKEN"])
