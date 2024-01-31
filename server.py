@@ -390,7 +390,7 @@ class Auth:
     
     async def try_query_db(self):
         res = await self.get_db(f"https://public-ubiservices.ubi.com/v1/profiles/me/uplay/graphql")
-        
+
         name = None
         tags = None
         item_type = None
@@ -408,19 +408,49 @@ class Auth:
         asset_url = None
         try:
             name = res["data"]["game"]["marketableItem"]["item"]["name"]
+        except:
+            print(f'ERR')    
+        try:
             tags = res["data"]["game"]["marketableItem"]["item"]["tags"]
+        except:
+            print(f'ERR')    
+        try:
             item_type = res["data"]["game"]["marketableItem"]["item"]["type"]
+        except:
+            print(f'ERR')    
 
+        try:
             lowest_buyer = res["data"]["game"]["marketableItem"]["marketData"]["buyStats"][0]["lowestPrice"]
+        except:
+            print(f'ERR')    
+        try:
             highest_buyer = res["data"]["game"]["marketableItem"]["marketData"]["buyStats"][0]["highestPrice"]
+        except:
+            print(f'ERR')   
+        try: 
             volume_buyers = res["data"]["game"]["marketableItem"]["marketData"]["buyStats"][0]["activeCount"]
+        except:
+            print(f'ERR')    
 
+        try:
             lowest_seller = res["data"]["game"]["marketableItem"]["marketData"]["sellStats"][0]["lowestPrice"]
+        except:
+            print(f'ERR')    
+        try:
             highest_seller = res["data"]["game"]["marketableItem"]["marketData"]["sellStats"][0]["highestPrice"]
+        except:
+            print(f'ERR')    
+        try:
             volume_sellers = res["data"]["game"]["marketableItem"]["marketData"]["sellStats"][0]["activeCount"]
+        except:
+            print(f'ERR')    
         
+        try:
             last_sold = res["data"]["game"]["marketableItem"]["marketData"]["lastSoldAt"][0]["price"]
+        except:
+            print(f'ERR')    
 
+        try:
             asset_url = res["data"]["game"]["marketableItem"]["item"]["assetUrl"]
         except:
             print(f'ERR')    
@@ -444,7 +474,7 @@ class Auth:
         ]
 
 
-token_file = open("token.txt", "r")
+token_file = open("assets/token.txt", "r")
 TOKEN = token_file.read()
 print(TOKEN)
 token_file.close()
@@ -459,7 +489,7 @@ async def on_ready():
     print("Starting Query Test...")
     print(time.time())
 
-    pw_file = open("pw.txt", "r")
+    pw_file = open("assets/pw.txt", "r")
     pw = pw_file.read()
     pw_file.close()
 
