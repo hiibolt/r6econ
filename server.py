@@ -488,7 +488,7 @@ async def on_ready():
                     "data": None
                 }
 
-            if len(data[item_id]["data"]) == None or data[item_id]["data"] != [res[3], res[4], res[5], res[6], res[7], res[8]]:
+            if data[item_id]["data"] == None or data[item_id]["data"] != [res[3], res[4], res[5], res[6], res[7], res[8]]:
                 data[item_id]["data"] = [res[3], res[4], res[5], res[6], res[7], res[8]]
                 print("NEW PRIMARY DATA")
             

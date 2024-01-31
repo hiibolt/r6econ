@@ -104,11 +104,11 @@
     ],
     "data": [
       120,
-      1950,
-      1393,
+      1900,
+      1391,
       2000,
       100000,
-      1126
+      1127
     ],
     "asset_url": "https://ubiservices.cdn.ubi.com/0d2ae42d-4c27-4cb7-af6c-2099062302bb/DeployerAssetsJune2023/bb74359e_3a55_3d28_b3ad_8291964f65f3.png"
   },
@@ -133,7 +133,7 @@
     "data": [
       120,
       13900,
-      479,
+      478,
       19000,
       35000,
       12
@@ -162,9 +162,9 @@
       120,
       12000,
       202,
-      18500,
+      20000,
       40000,
-      6
+      5
     ]
   },
   "1146bd66-822e-498f-aa22-d7796ddf3e48": {
@@ -189,7 +189,7 @@
     "data": [
       120,
       3000,
-      275,
+      274,
       5500,
       10000,
       3
@@ -271,7 +271,7 @@
     "data": [
       120,
       8655,
-      267,
+      266,
       16999,
       99999,
       8
@@ -300,11 +300,11 @@
     ],
     "data": [
       120,
-      17800,
-      973,
+      23800,
+      976,
       30000,
       100000,
-      12
+      11
     ]
   },
   "f619eb19-de6e-4dcd-96eb-08b45f80fe64": {
@@ -329,10 +329,10 @@
     "data": [
       120,
       24000,
-      1811,
+      1813,
       24999,
       100000,
-      23
+      22
     ]
   },
   "4e0bbd3f-b483-4941-be12-812af0e00715": {
@@ -357,7 +357,7 @@
     "data": [
       120,
       4000,
-      376,
+      372,
       9450,
       50000,
       5
@@ -444,7 +444,7 @@
     "data": [
       120,
       12000,
-      562,
+      560,
       15000,
       100000,
       21
@@ -498,7 +498,7 @@
     "data": [
       120,
       16000,
-      251,
+      250,
       17000,
       35000,
       10
@@ -640,7 +640,7 @@
     "data": [
       120,
       18000,
-      504,
+      503,
       20000,
       99999,
       12
@@ -753,7 +753,7 @@
       810,
       19000,
       100000,
-      11
+      10
     ]
   },
   "7537e8ba-987b-45b1-80ce-890d1d2c0f56": {
@@ -780,7 +780,7 @@
       46,
       4500,
       100000,
-      8
+      7
     ]
   },
   "19d12c03-fe32-4167-a4cf-5e034cdf0258": {
@@ -806,7 +806,7 @@
     "data": [
       120,
       16000,
-      286,
+      287,
       25000,
       98000,
       3
@@ -860,7 +860,7 @@
     "data": [
       120,
       2000,
-      43,
+      45,
       45000,
       45000,
       1
@@ -911,15 +911,16 @@
     ],
     "asset_url": "https://ubiservices.cdn.ubi.com/0d2ae42d-4c27-4cb7-af6c-2099062302bb/DeployerAssetsJune2023/016fa2e0_47b0_77d3_bd83_abd1e2ad6512.png",
     "sold": [
-      13500
+      13500,
+      null
     ],
     "data": [
       120,
       11000,
       76,
-      15000,
-      15000,
-      1
+      null,
+      null,
+      null
     ]
   },
   "26b6de59-e112-4198-a681-92a55962e653": {
@@ -944,7 +945,7 @@
     "data": [
       120,
       5000,
-      36,
+      37,
       6000,
       16000,
       6
@@ -974,10 +975,10 @@
     "data": [
       120,
       24000,
-      897,
+      895,
       28000,
       100000,
-      11
+      10
     ]
   },
   "3fc7f216-bcef-4a6a-b5c1-e6deac714b17": {
@@ -1029,7 +1030,7 @@
     "data": [
       120,
       16800,
-      501,
+      502,
       21000,
       30000,
       9
@@ -1078,7 +1079,8 @@
     ],
     "asset_url": "https://ubiservices.cdn.ubi.com/0d2ae42d-4c27-4cb7-af6c-2099062302bb/DeployerAssetsJune2023/f8ba7aef_9c5b_63fc_0c5b_88bff4b95c8a.png",
     "sold": [
-      7700
+      7700,
+      8000
     ],
     "data": [
       120,
@@ -1086,7 +1088,7 @@
       57,
       8000,
       42000,
-      7
+      6
     ]
   },
   "2789482f-1345-48f2-8e2a-0b7ffba57c37": {
@@ -1138,7 +1140,7 @@
     "data": [
       120,
       7000,
-      238,
+      237,
       13000,
       35000,
       9
@@ -1197,7 +1199,7 @@
       32,
       6500,
       100000,
-      13
+      12
     ]
   },
   "b6b245cb-d64a-4510-a6b9-947d545097be": {
@@ -1224,7 +1226,7 @@
     "data": [
       120,
       8500,
-      93,
+      92,
       11700,
       100000,
       15
@@ -1341,9 +1343,9 @@
       120,
       6080,
       60,
-      7000,
+      6500,
       20000,
-      22
+      23
     ]
   },
   "f5d7ed4e-d60d-485b-9d05-c960cd338b2e": {
@@ -1397,7 +1399,7 @@
       36,
       8000,
       100000,
-      22
+      23
     ]
   },
   "bfdc6a10-5c86-4d65-a391-20cfe76b554b": {
@@ -1423,10 +1425,10 @@
     "data": [
       120,
       8000,
-      163,
-      12000,
+      164,
+      11500,
       100000,
-      28
+      29
     ]
   },
   "9a385a86-b523-4f61-bc54-b90d144aa2b8": {
@@ -1454,7 +1456,7 @@
       60,
       8000,
       100000,
-      27
+      28
     ]
   },
   "b51c76a7-c659-4b0a-a038-7e185e8991e2": {
@@ -1561,7 +1563,7 @@
     "data": [
       120,
       40000,
-      134,
+      135,
       null,
       null,
       null
@@ -1588,7 +1590,7 @@
     "data": [
       120,
       20000,
-      70,
+      69,
       99999,
       100000,
       2
@@ -1817,8 +1819,8 @@
     ],
     "data": [
       120,
-      200,
-      5,
+      4500,
+      6,
       4999,
       10000,
       22
@@ -1888,11 +1890,11 @@
     ],
     "data": [
       120,
-      3890,
-      801,
-      4200,
+      3900,
+      803,
+      4500,
       100000,
-      336
+      334
     ]
   },
   "30fb55a3-1eb3-433e-9b4c-3ecc14e87b7e": {
@@ -1917,11 +1919,11 @@
     ],
     "data": [
       120,
-      5200,
-      89,
+      5000,
+      88,
       6000,
       100000,
-      68
+      67
     ]
   },
   "31de6f82-217e-4898-aa3d-2545f5c93e66": {
@@ -2088,13 +2090,14 @@
       1500,
       1600,
       1500,
-      1600
+      1600,
+      1660
     ],
     "data": [
       120,
       1400,
-      142,
-      1667,
+      143,
+      1700,
       100000,
       358
     ]
@@ -2117,11 +2120,792 @@
     ],
     "data": [
       139,
-      1000,
-      9,
+      1250,
+      10,
       2499,
       25000,
       19
+    ]
+  },
+  "7c426b33-6291-4579-b0e7-bfc7cb1157c2": {
+    "name": "STINGER",
+    "type": "CharacterHeadgear",
+    "tags": [
+      "Character.Legacy.TWITCH",
+      "Y1S3",
+      "sku_china",
+      "sku_ww",
+      "type_characterheadgear",
+      "type_headgears",
+      "rarity_superrare"
+    ],
+    "asset_url": "https://ubiservices.cdn.ubi.com/0d2ae42d-4c27-4cb7-af6c-2099062302bb/DeployerAssetsJune2023/ea704379_567a_2d48_2b69_f5725ae14ffe.png",
+    "sold": [
+      1800
+    ],
+    "data": [
+      1300,
+      1300,
+      1,
+      1500,
+      7000,
+      17
+    ]
+  },
+  "7fb6f739-4e8b-9b32-b167-bfb0d8197513": {
+    "name": "CREPUSCULAR",
+    "type": "WeaponAttachmentSkinSet",
+    "tags": [
+      "Pattern",
+      "Universal",
+      "Y6S2",
+      "sku_china",
+      "sku_ww",
+      "type_weaponattachmentskinset_universal",
+      "rarity_rare"
+    ],
+    "asset_url": "https://ubiservices.cdn.ubi.com/0d2ae42d-4c27-4cb7-af6c-2099062302bb/DeployerAssetsJune2023/775a951a_e761_957a_399c_82a627a75593.png",
+    "sold": [
+      1300
+    ],
+    "data": [
+      120,
+      1200,
+      52,
+      2000,
+      10000,
+      10
+    ]
+  },
+  "be4cf400-0808-4e04-9662-ff5bc04c60dd": {
+    "name": "BRK esports",
+    "type": "Charm",
+    "tags": [
+      "Y2S4",
+      "sku_china",
+      "sku_ww",
+      "type_charm",
+      "type_weapon_charms_universal",
+      "rarity_superrare"
+    ],
+    "asset_url": "https://ubiservices.cdn.ubi.com/0d2ae42d-4c27-4cb7-af6c-2099062302bb/DeployerAssetsJune2023/92807839_317d_ed04_d17a_46bcd0c559d3.png",
+    "sold": [
+      1500
+    ],
+    "data": [
+      670,
+      670,
+      1,
+      1500,
+      10000,
+      16
+    ]
+  },
+  "aa4deb58-929f-4865-9c27-464b6185b098": {
+    "name": "ENCE",
+    "type": "Charm",
+    "tags": [
+      "Y2S3",
+      "sku_china",
+      "sku_ww",
+      "type_charm",
+      "type_weapon_charms_universal",
+      "rarity_superrare"
+    ],
+    "asset_url": "https://ubiservices.cdn.ubi.com/0d2ae42d-4c27-4cb7-af6c-2099062302bb/DeployerAssetsJune2023/b7e53324_99ac_93b0_5b1f_23e0469ab774.png",
+    "sold": [
+      1300
+    ],
+    "data": [
+      355,
+      750,
+      4,
+      1250,
+      100000,
+      18
+    ]
+  },
+  "b36e3546-f10a-455b-b5fc-51ed23369bfa": {
+    "name": "GOLD RUSH",
+    "type": "CharacterHeadgear",
+    "tags": [
+      "Character.Legacy.SLEDGE",
+      "Y1S4",
+      "sku_china",
+      "sku_ww",
+      "type_characterheadgear",
+      "type_headgears",
+      "rarity_superrare"
+    ],
+    "asset_url": "https://ubiservices.cdn.ubi.com/0d2ae42d-4c27-4cb7-af6c-2099062302bb/DeployerAssetsJune2023/af2fdfb2_3447_af07_3544_bcedb2d54fae.png",
+    "sold": [
+      1200
+    ],
+    "data": [
+      120,
+      1000,
+      5,
+      1200,
+      7300,
+      23
+    ]
+  },
+  "ae5f041d-93da-40f6-8308-905f9da7fcf2": {
+    "name": "Onslaught",
+    "type": "Charm",
+    "tags": [
+      "Y2S3",
+      "sku_china",
+      "sku_ww",
+      "type_charm",
+      "type_weapon_charms_universal",
+      "rarity_superrare"
+    ],
+    "asset_url": "https://ubiservices.cdn.ubi.com/0d2ae42d-4c27-4cb7-af6c-2099062302bb/DeployerAssetsJune2023/788e48e9_1b88_f218_1513_bb6d804ebf28.png",
+    "sold": [
+      1200
+    ],
+    "data": [
+      323,
+      800,
+      4,
+      3000,
+      10000,
+      7
+    ]
+  },
+  "dfb7fca4-c15e-4de0-ac6d-124564252640": {
+    "name": "Millenium",
+    "type": "Charm",
+    "tags": [
+      "Y2S3",
+      "sku_china",
+      "sku_ww",
+      "type_charm",
+      "type_weapon_charms_universal",
+      "rarity_superrare"
+    ],
+    "asset_url": "https://ubiservices.cdn.ubi.com/0d2ae42d-4c27-4cb7-af6c-2099062302bb/DeployerAssetsJune2023/55bb77f8_e111_21e9_8732_bdb445d601d2.png",
+    "sold": [
+      1100
+    ],
+    "data": [
+      400,
+      600,
+      3,
+      1100,
+      50000,
+      5
+    ]
+  },
+  "f52192fa-4a90-4158-bf14-2b04f8702412": {
+    "name": "BLACK ICE",
+    "type": "WeaponSkin",
+    "tags": [
+      "MP5",
+      "Texture",
+      "W_SMG_MP5MLI",
+      "Y1S1",
+      "sku_china",
+      "sku_ww",
+      "type_weapon_skins",
+      "type_weaponskin",
+      "rarity_superrare",
+      "lc_classic-edition-v0",
+      "lc_classic-edition-v13",
+      "lc_classic-edition-v14",
+      "lc_classic-edition-v15"
+    ],
+    "asset_url": "https://ubiservices.cdn.ubi.com/0d2ae42d-4c27-4cb7-af6c-2099062302bb/DeployerAssetsJune2023/dbf67519_736b_f3ba_9986_7b673c9eed16.png",
+    "sold": [
+      1150
+    ],
+    "data": [
+      120,
+      1100,
+      815,
+      1150,
+      100000,
+      836
+    ]
+  },
+  "defc769c-cde9-48c4-b0be-d29bdde33c6c": {
+    "name": "Evil Geniuses",
+    "type": "Charm",
+    "tags": [
+      "Y2S4",
+      "sku_china",
+      "sku_ww",
+      "type_charm",
+      "type_weapon_charms_universal",
+      "rarity_superrare"
+    ],
+    "asset_url": null,
+    "sold": [
+      null
+    ],
+    "data": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ]
+  },
+  "615257b7-9aea-479f-8521-a0054af3a442": {
+    "name": "PI\u00d1A COLADA",
+    "type": "WeaponSkin",
+    "tags": [
+      "R4-C",
+      "Texture",
+      "W_AR_RemingtonR4C",
+      "Y2S1",
+      "sku_china",
+      "sku_ww",
+      "type_weapon_skins",
+      "type_weaponskin",
+      "rarity_superrare"
+    ],
+    "asset_url": "https://ubiservices.cdn.ubi.com/0d2ae42d-4c27-4cb7-af6c-2099062302bb/DeployerAssetsJune2023/b4ba3547_77a7_adcc_7cf7_564039670b34.png",
+    "sold": [
+      898
+    ],
+    "data": [
+      120,
+      899,
+      339,
+      899,
+      100000,
+      741
+    ]
+  },
+  "52908579-6503-ed1c-5fe0-b6723c72f1e1": {
+    "name": "SEARCH AND RESCUE",
+    "type": "WeaponAttachmentSkinSet",
+    "tags": [
+      "Pattern",
+      "Universal",
+      "Y6S2",
+      "sku_china",
+      "sku_ww",
+      "type_weaponattachmentskinset_universal",
+      "rarity_superrare",
+      "bp_acquired"
+    ],
+    "asset_url": "https://ubiservices.cdn.ubi.com/0d2ae42d-4c27-4cb7-af6c-2099062302bb/DeployerAssetsJune2023/29c73335_24b2_44cd_4a59_d3aedd97c876.png",
+    "sold": [
+      600
+    ],
+    "data": [
+      120,
+      600,
+      200,
+      620,
+      100000,
+      231
+    ]
+  },
+  "ea43dc95-8762-4f5f-a0d0-9dbd9777ae08": {
+    "name": "BLACK ICE",
+    "type": "WeaponSkin",
+    "tags": [
+      "MP7",
+      "Texture",
+      "W_SMG_MP7",
+      "Y1S1",
+      "sku_china",
+      "sku_ww",
+      "type_weapon_skins",
+      "type_weaponskin",
+      "rarity_superrare",
+      "lc_classic-edition-v0",
+      "lc_classic-edition-v13",
+      "lc_classic-edition-v14",
+      "lc_classic-edition-v15"
+    ],
+    "asset_url": "https://ubiservices.cdn.ubi.com/0d2ae42d-4c27-4cb7-af6c-2099062302bb/DeployerAssetsJune2023/af8db713_22d9_51f4_9342_5cdc2a7c9ca6.png",
+    "sold": [
+      1050
+    ],
+    "data": [
+      120,
+      1000,
+      866,
+      1050,
+      100000,
+      849
+    ]
+  },
+  "5b044cba-cfa3-1116-7902-11df8c227c3a": {
+    "name": "BLACK ICE",
+    "type": "WeaponSkin",
+    "tags": [
+      "D-50",
+      "Texture",
+      "Y6S4",
+      "sku_china",
+      "sku_ww",
+      "type_weapon_skins",
+      "type_weaponskin",
+      "rarity_superrare",
+      "lc_classic-edition-v13",
+      "lc_classic-edition-v14",
+      "lc_classic-edition-v15",
+      "lc_classic-edition-v16"
+    ],
+    "asset_url": "https://ubiservices.cdn.ubi.com/0d2ae42d-4c27-4cb7-af6c-2099062302bb/DeployerAssetsJune2023/59ef9e6e_a473_3a57_b473_cd74fb19cb1e.png",
+    "sold": [
+      700
+    ],
+    "data": [
+      120,
+      650,
+      287,
+      699,
+      100000,
+      387
+    ]
+  },
+  "bad3a152-574a-7a8c-d22c-9a6d9bd68dd5": {
+    "name": "BLACK ICE",
+    "type": "WeaponSkin",
+    "tags": [
+      "Mk_14_EBR",
+      "Texture",
+      "Y6S4",
+      "sku_china",
+      "sku_ww",
+      "type_weapon_skins",
+      "type_weaponskin",
+      "rarity_superrare",
+      "lc_classic-edition-v13",
+      "lc_classic-edition-v14",
+      "lc_classic-edition-v15",
+      "lc_classic-edition-v16",
+      "lc_classic-edition-v17",
+      "lc_classic-edition-v18",
+      "lc_classic-edition-v19"
+    ],
+    "asset_url": "https://ubiservices.cdn.ubi.com/0d2ae42d-4c27-4cb7-af6c-2099062302bb/DeployerAssetsJune2023/321b3ee5_1453_bc7d_cf44_b4dc80216f54.png",
+    "sold": [
+      560
+    ],
+    "data": [
+      120,
+      555,
+      339,
+      560,
+      100000,
+      693
+    ]
+  },
+  "8e228819-e92d-7040-7639-95f8a3a5326d": {
+    "name": "BLACK ICE",
+    "type": "WeaponSkin",
+    "tags": [
+      "MP5SD",
+      "Texture",
+      "Y6S4",
+      "sku_china",
+      "sku_ww",
+      "type_weapon_skins",
+      "type_weaponskin",
+      "rarity_superrare",
+      "lc_classic-edition-v13",
+      "lc_classic-edition-v14",
+      "lc_classic-edition-v15",
+      "lc_classic-edition-v16"
+    ],
+    "asset_url": "https://ubiservices.cdn.ubi.com/0d2ae42d-4c27-4cb7-af6c-2099062302bb/DeployerAssetsJune2023/2df9f3ba_e0f5_1e64_8c1e_071df6da3014.png",
+    "sold": [
+      550
+    ],
+    "data": [
+      120,
+      450,
+      182,
+      480,
+      100000,
+      378
+    ]
+  },
+  "2efcd20b-01d7-8a87-1e5b-f180ccca7cdc": {
+    "name": "BLACK ICE",
+    "type": "WeaponSkin",
+    "tags": [
+      "Bailiff_410",
+      "Texture",
+      "Y6S4",
+      "sku_china",
+      "sku_ww",
+      "type_weapon_skins",
+      "type_weaponskin",
+      "rarity_superrare",
+      "lc_classic-edition-v13",
+      "lc_classic-edition-v14",
+      "lc_classic-edition-v15",
+      "lc_classic-edition-v16"
+    ],
+    "asset_url": "https://ubiservices.cdn.ubi.com/0d2ae42d-4c27-4cb7-af6c-2099062302bb/DeployerAssetsJune2023/ef347d88_ad78_da06_6248_d40fd1b6b6cf.png",
+    "sold": [
+      430
+    ],
+    "data": [
+      120,
+      429,
+      191,
+      430,
+      100000,
+      260
+    ]
+  },
+  "2277092f-38a6-e908-8856-eb827ee97b91": {
+    "name": "BLACK ICE",
+    "type": "WeaponSkin",
+    "tags": [
+      "PARA-308",
+      "Texture",
+      "Y6S4",
+      "sku_china",
+      "sku_ww",
+      "type_weapon_skins",
+      "type_weaponskin",
+      "rarity_superrare",
+      "lc_classic-edition-v13",
+      "lc_classic-edition-v14",
+      "lc_classic-edition-v15",
+      "lc_classic-edition-v16"
+    ],
+    "asset_url": "https://ubiservices.cdn.ubi.com/0d2ae42d-4c27-4cb7-af6c-2099062302bb/DeployerAssetsJune2023/247dcd98_005c_f0ce_8d26_78b962ba3772.png",
+    "sold": [
+      440
+    ],
+    "data": [
+      120,
+      400,
+      176,
+      445,
+      100000,
+      378
+    ]
+  },
+  "629d8cf6-68d6-9c7c-aed5-904a83ad4901": {
+    "name": "BLACK ICE",
+    "type": "WeaponSkin",
+    "tags": [
+      "SCORPION_EVO_3_A1",
+      "Texture",
+      "Y6S4",
+      "sku_china",
+      "sku_ww",
+      "type_weapon_skins",
+      "type_weaponskin",
+      "rarity_superrare",
+      "lc_classic-edition-v13",
+      "lc_classic-edition-v14",
+      "lc_classic-edition-v15",
+      "lc_classic-edition-v16",
+      "lc_classic-edition-v17",
+      "lc_classic-edition-v18",
+      "lc_classic-edition-v19"
+    ],
+    "asset_url": "https://ubiservices.cdn.ubi.com/0d2ae42d-4c27-4cb7-af6c-2099062302bb/DeployerAssetsJune2023/c2cadc91_ab03_a713_9915_dc589902861f.png",
+    "sold": [
+      350
+    ],
+    "data": [
+      120,
+      400,
+      268,
+      410,
+      100000,
+      884
+    ]
+  },
+  "c6b254f3-985f-2b68-f981-c07159df6739": {
+    "name": "BLACK ICE",
+    "type": "WeaponSkin",
+    "tags": [
+      "AUG_A3",
+      "Texture",
+      "Y6S4",
+      "sku_china",
+      "sku_ww",
+      "type_weapon_skins",
+      "type_weaponskin",
+      "rarity_superrare",
+      "lc_classic-edition-v13",
+      "lc_classic-edition-v14",
+      "lc_classic-edition-v15",
+      "lc_classic-edition-v16"
+    ],
+    "asset_url": "https://ubiservices.cdn.ubi.com/0d2ae42d-4c27-4cb7-af6c-2099062302bb/DeployerAssetsJune2023/d52f55cd_a5b3_79d4_2ba4_67bd228f708d.png",
+    "sold": [
+      350
+    ],
+    "data": [
+      120,
+      320,
+      135,
+      350,
+      12000,
+      401
+    ]
+  },
+  "dd71f7c9-8973-4cdb-87b7-9d30d5a7ca41": {
+    "name": "BLACK ICE",
+    "type": "WeaponSkin",
+    "tags": [
+      "P12",
+      "Texture",
+      "W_SA_P9",
+      "Y1S1",
+      "sku_china",
+      "sku_ww",
+      "type_weapon_skins",
+      "type_weaponskin",
+      "rarity_superrare",
+      "lc_classic-edition-v0",
+      "lc_classic-edition-v16",
+      "lc_classic-edition-v17",
+      "lc_classic-edition-v18",
+      "lc_classic-edition-v19"
+    ],
+    "asset_url": "https://ubiservices.cdn.ubi.com/0d2ae42d-4c27-4cb7-af6c-2099062302bb/DeployerAssetsJune2023/5ad8c4c5_deb4_374e_ba1a_2fac39213ecf.png",
+    "sold": [
+      240
+    ],
+    "data": [
+      120,
+      230,
+      92,
+      250,
+      100000,
+      338
+    ]
+  },
+  "89348cec-aa57-4250-60ce-e7cef8847b3d": {
+    "name": "BLACK ICE",
+    "type": "WeaponSkin",
+    "tags": [
+      "ACS12",
+      "Texture",
+      "Y6S4",
+      "sku_china",
+      "sku_ww",
+      "type_weapon_skins",
+      "type_weaponskin",
+      "rarity_superrare",
+      "lc_classic-edition-v13",
+      "lc_classic-edition-v14",
+      "lc_classic-edition-v15",
+      "lc_classic-edition-v16",
+      "lc_classic-edition-v17",
+      "lc_classic-edition-v18",
+      "lc_classic-edition-v19"
+    ],
+    "asset_url": "https://ubiservices.cdn.ubi.com/0d2ae42d-4c27-4cb7-af6c-2099062302bb/DeployerAssetsJune2023/73b777cf_4562_d189_18ec_a180814d21b9.png",
+    "sold": [
+      250
+    ],
+    "data": [
+      120,
+      225,
+      124,
+      250,
+      100000,
+      716
+    ]
+  },
+  "d377d6b8-bda0-5c7e-145d-cba5552181b0": {
+    "name": "BLACK ICE",
+    "type": "WeaponSkin",
+    "tags": [
+      "RG15",
+      "Texture",
+      "Y6S4",
+      "sku_china",
+      "sku_ww",
+      "type_weapon_skins",
+      "type_weaponskin",
+      "rarity_superrare",
+      "lc_classic-edition-v14",
+      "lc_classic-edition-v15",
+      "lc_classic-edition-v16",
+      "lc_classic-edition-v17",
+      "lc_classic-edition-v18",
+      "lc_classic-edition-v19"
+    ],
+    "asset_url": "https://ubiservices.cdn.ubi.com/0d2ae42d-4c27-4cb7-af6c-2099062302bb/DeployerAssetsJune2023/34d1c68f_3aac_d424_0bba_6d81536724d6.png",
+    "sold": [
+      240
+    ],
+    "data": [
+      120,
+      227,
+      84,
+      240,
+      70000,
+      361
+    ]
+  },
+  "ce0ddae0-8026-45a1-9a05-b3e1d3db7324": {
+    "name": "BLACK ICE",
+    "type": "WeaponSkin",
+    "tags": [
+      "OTs-03",
+      "Texture",
+      "W_SR_Weapon_Dragunov",
+      "Y1S1",
+      "sku_china",
+      "sku_ww",
+      "type_weapon_skins",
+      "type_weaponskin",
+      "rarity_superrare",
+      "lc_classic-edition-v0",
+      "lc_classic-edition-v16",
+      "lc_classic-edition-v17",
+      "lc_classic-edition-v18",
+      "lc_classic-edition-v19"
+    ],
+    "asset_url": "https://ubiservices.cdn.ubi.com/0d2ae42d-4c27-4cb7-af6c-2099062302bb/DeployerAssetsJune2023/64a05f8f_b2cc_767d_fef6_d3a6ab920077.png",
+    "sold": [
+      200
+    ],
+    "data": [
+      120,
+      240,
+      125,
+      250,
+      100000,
+      965
+    ]
+  },
+  "7fd42a9b-3bfe-43f4-9e82-f8abd6fd4e36": {
+    "name": "BLACK ICE",
+    "type": "WeaponSkin",
+    "tags": [
+      "417",
+      "Texture",
+      "W_AR_HK417",
+      "Y1S1",
+      "sku_china",
+      "sku_ww",
+      "type_weapon_skins",
+      "type_weaponskin",
+      "rarity_superrare",
+      "lc_classic-edition-v0",
+      "lc_classic-edition-v13",
+      "lc_classic-edition-v14",
+      "lc_classic-edition-v15"
+    ],
+    "asset_url": "https://ubiservices.cdn.ubi.com/0d2ae42d-4c27-4cb7-af6c-2099062302bb/DeployerAssetsJune2023/3d999493_9bbf_726e_0caa_2166d2eae265.png",
+    "sold": [
+      240
+    ],
+    "data": [
+      120,
+      220,
+      75,
+      250,
+      100000,
+      549
+    ]
+  },
+  "9dd157ab-c2d7-7a38-3b35-8daf571410db": {
+    "name": "BLACK ICE",
+    "type": "WeaponSkin",
+    "tags": [
+      "M12",
+      "Texture",
+      "Y6S4",
+      "sku_china",
+      "sku_ww",
+      "type_weapon_skins",
+      "type_weaponskin",
+      "rarity_superrare",
+      "lc_classic-edition-v14",
+      "lc_classic-edition-v15",
+      "lc_classic-edition-v16",
+      "lc_classic-edition-v17",
+      "lc_classic-edition-v18",
+      "lc_classic-edition-v19"
+    ],
+    "asset_url": "https://ubiservices.cdn.ubi.com/0d2ae42d-4c27-4cb7-af6c-2099062302bb/DeployerAssetsJune2023/43d98c74_4a05_a96d_3162_4c92931008a2.png",
+    "sold": [
+      240
+    ],
+    "data": [
+      120,
+      220,
+      115,
+      240,
+      100000,
+      778
+    ]
+  },
+  "5eb8e5ed-a60b-0caa-06f4-e0afe3a398ae": {
+    "name": "BLACK ICE",
+    "type": "WeaponSkin",
+    "tags": [
+      "44_Mag_Semi-Auto",
+      "Texture",
+      "Y6S4",
+      "sku_china",
+      "sku_ww",
+      "type_weapon_skins",
+      "type_weaponskin",
+      "rarity_superrare",
+      "lc_classic-edition-v13",
+      "lc_classic-edition-v14",
+      "lc_classic-edition-v15",
+      "lc_classic-edition-v16",
+      "lc_classic-edition-v17",
+      "lc_classic-edition-v18",
+      "lc_classic-edition-v19"
+    ],
+    "asset_url": "https://ubiservices.cdn.ubi.com/0d2ae42d-4c27-4cb7-af6c-2099062302bb/DeployerAssetsJune2023/89e0f9e3_677d_daf6_cd0e_94619329251a.png",
+    "sold": [
+      170
+    ],
+    "data": [
+      120,
+      170,
+      16,
+      190,
+      100000,
+      521
+    ]
+  },
+  "d3718325-4fb1-2d2e-b261-219850ea1a6c": {
+    "name": "BLACK ICE",
+    "type": "WeaponSkin",
+    "tags": [
+      "SDP_9mm",
+      "Texture",
+      "Y6S4",
+      "sku_china",
+      "sku_ww",
+      "type_weapon_skins",
+      "type_weaponskin",
+      "rarity_superrare",
+      "lc_classic-edition-v13",
+      "lc_classic-edition-v14",
+      "lc_classic-edition-v15",
+      "lc_classic-edition-v16"
+    ],
+    "asset_url": "https://ubiservices.cdn.ubi.com/0d2ae42d-4c27-4cb7-af6c-2099062302bb/DeployerAssetsJune2023/9423e32b_a145_bab9_63c5_d834bb9f6c56.png",
+    "sold": [
+      200
+    ],
+    "data": [
+      120,
+      190,
+      24,
+      200,
+      100000,
+      134
     ]
   }
 }
