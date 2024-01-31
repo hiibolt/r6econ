@@ -405,6 +405,7 @@ class Auth:
 
         last_sold = None
         
+        asset_url = None
         try:
             lowest_buyer = res["data"]["game"]["marketableItem"]["marketData"]["buyStats"][0]["lowestPrice"]
             highest_buyer = res["data"]["game"]["marketableItem"]["marketData"]["buyStats"][0]["highestPrice"]
@@ -415,6 +416,8 @@ class Auth:
             volume_sellers = res["data"]["game"]["marketableItem"]["marketData"]["sellStats"][0]["activeCount"]
         
             last_sold = res["data"]["game"]["marketableItem"]["marketData"]["lastSoldAt"][0]["price"]
+
+            asset_url = res["data"]["game"]["marketableItem"]["item"]["assetUrl"]
         except:
             print(f'ERR')    
         
@@ -431,10 +434,16 @@ class Auth:
             highest_seller,
             volume_sellers,
 
-            last_sold
+            last_sold,
+
+            asset_url
         ]
 
-TOKEN = 'MTA4MjgzMjQ5MTg5Njg5NzYxNg.GQdyVl.bIkGfzoiMdeQoxtJgBjZjWGxdwqEfPuklw9YNs'
+
+token_file = open("token.txt", "r")
+TOKEN = token_file.read()
+print(TOKEN)
+token_file.close()
 
 intents = discord.Intents.default()
 intents.message_content = True
@@ -453,8 +462,8 @@ async def on_ready():
     auth = Auth("***REMOVED***", pw)
 
     while (True):
-        item_id_file = open("assets/ids.txt", "r")
-        item_ids = item_id_file.read().split("\n")
+        item_id_file = open("assets/ids.json", "r")
+        item_ids = json.loads(item_id_file.read())
         item_id_file.close()
 
         data_file = open("assets/data.json", "r")
@@ -462,7 +471,7 @@ async def on_ready():
         data_file.close()
 
 
-        for item_id in item_ids:
+        for key, item_id in item_ids.items():
             auth.item_id = item_id
             res = await auth.try_query_db()
 
@@ -474,6 +483,7 @@ async def on_ready():
                     "name": res[0],
                     "type": res[1],
                     "tags": res[2],
+                    "asset_url": res[10],
                     "sold": [],
                     "data": []
                 }
@@ -501,22 +511,33 @@ async def on_ready():
 
 @client.event
 async def on_message(message):
-    if message.author != client.user:
+    if message.author != client.user and message.content[:5] == "econ ":
 
         data_file = open("assets/data.json", "r")
         data = json.loads(data_file.read())
         data_file.close()
 
-        data = data[message.content]
+        name_map_file = open("assets/ids.json", "r")
+        name_map = json.loads(name_map_file.read())
+        name_map_file.close()
+
+        item_id = None
+        if message.content[:8] == "econ id ":
+            item_id = message.content[8:].lower()
+        else:
+            item_id = name_map[message.content[5:].lower()]
+        data = data[item_id]
 
         sold_len = len(data["sold"])
         ten_RAP = sum(data["sold"][-10:]) / min(10, sold_len)
         hundred_RAP = sum(data["sold"][-100:]) / min(100, sold_len)
         all_time_RAP = sum(data["sold"]) / sold_len
 
-        msg = f'# {data["name"]} ({data["type"]})\n## Tags:\n{data["tags"]}:\n### RAP:\n\t10 - {ten_RAP}\n\t100 - {hundred_RAP}\n\tAll Time - {all_time_RAP}\n\n\t*(Total Data: {sold_len})*'
+        msg = f'## Tags:\n{data["tags"]}:\n### RAP:\n\t10 - {ten_RAP}\n\t100 - {hundred_RAP}\n\tAll Time - {all_time_RAP}\n\n\t*(Total Data: {sold_len})*'
 
-        await message.channel.send(msg)
+        embed=discord.Embed(title=f'{data["name"]} ({data["type"]})', url=f'https://www.ubisoft.com/en-us/game/rainbow-six/siege/marketplace?route=buy%252Fitem-details&itemId={item_id}', description=f'{msg}', color=0xFF5733)
+        embed.set_thumbnail(url=data["asset_url"])
+        await message.channel.send(embed=embed)
 
 
 client.run(TOKEN)

@@ -14,9 +14,12 @@
       "rarity_superrare"
     ],
     "sold": [
-      22000
+      22000,
+      22223,
+      22223
     ],
-    "data": []
+    "data": [],
+    "asset_url": "https://ubiservices.cdn.ubi.com/0d2ae42d-4c27-4cb7-af6c-2099062302bb/DeployerAssetsJune2023/69fd6436_b10f_7a13_cdea_96d81637c1ee.png"
   },
   "aee4bdf2-0b54-4c6d-af93-9fe4848e1f76": {
     "name": "BLACK ICE",
@@ -44,8 +47,31 @@
       1799,
       1900,
       1600,
-      1900
+      1900,
+      1800,
+      1890,
+      1850,
+      1799,
+      1900,
+      1800,
+      1950,
+      1780,
+      1950,
+      1700,
+      1900,
+      1800,
+      1900,
+      1200,
+      1750,
+      1850,
+      1900,
+      1800,
+      1999,
+      2000,
+      1850,
+      2000
     ],
-    "data": []
+    "data": [],
+    "asset_url": "https://ubiservices.cdn.ubi.com/0d2ae42d-4c27-4cb7-af6c-2099062302bb/DeployerAssetsJune2023/bb74359e_3a55_3d28_b3ad_8291964f65f3.png"
   }
 }
