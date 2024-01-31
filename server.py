@@ -584,7 +584,8 @@ async def on_message(message):
                         all_time_RAP = sum(cleaned_data) / max(1, sold_len)
 
                         msg = f'# Buy:\n\tMinimum Buyer: **{data["data"][0]}** R6 credits\n\tMaximum Buyer: **{data["data"][1]}** R6 credits\n\tVolume Buyers: **{data["data"][2]}**\n'
-                        msg += f'# Sell:\n\tMinimum Seller: **{data["data"][3]}** R6 credits\n\tMaximum Seller: **{data["data"][4]}** R6 credits\n\tVolume Buyers: **{data["data"][5]}**\n\tLast Sold: **{data["sold"][-1][0]}**\n'
+                        msg += f'# Sell:\n\tMinimum Seller: **{data["data"][3]}** R6 credits\n\tMaximum Seller: **{data["data"][4]}** R6 credits\n\tVolume Buyers: **{data["data"][5]}**\n\tLast Sold: **{data["sold"][-1][0]}**\n\n'
+                        msg += f'### Quick Analysis:\n\tHighest Buyer vs. Lowest Seller: **{data["data"][3] - data["data"][1]}** R6 credits\n\tLast Sale vs. Lowest Buyer: **{data["data"][3] - data["sold"][-1][0]}** R6 credits\n'
                         msg += f'### RAP:\n\t10 - **{ten_RAP}**\n\t100 - **{hundred_RAP}**\n\tAll Time - **{all_time_RAP}**\n\n\t*(Total Data: {sold_len})*\n### Tags:\n\n{data["tags"]}:'
                         embed=discord.Embed(title=f'{data["name"]} ({data["type"]})', url=f'https://www.ubisoft.com/en-us/game/rainbow-six/siege/marketplace?route=buy%252Fitem-details&itemId={item_id}', description=f'{msg}', color=0xFF5733)
                         embed.set_thumbnail(url=data["asset_url"])
@@ -600,7 +601,8 @@ async def on_message(message):
                         all_time_RAP = sum(cleaned_data) / max(1, sold_len)
 
                         msg = f'# Buy:\n\tMinimum Buyer: **{data["data"][0]}** R6 credits\n\tMaximum Buyer: **{data["data"][1]}** R6 credits\n\tVolume Buyers: **{data["data"][2]}**\n'
-                        msg += f'# Sell:\n\tMinimum Seller: **{data["data"][3]}** R6 credits\n\tMaximum Seller: **{data["data"][4]}** R6 credits\n\tVolume Buyers: **{data["data"][5]}**\n\tLast Sold: **{data["sold"][-1][0]}**\n'
+                        msg += f'# Sell:\n\tMinimum Seller: **{data["data"][3]}** R6 credits\n\tMaximum Seller: **{data["data"][4]}** R6 credits\n\tVolume Buyers: **{data["data"][5]}**\n\tLast Sold: **{data["sold"][-1][0]}**\n\n'
+                        msg += f'### Quick Analysis:\n\tHighest Buyer vs. Lowest Seller: **{data["data"][3] - data["data"][1]}** R6 credits\n\tLast Sale vs. Lowest Buyer: **{data["data"][3] - data["sold"][-1][0]}** R6 credits\n'
                         msg += f'### RAP:\n\t10 - **{ten_RAP}**\n\t100 - **{hundred_RAP}**\n\tAll Time - **{all_time_RAP}**\n\n\t*(Total Data: {sold_len})*\n### Tags:\n\n{data["tags"]}:'
                         embed=discord.Embed(title=f'{data["name"]} ({data["type"]})', url=f'https://www.ubisoft.com/en-us/game/rainbow-six/siege/marketplace?route=buy%252Fitem-details&itemId={item_id}', description=f'{msg}', color=0xFF5733)
                         embed.set_thumbnail(url=data["asset_url"])
@@ -630,6 +632,11 @@ async def on_message(message):
                             case "minutes":
                                 unit = "minutes"
                                 dividend = 86400 / 24 / 60
+                            case _:
+                                msg = "The following units are available:\n\t- days\n\t- hours\n\t- minutes"
+                                embed=discord.Embed(title=f'Help', description=f'# Ask @hiibolt on GH/DC for help!\n\n# Skins:\n{msg}', color=0xFF5733)
+                                embed.set_thumbnail(url="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwallpapercave.com%2Fwp%2Fwp7511401.png&f=1&nofb=1&ipt=774c2f1e44a99d33a82af5645f290c48fb316c0f43af86f11b4f167eb70d8a0a&ipo=images")
+                                await message.channel.send(embed=embed)
 
                         cleaned_data = [x[0] for x in data["sold"] if x[0]]
                         cleaned_times = [(time.time() - x[1]) / dividend for x in data["sold"] if x[0]]
@@ -652,7 +659,7 @@ async def on_message(message):
                         e.set_image(url=f'attachment://{item_id}.png')
                         await message.channel.send(file = file, embed=e)
                     case _:
-                        msg = "The following commands are available:\n\tecon name <item name>\n\tecon id <item id>\n\tecon graph <# entries (1, 2, ... | all)> <unit (days | hours | minutes)>"
+                        msg = "The following commands are available:\n\t- econ name <item name>\n\t- econ id <item id>\n\t- econ graph <# entries (1, 2, ... | all)> <unit (days | hours | minutes)>"
                         embed=discord.Embed(title=f'Help', description=f'# Ask @hiibolt on GH/DC for help!\n\n# Skins:\n{msg}', color=0xFF5733)
                         embed.set_thumbnail(url="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwallpapercave.com%2Fwp%2Fwp7511401.png&f=1&nofb=1&ipt=774c2f1e44a99d33a82af5645f290c48fb316c0f43af86f11b4f167eb70d8a0a&ipo=images")
                         await message.channel.send(embed=embed)
