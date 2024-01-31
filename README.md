@@ -7,19 +7,27 @@ Much of the data this gathers can be used to manipulate the market to your advan
 
 ## Commands:
 - ### econ list
+  Lists all available names you can search for. It's recommended that you use item IDs instead, however.
   ![image](https://github.com/hiibolt/r6econ/assets/91273156/02ef4b4c-0965-408c-bda4-ff59da242ce2)
 
   Lists all tracked skins.
 - ### econ name \<skin name>
+  Fetches the economical trends an item based on its name.
   ![image](https://github.com/hiibolt/r6econ/assets/91273156/bc001157-4f17-41a1-a5fe-4ddd448e05b4)
   
-  Displays the buyer, seller, and local RAP analysis.
 - ### econ id \<item id>
+  Functionally the same as the above, but allows the direct lookup by the item's static ID.
+
   ![image](https://github.com/hiibolt/r6econ/assets/91273156/700c971f-da4e-4ff8-ac6f-6d3cfa04fb28)
   
-  Functionally the same as the above, but allows the direct lookup by the item's static ID.
 - ### econ graph <# of entries | all> <unit of time (days | hours | minutes )> <item id>
+  Displays a graph of the current state of an item.
+
   ![image](https://github.com/hiibolt/r6econ/assets/91273156/52babf14-2e8b-44e2-98b8-661704a443bb)
+
+- ### econ help
+  ![image](https://github.com/hiibolt/r6econ/assets/91273156/76efecb4-114d-4212-850b-1d6ff3825b47)
+
 
 ## Setup (Recommended)
 
