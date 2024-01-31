@@ -19,6 +19,38 @@ Much of the data this gathers can be used to manipulate the market to your advan
   
   Functionally the same as the above, but allows the direct lookup by the item's static ID.
 
+## Setup (Nix) (Recommended)
+
+### Prerequisites
+
+- [nix](https://nixos.org/)
+- [nix flakes](https://nixos.wiki/wiki/Flakes)
+
+### Instructions
+
+With flake functionality enabled, run `nix develop`.
+
+Then, run `python server.py`.
+
+Finally, set the following environment variables:
+- AUTH_EMAIL: Your Ubisoft email.
+- AUTH_PW: Your associated Ubisoft password.
+- TOKEN: The run token for your Discord bot.
+
+## Setup (Basic)
+
+### Prequisites
+- [python](https://www.python.org/)
+- [pip](https://pypi.org/project/pip/)
+
+Download required packages with `pip install -r requirements.txt`.
+
+Then, run `python server.py`.
+
+Finally, set the following environment variables:
+- AUTH_EMAIL: Your Ubisoft email.
+- AUTH_PW: Your associated Ubisoft password.
+- TOKEN: The run token for your Discord bot.
 
 ## Credits
 Much of the authentication code was sourced from https://github.com/CNDRD/siegeapi. 
