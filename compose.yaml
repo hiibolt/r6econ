@@ -9,6 +9,10 @@
 # https://github.com/docker/awesome-compose
 services:
   server:
+    environment:
+      - AUTH_EMAIL=${AUTH_EMAIL}
+      - AUTH_PW=${AUTH_PW}
+      - TOKEN=${TOKEN}
     build:
       context: .
     volumes:

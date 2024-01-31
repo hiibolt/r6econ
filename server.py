@@ -474,11 +474,6 @@ class Auth:
         ]
 
 
-token_file = open("assets/token.txt", "r")
-TOKEN = token_file.read()
-print(TOKEN)
-token_file.close()
-
 intents = discord.Intents.default()
 intents.message_content = True
 
@@ -489,11 +484,7 @@ async def on_ready():
     print("Starting Query Test...")
     print(time.time())
 
-    pw_file = open("assets/pw.txt", "r")
-    pw = pw_file.read()
-    pw_file.close()
-
-    auth = Auth("***REMOVED***", pw)
+    auth = Auth(os.environ["AUTH_EMAIL"], os.environ["AUTH_PW"])
 
     while (True):
         item_id_file = open("assets/ids.json", "r")
@@ -584,6 +575,6 @@ async def on_message(message):
         await message.channel.send(embed=embed)
 
 
-client.run(TOKEN)
+client.run(os.environ["TOKEN"])
 
 
