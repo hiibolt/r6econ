@@ -17,9 +17,17 @@
       22000,
       22223,
       22223,
-      23000
+      23000,
+      25000
     ],
-    "data": [],
+    "data": [
+      120,
+      18100,
+      670,
+      30000,
+      100000,
+      6
+    ],
     "asset_url": "https://ubiservices.cdn.ubi.com/0d2ae42d-4c27-4cb7-af6c-2099062302bb/DeployerAssetsJune2023/69fd6436_b10f_7a13_cdea_96d81637c1ee.png"
   },
   "aee4bdf2-0b54-4c6d-af93-9fe4848e1f76": {
@@ -75,9 +83,33 @@
       1750,
       2000,
       1950,
+      2000,
+      1800,
+      2000,
+      138,
+      1800,
+      1600,
+      1800,
+      500,
+      1900,
+      1500,
+      1890,
+      1850,
+      1900,
+      1800,
+      1900,
+      1950,
+      1900,
       2000
     ],
-    "data": [],
+    "data": [
+      120,
+      1950,
+      1393,
+      2000,
+      100000,
+      1126
+    ],
     "asset_url": "https://ubiservices.cdn.ubi.com/0d2ae42d-4c27-4cb7-af6c-2099062302bb/DeployerAssetsJune2023/bb74359e_3a55_3d28_b3ad_8291964f65f3.png"
   },
   "2f4918b3-cd1e-4a3c-b08e-27b300b0e3c1": {
@@ -98,7 +130,14 @@
     "sold": [
       15000
     ],
-    "data": []
+    "data": [
+      120,
+      13900,
+      479,
+      19000,
+      35000,
+      12
+    ]
   },
   "c7dc7bfd-4e61-440d-9232-ca087580024e": {
     "name": "GLACIER",
@@ -119,7 +158,14 @@
       18500,
       18000
     ],
-    "data": []
+    "data": [
+      120,
+      12000,
+      202,
+      18500,
+      40000,
+      6
+    ]
   },
   "1146bd66-822e-498f-aa22-d7796ddf3e48": {
     "name": "GLACIER",
@@ -137,9 +183,17 @@
     ],
     "asset_url": "https://ubiservices.cdn.ubi.com/0d2ae42d-4c27-4cb7-af6c-2099062302bb/DeployerAssetsJune2023/3dcd8950_619d_d78d_3326_8659822a72d5.png",
     "sold": [
-      137
+      137,
+      5000
     ],
-    "data": []
+    "data": [
+      120,
+      3000,
+      275,
+      5500,
+      10000,
+      3
+    ]
   },
   "4fc78237-6a9d-4c11-aaf3-170bf787d824": {
     "name": "GLACIER",
@@ -159,7 +213,14 @@
     "sold": [
       13000
     ],
-    "data": []
+    "data": [
+      120,
+      8900,
+      119,
+      10000,
+      40000,
+      10
+    ]
   },
   "820cda34-3e45-4983-b7c7-e0d4cf7a3f2f": {
     "name": "GLACIER",
@@ -180,7 +241,14 @@
       7000,
       10000
     ],
-    "data": []
+    "data": [
+      120,
+      8000,
+      351,
+      10000,
+      16500,
+      9
+    ]
   },
   "7520880d-88bd-4ffd-8d96-4d9b8471f925": {
     "name": "GLACIER",
@@ -200,7 +268,14 @@
     "sold": [
       17000
     ],
-    "data": []
+    "data": [
+      120,
+      8655,
+      267,
+      16999,
+      99999,
+      8
+    ]
   },
   "c780a450-8ac5-473b-8d2f-b7aac243e9f2": {
     "name": "GLACIER",
@@ -218,9 +293,19 @@
     ],
     "asset_url": "https://ubiservices.cdn.ubi.com/0d2ae42d-4c27-4cb7-af6c-2099062302bb/DeployerAssetsJune2023/8a7081a5_1413_a67b_1658_9dbf0a499065.png",
     "sold": [
-      26999
+      26999,
+      28000,
+      30000,
+      29000
     ],
-    "data": []
+    "data": [
+      120,
+      17800,
+      973,
+      30000,
+      100000,
+      12
+    ]
   },
   "f619eb19-de6e-4dcd-96eb-08b45f80fe64": {
     "name": "GLACIER",
@@ -238,9 +323,17 @@
     ],
     "asset_url": "https://ubiservices.cdn.ubi.com/0d2ae42d-4c27-4cb7-af6c-2099062302bb/DeployerAssetsJune2023/2b6786b3_794a_c843_8ec7_081904813d79.png",
     "sold": [
-      25000
+      25000,
+      24500
     ],
-    "data": []
+    "data": [
+      120,
+      24000,
+      1811,
+      24999,
+      100000,
+      23
+    ]
   },
   "4e0bbd3f-b483-4941-be12-812af0e00715": {
     "name": "GLACIER",
@@ -258,9 +351,17 @@
     ],
     "asset_url": "https://ubiservices.cdn.ubi.com/0d2ae42d-4c27-4cb7-af6c-2099062302bb/DeployerAssetsJune2023/82ee6255_63c6_ed82_a43b_30373b664c98.png",
     "sold": [
-      362
+      362,
+      4000
     ],
-    "data": []
+    "data": [
+      120,
+      4000,
+      376,
+      9450,
+      50000,
+      5
+    ]
   },
   "3b259c5a-8f1f-4cc8-9c51-befc5693bb25": {
     "name": "GLACIER",
@@ -278,9 +379,18 @@
     ],
     "asset_url": "https://ubiservices.cdn.ubi.com/0d2ae42d-4c27-4cb7-af6c-2099062302bb/DeployerAssetsJune2023/98100374_915c_5023_8abe_c590fc800bd7.png",
     "sold": [
-      6999
+      6999,
+      7000,
+      7500
     ],
-    "data": []
+    "data": [
+      120,
+      6679,
+      149,
+      7999,
+      100000,
+      7
+    ]
   },
   "74ea0bde-c802-4684-a5fd-b619ede00cd7": {
     "name": "GLACIER",
@@ -299,9 +409,17 @@
     "asset_url": "https://ubiservices.cdn.ubi.com/0d2ae42d-4c27-4cb7-af6c-2099062302bb/DeployerAssetsJune2023/5bc65865_1fec_5c18_f351_d9b5cd7df318.png",
     "sold": [
       5400,
-      6000
+      6000,
+      3500
     ],
-    "data": []
+    "data": [
+      120,
+      3300,
+      24,
+      15000,
+      19999,
+      2
+    ]
   },
   "da8bad72-043a-4014-97d6-d8b99628a43e": {
     "name": "GLACIER",
@@ -320,9 +438,17 @@
     "asset_url": "https://ubiservices.cdn.ubi.com/0d2ae42d-4c27-4cb7-af6c-2099062302bb/DeployerAssetsJune2023/cff0339b_6a91_8036_185b_8cdeb060f951.png",
     "sold": [
       10000,
-      14500
+      14500,
+      15000
     ],
-    "data": []
+    "data": [
+      120,
+      12000,
+      562,
+      15000,
+      100000,
+      21
+    ]
   },
   "aa3781de-2bc5-45b7-8a59-1bebe4ef6d4b": {
     "name": "GLACIER",
@@ -342,7 +468,14 @@
     "sold": [
       17000
     ],
-    "data": []
+    "data": [
+      120,
+      15000,
+      117,
+      18500,
+      100000,
+      12
+    ]
   },
   "47eb21ff-8ef6-489a-879e-c21bce34baa4": {
     "name": "GLACIER",
@@ -362,7 +495,14 @@
     "sold": [
       17800
     ],
-    "data": []
+    "data": [
+      120,
+      16000,
+      251,
+      17000,
+      35000,
+      10
+    ]
   },
   "d68e56ad-668c-4c79-8643-1d6d8ba52fdf": {
     "name": "GLACIER",
@@ -380,9 +520,17 @@
     ],
     "asset_url": "https://ubiservices.cdn.ubi.com/0d2ae42d-4c27-4cb7-af6c-2099062302bb/DeployerAssetsJune2023/19683d5b_647e_3c1f_aea1_4249c1af4bf2.png",
     "sold": [
-      9180
+      9180,
+      9500
     ],
-    "data": []
+    "data": [
+      120,
+      8000,
+      78,
+      9000,
+      20000,
+      6
+    ]
   },
   "4940d7c6-8244-4020-b418-ea29070b0a23": {
     "name": "GLACIER",
@@ -401,9 +549,18 @@
     "asset_url": "https://ubiservices.cdn.ubi.com/0d2ae42d-4c27-4cb7-af6c-2099062302bb/DeployerAssetsJune2023/bfcd8129_9b1e_0fad_3eba_838b0442fe86.png",
     "sold": [
       6500,
-      6000
+      6000,
+      4500,
+      6900
     ],
-    "data": []
+    "data": [
+      120,
+      5000,
+      25,
+      7000,
+      20000,
+      6
+    ]
   },
   "06797959-3dd8-4c3a-95af-f6193318edf3": {
     "name": "GLACIER",
@@ -421,9 +578,17 @@
     ],
     "asset_url": "https://ubiservices.cdn.ubi.com/0d2ae42d-4c27-4cb7-af6c-2099062302bb/DeployerAssetsJune2023/59022148_7cac_e401_5643_78fd911297f6.png",
     "sold": [
-      4500
+      4500,
+      6500
     ],
-    "data": []
+    "data": [
+      120,
+      5400,
+      361,
+      7000,
+      100000,
+      10
+    ]
   },
   "f44fda95-3f5c-4c6b-bf06-2cd3bc3e93af": {
     "name": "GLACIER",
@@ -443,7 +608,14 @@
     "sold": [
       5999
     ],
-    "data": []
+    "data": [
+      120,
+      4500,
+      38,
+      5500,
+      30000,
+      6
+    ]
   },
   "bfc657e7-5168-4da5-bebb-b0c8c1e2f889": {
     "name": "GLACIER",
@@ -461,9 +633,18 @@
     ],
     "asset_url": "https://ubiservices.cdn.ubi.com/0d2ae42d-4c27-4cb7-af6c-2099062302bb/DeployerAssetsJune2023/3be52ad0_98ea_b59d_1c70_713f3b03e149.png",
     "sold": [
+      19000,
+      18999,
       19000
     ],
-    "data": []
+    "data": [
+      120,
+      18000,
+      504,
+      20000,
+      99999,
+      12
+    ]
   },
   "d3b6fb36-a61f-44a0-b508-d54e08a91a2d": {
     "name": "GLACIER",
@@ -481,9 +662,17 @@
     ],
     "asset_url": "https://ubiservices.cdn.ubi.com/0d2ae42d-4c27-4cb7-af6c-2099062302bb/DeployerAssetsJune2023/9a3e3b28_eb63_a615_6f0f_f3342558fa73.png",
     "sold": [
-      18000
+      18000,
+      20000
     ],
-    "data": []
+    "data": [
+      120,
+      9060,
+      230,
+      21000,
+      30000,
+      4
+    ]
   },
   "920e1e06-6094-4681-9323-e5b95875a966": {
     "name": "GLACIER",
@@ -501,9 +690,17 @@
     ],
     "asset_url": "https://ubiservices.cdn.ubi.com/0d2ae42d-4c27-4cb7-af6c-2099062302bb/DeployerAssetsJune2023/a29b4e87_51dc_d783_2494_8a815624394f.png",
     "sold": [
-      4000
+      4000,
+      5500
     ],
-    "data": []
+    "data": [
+      120,
+      4000,
+      66,
+      6000,
+      100000,
+      8
+    ]
   },
   "6bb292f8-66c2-4f17-825d-d0c8d740ce84": {
     "name": "GLACIER",
@@ -523,7 +720,14 @@
     "sold": [
       10000
     ],
-    "data": []
+    "data": [
+      120,
+      3500,
+      31,
+      10000,
+      50000,
+      7
+    ]
   },
   "84925275-b76f-4da9-a361-b551d414fc27": {
     "name": "GLACIER",
@@ -543,7 +747,14 @@
     "sold": [
       20000
     ],
-    "data": []
+    "data": [
+      120,
+      16000,
+      810,
+      19000,
+      100000,
+      11
+    ]
   },
   "7537e8ba-987b-45b1-80ce-890d1d2c0f56": {
     "name": "GLACIER",
@@ -563,7 +774,14 @@
     "sold": [
       5000
     ],
-    "data": []
+    "data": [
+      120,
+      2000,
+      46,
+      4500,
+      100000,
+      8
+    ]
   },
   "19d12c03-fe32-4167-a4cf-5e034cdf0258": {
     "name": "GLACIER",
@@ -581,9 +799,18 @@
     ],
     "asset_url": "https://ubiservices.cdn.ubi.com/0d2ae42d-4c27-4cb7-af6c-2099062302bb/DeployerAssetsJune2023/65c125ed_307e_61f0_8212_5ac43c1d8e19.png",
     "sold": [
-      16000
+      16000,
+      20000,
+      21000
     ],
-    "data": []
+    "data": [
+      120,
+      16000,
+      286,
+      25000,
+      98000,
+      3
+    ]
   },
   "3adf36cb-742b-4e84-9d2f-9bde911abfb6": {
     "name": "GLACIER",
@@ -603,7 +830,14 @@
     "sold": [
       9999
     ],
-    "data": []
+    "data": [
+      120,
+      3000,
+      33,
+      8000,
+      13500,
+      5
+    ]
   },
   "9703e629-4907-481d-9a02-72088b1b3413": {
     "name": "GLACIER",
@@ -623,7 +857,14 @@
     "sold": [
       10000
     ],
-    "data": []
+    "data": [
+      120,
+      2000,
+      43,
+      45000,
+      45000,
+      1
+    ]
   },
   "adb8a620-3321-44ff-9f60-d63d6bff2d9f": {
     "name": "GLACIER",
@@ -641,9 +882,18 @@
     ],
     "asset_url": "https://ubiservices.cdn.ubi.com/0d2ae42d-4c27-4cb7-af6c-2099062302bb/DeployerAssetsJune2023/8308d523_bcee_76b6_8cf4_53df3ba4cf8d.png",
     "sold": [
+      18000,
+      16000,
       18000
     ],
-    "data": []
+    "data": [
+      120,
+      15000,
+      191,
+      23000,
+      26000,
+      3
+    ]
   },
   "c580471d-2d0e-4857-a0dd-35886ef21cb9": {
     "name": "GLACIER",
@@ -663,7 +913,14 @@
     "sold": [
       13500
     ],
-    "data": []
+    "data": [
+      120,
+      11000,
+      76,
+      15000,
+      15000,
+      1
+    ]
   },
   "26b6de59-e112-4198-a681-92a55962e653": {
     "name": "GLACIER",
@@ -684,7 +941,14 @@
       6400,
       5000
     ],
-    "data": []
+    "data": [
+      120,
+      5000,
+      36,
+      6000,
+      16000,
+      6
+    ]
   },
   "550af976-1315-434a-b2fa-5137a4dde7bd": {
     "name": "GLACIER",
@@ -703,9 +967,18 @@
     "asset_url": "https://ubiservices.cdn.ubi.com/0d2ae42d-4c27-4cb7-af6c-2099062302bb/DeployerAssetsJune2023/bbc5d177_aa4e_c878_d8ee_9998db1def49.png",
     "sold": [
       27000,
-      28000
+      28000,
+      28888,
+      25000
     ],
-    "data": []
+    "data": [
+      120,
+      24000,
+      897,
+      28000,
+      100000,
+      11
+    ]
   },
   "3fc7f216-bcef-4a6a-b5c1-e6deac714b17": {
     "name": "GLACIER",
@@ -725,7 +998,14 @@
     "sold": [
       7000
     ],
-    "data": []
+    "data": [
+      120,
+      7500,
+      137,
+      10000,
+      100000,
+      5
+    ]
   },
   "9c99e160-4396-4b3d-954d-12bd11e992dc": {
     "name": "GLACIER",
@@ -743,9 +1023,17 @@
     ],
     "asset_url": "https://ubiservices.cdn.ubi.com/0d2ae42d-4c27-4cb7-af6c-2099062302bb/DeployerAssetsJune2023/adebd9ca_db74_5431_1c6b_191a01a80c62.png",
     "sold": [
-      19000
+      19000,
+      20000
     ],
-    "data": []
+    "data": [
+      120,
+      16800,
+      501,
+      21000,
+      30000,
+      9
+    ]
   },
   "52456808-84f5-4ac7-80c8-0b07f4200b7d": {
     "name": "GLACIER",
@@ -765,7 +1053,14 @@
     "sold": [
       25000
     ],
-    "data": []
+    "data": [
+      120,
+      22000,
+      712,
+      26000,
+      100000,
+      9
+    ]
   },
   "4bfb905e-b3f1-47fe-b7d1-0909bf94c5cb": {
     "name": "GLACIER",
@@ -785,7 +1080,14 @@
     "sold": [
       7700
     ],
-    "data": []
+    "data": [
+      120,
+      5250,
+      57,
+      8000,
+      42000,
+      7
+    ]
   },
   "2789482f-1345-48f2-8e2a-0b7ffba57c37": {
     "name": "GLACIER",
@@ -803,9 +1105,17 @@
     ],
     "asset_url": "https://ubiservices.cdn.ubi.com/0d2ae42d-4c27-4cb7-af6c-2099062302bb/DeployerAssetsJune2023/38983160_39f7_7292_542b_782f7e1188b7.png",
     "sold": [
-      8000
+      8000,
+      7200
     ],
-    "data": []
+    "data": [
+      120,
+      4300,
+      95,
+      7000,
+      60000,
+      8
+    ]
   },
   "2a812cf0-93fa-4c84-9e87-673d164b6fdf": {
     "name": "GLACIER",
@@ -825,7 +1135,14 @@
     "sold": [
       12998
     ],
-    "data": []
+    "data": [
+      120,
+      7000,
+      238,
+      13000,
+      35000,
+      9
+    ]
   },
   "1929af4a-ca8f-40ba-ba8f-455c0c3ba7a0": {
     "name": "GLACIER",
@@ -846,7 +1163,14 @@
       3500,
       5000
     ],
-    "data": []
+    "data": [
+      120,
+      3500,
+      27,
+      5000,
+      100000,
+      4
+    ]
   },
   "1a6e1e70-2000-4075-9f99-1fe8dee5d549": {
     "name": "GOLD DUST",
@@ -867,7 +1191,14 @@
       6500,
       6000
     ],
-    "data": []
+    "data": [
+      120,
+      3100,
+      32,
+      6500,
+      100000,
+      13
+    ]
   },
   "b6b245cb-d64a-4510-a6b9-947d545097be": {
     "name": "GOLD DUST",
@@ -887,9 +1218,17 @@
     "sold": [
       11000,
       10900,
-      11600
+      11600,
+      11000
     ],
-    "data": []
+    "data": [
+      120,
+      8500,
+      93,
+      11700,
+      100000,
+      15
+    ]
   },
   "e91b207c-283f-47ae-b213-17f7b8f2c6cf": {
     "name": "GOLD DUST",
@@ -908,9 +1247,18 @@
     "asset_url": "https://ubiservices.cdn.ubi.com/0d2ae42d-4c27-4cb7-af6c-2099062302bb/DeployerAssetsJune2023/82dc16b8_0593_8f70_85b1_4abf05c125b7.png",
     "sold": [
       3000,
+      2500,
+      2000,
       2500
     ],
-    "data": []
+    "data": [
+      120,
+      2000,
+      8,
+      3000,
+      25000,
+      23
+    ]
   },
   "12528299-d766-4678-8267-bd72c41bcc4f": {
     "name": "GOLD DUST",
@@ -931,7 +1279,14 @@
       7000,
       8334
     ],
-    "data": []
+    "data": [
+      120,
+      6000,
+      42,
+      8300,
+      100000,
+      21
+    ]
   },
   "a39b2b21-3872-40f8-9d2b-b5cb959fcac2": {
     "name": "GOLD DUST",
@@ -949,9 +1304,18 @@
     ],
     "asset_url": "https://ubiservices.cdn.ubi.com/0d2ae42d-4c27-4cb7-af6c-2099062302bb/DeployerAssetsJune2023/34d3100a_c02a_cf7b_b81c_db7ef7bfd3a4.png",
     "sold": [
-      6749
+      6749,
+      5800,
+      5600
     ],
-    "data": []
+    "data": [
+      120,
+      5500,
+      35,
+      6000,
+      100000,
+      26
+    ]
   },
   "05a5de08-b286-4756-b574-f85e7a1ba578": {
     "name": "GOLD DUST",
@@ -969,9 +1333,18 @@
     "asset_url": "https://ubiservices.cdn.ubi.com/0d2ae42d-4c27-4cb7-af6c-2099062302bb/DeployerAssetsJune2023/a1f1d221_f75d_99fd_162e_8ac84a4f893c.png",
     "sold": [
       5750,
+      6000,
+      5800,
       6000
     ],
-    "data": []
+    "data": [
+      120,
+      6080,
+      60,
+      7000,
+      20000,
+      22
+    ]
   },
   "f5d7ed4e-d60d-485b-9d05-c960cd338b2e": {
     "name": "GOLD DUST",
@@ -991,7 +1364,14 @@
     "sold": [
       1500
     ],
-    "data": []
+    "data": [
+      470,
+      1300,
+      5,
+      1500,
+      90000,
+      22
+    ]
   },
   "5180a8fa-2463-45bd-b93b-84c0672f116e": {
     "name": "GOLD DUST",
@@ -1011,7 +1391,14 @@
     "sold": [
       6000
     ],
-    "data": []
+    "data": [
+      120,
+      6000,
+      36,
+      8000,
+      100000,
+      22
+    ]
   },
   "bfdc6a10-5c86-4d65-a391-20cfe76b554b": {
     "name": "GOLD DUST",
@@ -1030,9 +1417,17 @@
     "sold": [
       14000,
       12250,
-      12000
+      12000,
+      11750
     ],
-    "data": []
+    "data": [
+      120,
+      8000,
+      163,
+      12000,
+      100000,
+      28
+    ]
   },
   "9a385a86-b523-4f61-bc54-b90d144aa2b8": {
     "name": "GOLD DUST",
@@ -1053,7 +1448,14 @@
       8000,
       7000
     ],
-    "data": []
+    "data": [
+      120,
+      7200,
+      60,
+      8000,
+      100000,
+      27
+    ]
   },
   "b51c76a7-c659-4b0a-a038-7e185e8991e2": {
     "name": "GOLD DUST",
@@ -1072,9 +1474,19 @@
     "sold": [
       9000,
       7999,
-      6000
+      6000,
+      5800,
+      5500,
+      8000
     ],
-    "data": []
+    "data": [
+      120,
+      7500,
+      72,
+      8000,
+      25000,
+      33
+    ]
   },
   "5cda2392-6d7f-4926-b28b-7b7012678be4": {
     "name": "GOLD DUST",
@@ -1092,9 +1504,17 @@
     "asset_url": "https://ubiservices.cdn.ubi.com/0d2ae42d-4c27-4cb7-af6c-2099062302bb/DeployerAssetsJune2023/ae5339f5_2d65_3f8c_54b2_b4ce1182cdd0.png",
     "sold": [
       4497,
-      4400
+      4400,
+      4200
     ],
-    "data": []
+    "data": [
+      120,
+      2000,
+      11,
+      4000,
+      12000,
+      37
+    ]
   },
   "e6dfa52c-91f1-4599-b90e-6ece97c4c108": {
     "name": "SIX INVITATIONAL PLAYER '18",
@@ -1111,7 +1531,14 @@
     "sold": [
       null
     ],
-    "data": []
+    "data": [
+      120,
+      35000,
+      60,
+      null,
+      null,
+      null
+    ]
   },
   "7d6dd7e1-9bab-4b39-9b64-9d343b792f8b": {
     "name": "SIX INVITATIONAL VIP '18",
@@ -1131,7 +1558,14 @@
     "sold": [
       null
     ],
-    "data": []
+    "data": [
+      120,
+      40000,
+      134,
+      null,
+      null,
+      null
+    ]
   },
   "01f4eede-f200-4845-a307-5c6d15ecae43": {
     "name": "SIX INVITATIONAL VIP '19",
@@ -1151,7 +1585,14 @@
     "sold": [
       100000
     ],
-    "data": []
+    "data": [
+      120,
+      20000,
+      70,
+      99999,
+      100000,
+      2
+    ]
   },
   "b3ffe45f-9311-40d5-8bcd-99d41fa59baf": {
     "name": "SIX INVITATIONAL PLAYER '19",
@@ -1168,7 +1609,14 @@
     "sold": [
       null
     ],
-    "data": []
+    "data": [
+      120,
+      20000,
+      19,
+      null,
+      null,
+      null
+    ]
   },
   "56c63c8b-4a91-4ed7-9e9a-1df0e7565434": {
     "name": "SIX INVITATIONAL ATTENDEE '18",
@@ -1185,7 +1633,14 @@
     "sold": [
       49999
     ],
-    "data": []
+    "data": [
+      120,
+      600,
+      5,
+      87000,
+      100000,
+      4
+    ]
   },
   "063bfd88-253a-cbac-2fd7-cb1191c2d5a5": {
     "name": "DEATH SENTENCE",
@@ -1201,9 +1656,17 @@
     ],
     "asset_url": "https://ubiservices.cdn.ubi.com/0d2ae42d-4c27-4cb7-af6c-2099062302bb/DeployerAssetsJune2023/39d6eaf3_2a0b_365c_4756_3453c61c3f3d.png",
     "sold": [
-      35000
+      35000,
+      12000
     ],
-    "data": []
+    "data": [
+      120,
+      5000,
+      24,
+      35000,
+      100000,
+      10
+    ]
   },
   "455fd873-044e-4fcf-51da-8bf1f2653bf0": {
     "name": "DEATH SENTENCE",
@@ -1219,9 +1682,17 @@
     ],
     "asset_url": "https://ubiservices.cdn.ubi.com/0d2ae42d-4c27-4cb7-af6c-2099062302bb/DeployerAssetsJune2023/a5d3c072_f83f_1556_4675_83eb0e555d49.png",
     "sold": [
-      30000
+      30000,
+      17000
     ],
-    "data": []
+    "data": [
+      120,
+      5000,
+      12,
+      20000,
+      100000,
+      12
+    ]
   },
   "b3171d15-d8f9-4d6d-ae42-968f95606032": {
     "name": "SIX INVITATIONAL ATTENDEE '19",
@@ -1236,9 +1707,17 @@
     ],
     "asset_url": "https://ubiservices.cdn.ubi.com/0d2ae42d-4c27-4cb7-af6c-2099062302bb/DeployerAssetsJune2023/6dfd450a_ac62_3cb7_c28f_706810f564f7.png",
     "sold": [
-      19999
+      19999,
+      17000
     ],
-    "data": []
+    "data": [
+      120,
+      500,
+      5,
+      19000,
+      100000,
+      22
+    ]
   },
   "78b85610-f21c-d0ce-e2c8-640210630791": {
     "name": "FACELESS ONE",
@@ -1254,9 +1733,17 @@
     ],
     "asset_url": "https://ubiservices.cdn.ubi.com/0d2ae42d-4c27-4cb7-af6c-2099062302bb/DeployerAssetsJune2023/3c281294_34a6_2897_21a9_720ba5c10ec0.png",
     "sold": [
-      19000
+      19000,
+      15000
     ],
-    "data": []
+    "data": [
+      120,
+      16000,
+      69,
+      18500,
+      28000,
+      12
+    ]
   },
   "254c073b-3e11-ed6d-9db0-eb4931036de7": {
     "name": "JIANGSHI",
@@ -1272,9 +1759,17 @@
     ],
     "asset_url": "https://ubiservices.cdn.ubi.com/0d2ae42d-4c27-4cb7-af6c-2099062302bb/DeployerAssetsJune2023/a8392063_b899_fa47_39c4_b62e60a7b5c7.png",
     "sold": [
-      10000
+      10000,
+      8000
     ],
-    "data": []
+    "data": [
+      120,
+      4548,
+      30,
+      10000,
+      30000,
+      12
+    ]
   },
   "d106d46c-b235-c9a5-e635-2ba2152b0427": {
     "name": "FROZEN SOLDIER",
@@ -1290,9 +1785,18 @@
     ],
     "asset_url": "https://ubiservices.cdn.ubi.com/0d2ae42d-4c27-4cb7-af6c-2099062302bb/DeployerAssetsJune2023/07a61a3f_2348_dd4e_1fd8_b8d1cf01f03f.png",
     "sold": [
-      6200
+      6200,
+      600,
+      5600
     ],
-    "data": []
+    "data": [
+      120,
+      4000,
+      28,
+      6750,
+      22000,
+      9
+    ]
   },
   "1263f2ae-f3a3-e013-f3a8-86a6cac537d0": {
     "name": "FACELESS ONE",
@@ -1308,9 +1812,17 @@
     ],
     "asset_url": "https://ubiservices.cdn.ubi.com/0d2ae42d-4c27-4cb7-af6c-2099062302bb/DeployerAssetsJune2023/c4ce316d_0893_508c_cc3b_e0cc3e2d6461.png",
     "sold": [
-      6000
+      6000,
+      4000
     ],
-    "data": []
+    "data": [
+      120,
+      200,
+      5,
+      4999,
+      10000,
+      22
+    ]
   },
   "575621ca-bf61-d9d5-8800-8772329e2776": {
     "name": "JIANGSHI",
@@ -1326,9 +1838,17 @@
     ],
     "asset_url": "https://ubiservices.cdn.ubi.com/0d2ae42d-4c27-4cb7-af6c-2099062302bb/DeployerAssetsJune2023/f469ef8d_c99b_cbb2_f882_04601c7b6ebc.png",
     "sold": [
-      5000
+      5000,
+      4000
     ],
-    "data": []
+    "data": [
+      120,
+      3000,
+      6,
+      5000,
+      8000,
+      6
+    ]
   },
   "e8bedcc2-bb95-40d7-8b1f-e2ecf9f2995e": {
     "name": "CROSSFADER",
@@ -1347,9 +1867,33 @@
     "sold": [
       4200,
       4300,
-      4500
+      4500,
+      4250,
+      4000,
+      3200,
+      4250,
+      4000,
+      3200,
+      4000,
+      3900,
+      4000,
+      4500,
+      4000,
+      4500,
+      4000,
+      3999,
+      4200,
+      2998,
+      4000
     ],
-    "data": []
+    "data": [
+      120,
+      3890,
+      801,
+      4200,
+      100000,
+      336
+    ]
   },
   "30fb55a3-1eb3-433e-9b4c-3ecc14e87b7e": {
     "name": "SIEGE PRO LEAGUE",
@@ -1365,9 +1909,20 @@
     "asset_url": "https://ubiservices.cdn.ubi.com/0d2ae42d-4c27-4cb7-af6c-2099062302bb/DeployerAssetsJune2023/bd0dc7a7_d1df_0248_0525_a57a47d33f48.png",
     "sold": [
       5000,
-      4999
+      4999,
+      5000,
+      5500,
+      5556,
+      6000
     ],
-    "data": []
+    "data": [
+      120,
+      5200,
+      89,
+      6000,
+      100000,
+      68
+    ]
   },
   "31de6f82-217e-4898-aa3d-2545f5c93e66": {
     "name": "LE\u00d3N FURIOSO",
@@ -1385,9 +1940,21 @@
     "asset_url": "https://ubiservices.cdn.ubi.com/0d2ae42d-4c27-4cb7-af6c-2099062302bb/DeployerAssetsJune2023/13fb0261_6b72_2546_1c24_7ddf1bcfc9f0.png",
     "sold": [
       1000,
-      3500
+      3500,
+      3000,
+      3500,
+      3000,
+      3100,
+      3300
     ],
-    "data": []
+    "data": [
+      120,
+      3086,
+      165,
+      3200,
+      100000,
+      111
+    ]
   },
   "937355f7-d522-1431-4c90-afa0282a0980": {
     "name": "DEAD SHERIFF",
@@ -1405,7 +1972,14 @@
     "sold": [
       3000
     ],
-    "data": []
+    "data": [
+      120,
+      2000,
+      15,
+      2750,
+      12000,
+      14
+    ]
   },
   "98d7b22c-9e10-1f7a-f182-cb05fcc87bb5": {
     "name": "FROZEN SOLDIER",
@@ -1423,7 +1997,14 @@
     "sold": [
       2000
     ],
-    "data": []
+    "data": [
+      120,
+      500,
+      4,
+      2000,
+      8000,
+      17
+    ]
   },
   "44932fee-5159-4fae-27fc-7fe2efb1fb46": {
     "name": "DEAD SHERIFF",
@@ -1439,9 +2020,17 @@
     ],
     "asset_url": "https://ubiservices.cdn.ubi.com/0d2ae42d-4c27-4cb7-af6c-2099062302bb/DeployerAssetsJune2023/2594253f_1aa9_4d1c_0b8a_05e459bd7c3c.png",
     "sold": [
-      1500
+      1500,
+      1250
     ],
-    "data": []
+    "data": [
+      120,
+      300,
+      2,
+      1500,
+      8000,
+      15
+    ]
   },
   "457fcd38-71e9-4605-8786-06098463a01c": {
     "name": "eXcellence Gaming",
@@ -1458,7 +2047,14 @@
     "sold": [
       1700
     ],
-    "data": []
+    "data": [
+      120,
+      300,
+      3,
+      1750,
+      20000,
+      21
+    ]
   },
   "9f0ffbab-ab76-4c4f-bcfa-c3d302397213": {
     "name": "SIGNATURE SIX '19",
@@ -1479,9 +2075,29 @@
       1799,
       1600,
       1880,
-      1850
+      1850,
+      1899,
+      1900,
+      1470,
+      1200,
+      1500,
+      1875,
+      1800,
+      1700,
+      1778,
+      1500,
+      1600,
+      1500,
+      1600
     ],
-    "data": []
+    "data": [
+      120,
+      1400,
+      142,
+      1667,
+      100000,
+      358
+    ]
   },
   "8dd10c58-b2dc-40e0-aaaf-14d700882fd5": {
     "name": "FlipSid3 Tactics",
@@ -1496,8 +2112,16 @@
     ],
     "asset_url": "https://ubiservices.cdn.ubi.com/0d2ae42d-4c27-4cb7-af6c-2099062302bb/DeployerAssetsJune2023/88fb695e_5805_ff2b_8529_013da65d0622.png",
     "sold": [
-      2500
+      2500,
+      1500
     ],
-    "data": []
+    "data": [
+      139,
+      1000,
+      9,
+      2499,
+      25000,
+      19
+    ]
   }
 }

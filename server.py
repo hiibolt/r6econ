@@ -485,22 +485,16 @@ async def on_ready():
                     "tags": res[2],
                     "asset_url": res[10],
                     "sold": [],
-                    "data": []
+                    "data": None
                 }
 
-            #if len(data[res[0]]["data"]) == 0 or data[res[0]]["data"][len(data[res[0]]["data"]) - 1] != [res[3], res[4], res[5], res[6], res[7], res[8]]:
-            #    data[res[0]]["data"] = data[res[0]]["data"] + [[res[3], res[4], res[5], res[6], res[7], res[8]]]
-            #    print("NEW PRIMARY DATA")
+            if len(data[item_id]["data"]) == None or data[item_id]["data"] != [res[3], res[4], res[5], res[6], res[7], res[8]]:
+                data[item_id]["data"] = [res[3], res[4], res[5], res[6], res[7], res[8]]
+                print("NEW PRIMARY DATA")
             
             if len(data[item_id]["sold"]) == 0 or data[item_id]["sold"][len(data[item_id]["sold"]) - 1] != res[9]:
                 data[item_id]["sold"] = data[item_id]["sold"] + [res[9]]
                 print("NEW LAST SOLD")
-
-            #print(f'{res[0]} ({res[1]}) ({res[2]})')
-            #print(f'Current Buy: {res[3]}-{res[4]} [Volume of {res[5]}] R6 credits')
-            #print(f'Current Sell: {res[6]}-{res[7]} [Volume of {res[8]}] R6 credits')
-
-        #print(json.dumps(data, indent=2))
 
         data_file = open("assets/data.json", "w")
         data_file.write(json.dumps(data, indent=2))
@@ -521,6 +515,16 @@ async def on_message(message):
         name_map = json.loads(name_map_file.read())
         name_map_file.close()
 
+        if message.content[:9] == "econ list":
+            msg = ""
+            for key, value in name_map.items():
+                msg += f'{key}\n'
+            embed=discord.Embed(title=f'Tracked Skins', description=f'# Ask Bolt for new Items.\n\n# Skins:\n{msg}', color=0xFF5733)
+            embed.set_thumbnail(url="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwallpapercave.com%2Fwp%2Fwp7511401.png&f=1&nofb=1&ipt=774c2f1e44a99d33a82af5645f290c48fb316c0f43af86f11b4f167eb70d8a0a&ipo=images")
+            await message.channel.send(embed=embed)
+            return
+            
+
         item_id = None
         if message.content[:8] == "econ id ":
             item_id = message.content[8:].lower()
@@ -534,8 +538,9 @@ async def on_message(message):
         hundred_RAP = sum(cleaned_data[-100:]) / max(1, min(100, sold_len))
         all_time_RAP = sum(cleaned_data) / max(1, sold_len)
 
-        msg = f'## Tags:\n{data["tags"]}:\n### RAP:\n\t10 - {ten_RAP}\n\t100 - {hundred_RAP}\n\tAll Time - {all_time_RAP}\n\n\t*(Total Data: {sold_len})*'
-
+        msg = f'# Buy:\n\tMinimum Buyer: **{data["data"][0]}** R6 credits\n\tMaximum Buyer: **{data["data"][1]}** R6 credits\n\tVolume Buyers: **{data["data"][2]}**\n'
+        msg += f'# Sell:\n\tMinimum Seller: **{data["data"][3]}** R6 credits\n\tMaximum Seller: **{data["data"][4]}** R6 credits\n\tVolume Buyers: **{data["data"][5]}**\n\tLast Sold: **{data["sold"][-1]}**\n'
+        msg += f'### RAP:\n\t10 - **{ten_RAP}**\n\t100 - **{hundred_RAP}**\n\tAll Time - **{all_time_RAP}**\n\n\t*(Total Data: {sold_len})*\n### Tags:\n\n{data["tags"]}:'
         embed=discord.Embed(title=f'{data["name"]} ({data["type"]})', url=f'https://www.ubisoft.com/en-us/game/rainbow-six/siege/marketplace?route=buy%252Fitem-details&itemId={item_id}', description=f'{msg}', color=0xFF5733)
         embed.set_thumbnail(url=data["asset_url"])
         await message.channel.send(embed=embed)
