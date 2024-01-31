@@ -484,7 +484,6 @@ async def on_ready():
     print("Starting Query Test...")
     print(time.time())
 
-    print(f'{os.environ["AUTH_EMAIL"]} - {os.environ["AUTH_PW"]}')
     auth = Auth(os.environ["AUTH_EMAIL"], os.environ["AUTH_PW"])
 
     while (True):
