@@ -640,6 +640,9 @@ async def on_message(message):
                         plt.xlabel( f' Time ({unit} ago) ' )
                         plt.ylabel( " Purchase Amount " )
 
+                        trendline = np.polyfit( np.array(cleaned_times), np.array(cleaned_data), 1 )
+                        trendline_function = np.poly1d( trendline )
+                        plt.plot( cleaned_times, trendline_function(cleaned_times) )
                         plt.title( f'{data["name"]} ({data["type"]})' )
                         plt.savefig( f"graphs/{item_id}.png" )
                         plt.clf()
