@@ -493,6 +493,10 @@ class Auth:
 intents = discord.Intents.default()
 intents.message_content = True
 
+data_file = open("assets/data.json", "r")
+data = json.loads(data_file.read())
+data_file.close()
+
 client = commands.Bot(command_prefix='.', intents=intents)
 
 @client.event
@@ -506,10 +510,6 @@ async def on_ready():
         item_id_file = open("assets/ids.json", "r")
         item_ids = json.loads(item_id_file.read())
         item_id_file.close()
-
-        data_file = open("assets/data.json", "r")
-        data = json.loads(data_file.read())
-        data_file.close()
 
 
         for key, item_id in item_ids.items():
@@ -540,9 +540,9 @@ async def on_ready():
 
         print("[ WRITING TO 'data.json' ]")
 
-        data_file = open("assets/data.json", "w")
-        data_file.write(json.dumps(data, indent=2))
-        data_file.close()
+        #data_file = open("assets/data.json", "w")
+        #data_file.write(json.dumps(data, indent=2))
+        #data_file.close()
 
         print("[ FINISHED WRITING TO 'data.json' ]")
 
@@ -554,16 +554,12 @@ async def on_message(message):
     if message.author != client.user:
         cmd = message.content.split(" ")
 
-        data_file = open("assets/data.json", "r")
-        data = json.loads(data_file.read())
-        data_file.close()
-
         name_map_file = open("assets/ids.json", "r")
         name_map = json.loads(name_map_file.read())
         name_map_file.close()
 
         match cmd.pop(0):
-            case "econ":
+            case "decon":
                 match cmd.pop(0):
                     case "list":
                         msg = ""
@@ -575,44 +571,44 @@ async def on_message(message):
                         return
                     case "id":
                         item_id = " ".join(cmd).lower()
-                        data = data[item_id]
+                        _data = data[item_id]
 
-                        cleaned_data = [x[0] for x in data["sold"] if x]
+                        cleaned_data = [x[0] for x in _data["sold"] if x]
                         sold_len = len(cleaned_data)
                         ten_RAP = round(sum(cleaned_data[-10:]) / max(1, min(10, sold_len)))
                         hundred_RAP = round(sum(cleaned_data[-100:]) / max(1, min(100, sold_len)))
                         all_time_RAP = round(sum(cleaned_data) / max(1, sold_len))
 
-                        msg = f'# Buy:\n\tMinimum Buyer: **{data["data"][0]}** R6 credits\n\tMaximum Buyer: **{data["data"][1]}** R6 credits\n\tVolume Buyers: **{data["data"][2]}**\n'
-                        msg += f'# Sell:\n\tMinimum Seller: **{data["data"][3]}** R6 credits\n\tMaximum Seller: **{data["data"][4]}** R6 credits\n\tVolume Buyers: **{data["data"][5]}**\n\tLast Sold: **{data["sold"][-1][0]}**\n\n'
-                        msg += f'### Quick Analysis:\n\tHighest Buyer vs. Lowest Seller: **{data["data"][3] - data["data"][1]}** R6 credits\n\tLast Sale vs. Lowest Seller: **{data["data"][3] - data["sold"][-1][0]} ({round(100 -(data["sold"][-1][0] / data["data"][3]) * 100, 2)}%)** R6 credits\n'
-                        msg += f'### RAP:\n\t10 - **{ten_RAP}**\n\t100 - **{hundred_RAP}**\n\tAll Time - **{all_time_RAP}**\n\n\t*(Total Data: {sold_len})*\n### Tags:\n\n{data["tags"]}\n### Item ID:\n\t{item_id}'
-                        embed=discord.Embed(title=f'{data["name"]} ({data["type"]})', url=f'https://www.ubisoft.com/en-us/game/rainbow-six/siege/marketplace?route=buy%252Fitem-details&itemId={item_id}', description=f'{msg}', color=0xFF5733)
-                        embed.set_thumbnail(url=data["asset_url"])
+                        msg = f'# Buy:\n\tMinimum Buyer: **{_data["data"][0]}** R6 credits\n\tMaximum Buyer: **{_data["data"][1]}** R6 credits\n\tVolume Buyers: **{_data["data"][2]}**\n'
+                        msg += f'# Sell:\n\tMinimum Seller: **{_data["data"][3]}** R6 credits\n\tMaximum Seller: **{_data["data"][4]}** R6 credits\n\tVolume Buyers: **{_data["data"][5]}**\n\tLast Sold: **{_data["sold"][-1][0]}**\n\n'
+                        msg += f'### Quick Analysis:\n\tHighest Buyer vs. Lowest Seller: **{_data["data"][3] - _data["data"][1]}** R6 credits\n\tLast Sale vs. Lowest Seller: **{_data["data"][3] - _data["sold"][-1][0]} ({round(100 -(_data["sold"][-1][0] / _data["data"][3]) * 100, 2)}%)** R6 credits\n'
+                        msg += f'### RAP:\n\t10 - **{ten_RAP}**\n\t100 - **{hundred_RAP}**\n\tAll Time - **{all_time_RAP}**\n\n\t*(Total Data: {sold_len})*\n### Tags:\n\n{_data["tags"]}\n### Item ID:\n\t{item_id}'
+                        embed=discord.Embed(title=f'{_data["name"]} ({_data["type"]})', url=f'https://www.ubisoft.com/en-us/game/rainbow-six/siege/marketplace?route=buy%252Fitem-details&itemId={item_id}', description=f'{msg}', color=0xFF5733)
+                        embed.set_thumbnail(url=_data["asset_url"])
                         await message.channel.send(embed=embed)
                     case "name":
                         item_id = name_map[" ".join(cmd).lower()]
-                        data = data[item_id]
+                        _data = data[item_id]
 
-                        cleaned_data = [x[0] for x in data["sold"] if x[0]]
+                        cleaned_data = [x[0] for x in _data["sold"] if x[0]]
                         sold_len = len(cleaned_data)
                         ten_RAP = round(sum(cleaned_data[-10:]) / max(1, min(10, sold_len)))
                         hundred_RAP = round(sum(cleaned_data[-100:]) / max(1, min(100, sold_len)))
                         all_time_RAP = round(sum(cleaned_data) / max(1, sold_len))
 
-                        msg = f'# Buy:\n\tMinimum Buyer: **{data["data"][0]}** R6 credits\n\tMaximum Buyer: **{data["data"][1]}** R6 credits\n\tVolume Buyers: **{data["data"][2]}**\n'
-                        msg += f'# Sell:\n\tMinimum Seller: **{data["data"][3]}** R6 credits\n\tMaximum Seller: **{data["data"][4]}** R6 credits\n\tVolume Buyers: **{data["data"][5]}**\n\tLast Sold: **{data["sold"][-1][0]}**\n\n'
-                        msg += f'### Quick Analysis:\n\tHighest Buyer vs. Lowest Seller: **{data["data"][3] - data["data"][1]}** R6 credits\n\tLast Sale vs. Lowest Seller: **{data["data"][3] - data["sold"][-1][0]} ({round(100 -(data["sold"][-1][0] / data["data"][3]) * 100, 2)}%)** R6 credits\n'
-                        msg += f'### RAP:\n\t10 - **{ten_RAP}**\n\t100 - **{hundred_RAP}**\n\tAll Time - **{all_time_RAP}**\n\n\t*(Total Data: {sold_len})*\n### Tags:\n\n{data["tags"]}\n### Item ID:\n\t{item_id}'
-                        embed=discord.Embed(title=f'{data["name"]} ({data["type"]})', url=f'https://www.ubisoft.com/en-us/game/rainbow-six/siege/marketplace?route=buy%252Fitem-details&itemId={item_id}', description=f'{msg}', color=0xFF5733)
-                        embed.set_thumbnail(url=data["asset_url"])
+                        msg = f'# Buy:\n\tMinimum Buyer: **{_data["data"][0]}** R6 credits\n\tMaximum Buyer: **{_data["data"][1]}** R6 credits\n\tVolume Buyers: **{_data["data"][2]}**\n'
+                        msg += f'# Sell:\n\tMinimum Seller: **{_data["data"][3]}** R6 credits\n\tMaximum Seller: **{_data["data"][4]}** R6 credits\n\tVolume Buyers: **{_data["data"][5]}**\n\tLast Sold: **{_data["sold"][-1][0]}**\n\n'
+                        msg += f'### Quick Analysis:\n\tHighest Buyer vs. Lowest Seller: **{_data["data"][3] - _data["data"][1]}** R6 credits\n\tLast Sale vs. Lowest Seller: **{_data["data"][3] - _data["sold"][-1][0]} ({round(100 -(_data["sold"][-1][0] / _data["data"][3]) * 100, 2)}%)** R6 credits\n'
+                        msg += f'### RAP:\n\t10 - **{ten_RAP}**\n\t100 - **{hundred_RAP}**\n\tAll Time - **{all_time_RAP}**\n\n\t*(Total Data: {sold_len})*\n### Tags:\n\n{_data["tags"]}\n### Item ID:\n\t{item_id}'
+                        embed=discord.Embed(title=f'{_data["name"]} ({_data["type"]})', url=f'https://www.ubisoft.com/en-us/game/rainbow-six/siege/marketplace?route=buy%252Fitem-details&itemId={item_id}', description=f'{msg}', color=0xFF5733)
+                        embed.set_thumbnail(url=_data["asset_url"])
                         await message.channel.send(embed=embed)
                     case "graph":
                         num = cmd.pop(0)
                         unit_type = cmd.pop(0)
 
                         item_id = " ".join(cmd).lower()
-                        data = data[item_id]
+                        _data = data[item_id]
                         unit = "days"
                         dividend = 86400
                         
@@ -620,8 +616,8 @@ async def on_message(message):
                             case "all":
                                 pass
                             case _:
-                                data["sold"] = [x for x in data["sold"] if x[0]]
-                                data["sold"] = data["sold"][-int(num):]
+                                _data["sold"] = [x for x in _data["sold"] if x[0]]
+                                _data["sold"] = _data["sold"][-int(num):]
                                 
                         match unit_type:
                             case "days":
@@ -638,8 +634,8 @@ async def on_message(message):
                                 embed.set_thumbnail(url="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwallpapercave.com%2Fwp%2Fwp7511401.png&f=1&nofb=1&ipt=774c2f1e44a99d33a82af5645f290c48fb316c0f43af86f11b4f167eb70d8a0a&ipo=images")
                                 await message.channel.send(embed=embed)
 
-                        cleaned_data = [x[0] for x in data["sold"] if x[0]]
-                        cleaned_times = [(time.time() - x[1]) / dividend for x in data["sold"] if x[0]]
+                        cleaned_data = [x[0] for x in _data["sold"] if x[0]]
+                        cleaned_times = [(time.time() - x[1]) / dividend for x in _data["sold"] if x[0]]
                      
                         print(f'{cleaned_times} vs {cleaned_data}')
 
@@ -650,7 +646,7 @@ async def on_message(message):
                         trendline = np.polyfit( np.array(cleaned_times), np.array(cleaned_data), 1 )
                         trendline_function = np.poly1d( trendline )
                         plt.plot( cleaned_times, trendline_function(cleaned_times) )
-                        plt.title( f'{data["name"]} ({data["type"]})' )
+                        plt.title( f'{_data["name"]} ({_data["type"]})' )
                         plt.savefig( f"graphs/{item_id}.png" )
                         plt.clf()
 
