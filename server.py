@@ -8,10 +8,11 @@ import aiohttp
 import base64
 import time
 import json
+import contextlib
 import os
 import asyncio
 import discord
-from discord.ext import commands
+from discord.ext import commands, tasks
 
 import matplotlib.pyplot as plt
 import numpy as np
@@ -393,7 +394,7 @@ class Auth:
         return players
     
     async def try_query_db(self):
-        await asyncio.sleep(0.05)
+        await asyncio.sleep(0.08)
 
         res = await self.get_db(f"https://public-ubiservices.ubi.com/v1/profiles/me/uplay/graphql")
 
@@ -497,57 +498,19 @@ data_file = open("assets/data.json", "r")
 data = json.loads(data_file.read())
 data_file.close()
 
+item_id_file = open("assets/ids.json", "r")
+item_ids = json.loads(item_id_file.read())
+item_id_file.close()
+
 client = commands.Bot(command_prefix='.', intents=intents)
 
 @client.event
 async def on_ready():
-    print("Starting Query Test...")
+    print("Connected!")
     print(time.time())
 
-    auth = Auth(os.environ["AUTH_EMAIL"], os.environ["AUTH_PW"])
-
-    while (True):
-        item_id_file = open("assets/ids.json", "r")
-        item_ids = json.loads(item_id_file.read())
-        item_id_file.close()
-
-
-        for key, item_id in item_ids.items():
-            auth.item_id = item_id
-            res = await auth.try_query_db()
-            if (not res):
-                continue
-
-            # Meta: NAME | TYPE | TAGS - Buyers: LOW | HIGH | VOL - Sellers: LOW | HIGH | VOL
-            try:
-                data[item_id]
-            except:
-                data[item_id] = {
-                    "name": res[0],
-                    "type": res[1],
-                    "tags": res[2],
-                    "asset_url": res[10],
-                    "sold": [],
-                    "data": None
-                }
-            if data[item_id]["data"] == None or data[item_id]["data"] != [res[3], res[4], res[5], res[6], res[7], res[8]]:
-                data[item_id]["data"] = [res[3], res[4], res[5], res[6], res[7], res[8]]
-                print("NEW PRIMARY DATA")
-            
-            if len(data[item_id]["sold"]) == 0 or data[item_id]["sold"][len(data[item_id]["sold"]) - 1][0] != res[9]:
-                data[item_id]["sold"] = data[item_id]["sold"] + [[res[9], time.time()]]
-                print("NEW LAST SOLD")
-
-        print("[ WRITING TO 'data.json' ]")
-
-        #data_file = open("assets/data.json", "w")
-        #data_file.write(json.dumps(data, indent=2))
-        #data_file.close()
-
-        print("[ FINISHED WRITING TO 'data.json' ]")
-
-        await asyncio.sleep(60)
-    await auth.close()
+    save_agent.start()
+    scan_market.start()
 
 @client.event
 async def on_message(message):
@@ -659,7 +622,49 @@ async def on_message(message):
                         embed=discord.Embed(title=f'Help', description=f'# Ask @hiibolt on GH/DC for help!\n\n# Skins:\n{msg}', color=0xFF5733)
                         embed.set_thumbnail(url="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwallpapercave.com%2Fwp%2Fwp7511401.png&f=1&nofb=1&ipt=774c2f1e44a99d33a82af5645f290c48fb316c0f43af86f11b4f167eb70d8a0a&ipo=images")
                         await message.channel.send(embed=embed)
-                            
 
+@tasks.loop(minutes=10)
+async def save_agent():
+    with contextlib.suppress(Exception):
+        print("[ WRITING TO 'data.json' ]")
+
+        data_file = open("assets/data.json", "w")
+        data_file.write(json.dumps(data, indent=2))
+        data_file.close()
+
+        print("[ FINISHED WRITING TO 'data.json' ]")
+
+@tasks.loop(minutes=1)
+async def scan_market():
+    auth = Auth(os.environ["AUTH_EMAIL"], os.environ["AUTH_PW"])
+
+    for key, item_id in item_ids.items():
+        auth.item_id = item_id
+        res = await auth.try_query_db()
+        if (not res):
+            continue
+
+        # Meta: NAME | TYPE | TAGS - Buyers: LOW | HIGH | VOL - Sellers: LOW | HIGH | VOL
+        try:
+            data[item_id]
+        except:
+            data[item_id] = {
+                "name": res[0],
+                "type": res[1],
+                "tags": res[2],
+                "asset_url": res[10],
+                "sold": [],
+                "data": None
+            }
+        if data[item_id]["data"] == None or data[item_id]["data"] != [res[3], res[4], res[5], res[6], res[7], res[8]]:
+            data[item_id]["data"] = [res[3], res[4], res[5], res[6], res[7], res[8]]
+            print("NEW PRIMARY DATA")
+        
+        if len(data[item_id]["sold"]) == 0 or data[item_id]["sold"][len(data[item_id]["sold"]) - 1][0] != res[9]:
+            data[item_id]["sold"] = data[item_id]["sold"] + [[res[9], time.time()]]
+            print("NEW LAST SOLD")
+        
+    await auth.close()
+                            
 
 client.run(os.environ["TOKEN"])
