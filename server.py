@@ -448,7 +448,11 @@ intents.message_content = True
 
 if ( not exists("assets/data.json") ):
     with open('assets/data.json', 'w') as f:
-        f.write('{}')
+        f.write("{}")
+
+if ( not exists("assets/ids.json") ):
+    with open('assets/ids.json', 'w') as f:
+        f.write('{"black ice r4-c": "aee4bdf2-0b54-4c6d-af93-9fe4848e1f76"}')
 
 data_file = open("assets/data.json", "r")
 data = json.loads(data_file.read())
