@@ -13,6 +13,7 @@ import os
 import asyncio
 import discord
 from discord.ext import commands, tasks
+from os.path import exists
 
 import matplotlib.pyplot as plt
 import numpy as np
@@ -493,6 +494,10 @@ class Auth:
 
 intents = discord.Intents.default()
 intents.message_content = True
+
+if ( not exists("assets/data.json") ):
+    with open('assets/data.json', 'w') as f:
+        f.write('{}')
 
 data_file = open("assets/data.json", "r")
 data = json.loads(data_file.read())
