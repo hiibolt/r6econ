@@ -36,6 +36,8 @@ Much of the data this gathers can be used to manipulate the market to your advan
 - [pip](https://pypi.org/project/pip/)
 - [A discord bot and its token](https://www.writebots.com/discord-bot-token/)
   
+First, clone the repo and add a 'data.json' file to /assets, and leave the contents as ```{}```
+
 ### Windows Command Prompt
 ```bat
 set AUTH_EMAIL=foo@example.com
@@ -71,6 +73,8 @@ python3 server.py
 - [nix](https://nixos.org/)
 - [nix flakes](https://nixos.wiki/wiki/Flakes)
 - [A discord bot and its token](https://www.writebots.com/discord-bot-token/)
+
+First, clone the repo and add a 'data.json' file to /assets, and leave the contents as ```{}```
 
 ### Instructions
 
