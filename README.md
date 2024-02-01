@@ -65,6 +65,23 @@ pip install -r requirements.txt
 python3 server.py
 ```
 
+## Setup (Docker Compose)
+`compose.yml`
+```yml
+services:
+  r6econ-bot:
+    image: ghcr.io/hiibolt/r6econ:latest
+    volumes:
+      - 'assets:/app/assets'
+    environment:
+      - AUTH_EMAIL=<your ubisoft email here>
+      - AUTH_PW=<your ubisoft password here>
+      - TOKEN=<your discord token here>
+volumes:
+  assets:
+
+```
+
 
 ## Setup (Nix) (Not Recommended for Beginners)
 
@@ -75,6 +92,7 @@ python3 server.py
 - [A discord bot and its token](https://www.writebots.com/discord-bot-token/)
 
 First, clone the repo and add a 'data.json' file to /assets, and leave the contents as ```{}```
+
 
 ### Instructions
 
