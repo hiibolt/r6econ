@@ -76,36 +76,6 @@ class Auth:
         self._login_cooldown: int = 0
         self._session_start: float = time.time()
 
-    async def _find_players(self, name: str, platform: str, uid: str) -> list[Player]:
-        """ Get a list of players matching the search term on a given platform """
-        if (name == '' or uid == '') or (name is None and uid is None) or (name is not None and uid is not None):
-            await self.close()
-            raise TypeError("Exactly one non-empty parameter should be provided (name or uid)")
-
-        if platform is None:
-            await self.close()
-            raise TypeError("platform cannot be None")
-
-        if platform not in ("uplay", "xbl", "psn"):
-            await self.close()
-            raise TypeError(f"'platform' has to be one of the following: 'uplay' / 'xbl' / 'psn'; Not {platform}")
-
-        if name:
-            data = await self.get(f"https://public-ubiservices.ubi.com/v3/profiles?"
-                                  f"nameOnPlatform={parse.quote(name)}&platformType={parse.quote(platform)}")
-        else:
-            data = await self.get(f"https://public-ubiservices.ubi.com/v3/users/{uid}/profiles?"
-                                  f"platformType={parse.quote(platform)}")
-
-        if "profiles" in data:
-            results = [Player(self, x) for x in data["profiles"] if x.get("platformType", "") == platform]
-            if len(results) == 0:
-                await self.close()
-                raise InvalidRequest("No results")
-            return results
-        else:
-            raise InvalidRequest(f"Missing key profiles in returned JSON object {str(data)}")
-
     async def _ensure_session_valid(self) -> None:
         if not self.session:
             await self.refresh_session()
@@ -374,25 +344,6 @@ class Auth:
             return data
         else:
             return await resp.text()
-
-    async def get_player(self, name: str = None, uid: str = None, platform: str = "uplay") -> Player:
-        """ Calls get_players and returns the first element """
-
-        results = await self._find_players(name=name, platform=platform, uid=uid)
-        return results[0]
-
-    async def get_player_batch(self, names: list[str] = None, uids: list[str] = None, platform: str = "uplay") -> dict[str: Player]:
-        players = {}
-        if names is not None:
-            for name in names:
-                player = await self.get_player(name=name, platform=platform)
-                players[player.id] = player
-
-        if uids is not None:
-            for uid in uids:
-                player = await self.get_player(uid=uid, platform=platform)
-                players[player.id] = player
-        return players
     
     async def try_query_db(self):
         await asyncio.sleep(0.08)
