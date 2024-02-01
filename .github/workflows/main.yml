@@ -43,7 +43,6 @@ jobs:
         uses: docker/build-push-action@f2a1d5e99d037542a71f64918e516c093c6f3fc4
         with:
           context: .
-          platforms: linux/amd64,linux/arm64,linux/arm/v7,linux/arm/v6
           push: true
           tags: ghcr.io/${{ github.repository }}:latest # ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
