@@ -482,8 +482,12 @@ async def on_message(message):
                 match cmd.pop(0):
                     case "list":
                         msg = ""
+                        item_no = 0
                         for key, value in name_map.items():
                             msg += f'{key}\n'
+                            item_no += 1
+                            if ( item_no > 99 ):
+                                break
                         embed=discord.Embed(title=f'Tracked Skins', description=f'# Ask Bolt for new Items.\n\n# Skins:\n{msg}', color=0xFF5733)
                         embed.set_thumbnail(url="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwallpapercave.com%2Fwp%2Fwp7511401.png&f=1&nofb=1&ipt=774c2f1e44a99d33a82af5645f290c48fb316c0f43af86f11b4f167eb70d8a0a&ipo=images")
                         await message.channel.send(embed=embed)
