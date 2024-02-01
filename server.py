@@ -542,12 +542,12 @@ async def on_message(message):
                         hundred_RAP = round(sum(cleaned_data[-100:]) / max(1, min(100, sold_len)))
                         all_time_RAP = round(sum(cleaned_data) / max(1, sold_len))
 
-                        msg = f'# Buy:\n\tMinimum Buyer: **{_data["data"][0]}** R6 credits\n\tMaximum Buyer: **{_data["data"][1]}** R6 credits\n\tVolume Buyers: **{_data["data"][2]}**\n'
-                        msg += f'# Sell:\n\tMinimum Seller: **{_data["data"][3]}** R6 credits\n\tMaximum Seller: **{_data["data"][4]}** R6 credits\n\tVolume Sellers: **{_data["data"][5]}**\n\tLast Sold: **{_data["sold"][-1][0]}**\n\n'
-                        msg += f'### Quick Analysis:\n\tHighest Buyer vs. Lowest Seller: **{_data["data"][3] - _data["data"][1]}** R6 credits\n\tLast Sale vs. Lowest Seller: **{_data["data"][3] - _data["sold"][-1][0]} ({round(100 -(_data["sold"][-1][0] / _data["data"][3]) * 100, 2)}%)** R6 credits\n'
-                        msg += f'### RAP:\n\t10 - **{ten_RAP}**\n\t100 - **{hundred_RAP}**\n\tAll Time - **{all_time_RAP}**\n\n\t*(Total Data: {sold_len})*\n### Tags:\n\n{_data["tags"]}\n### Item ID:\n\t{item_id}'
-                        embed=discord.Embed(title=f'{_data["name"]} ({_data["type"]})', url=f'https://www.ubisoft.com/en-us/game/rainbow-six/siege/marketplace?route=buy%252Fitem-details&itemId={item_id}', description=f'{msg}', color=0xFF5733)
-                        embed.set_thumbnail(url=_data["asset_url"])
+                        msg = f'# Buy:\n\tMinimum Buyer: **{data["data"][0]}** R6 credits\n\tMaximum Buyer: **{data["data"][1]}** R6 credits\n\tVolume Buyers: **{data["data"][2]}**\n'
+                        msg += f'# Sell:\n\tMinimum Seller: **{data["data"][3]}** R6 credits\n\tMaximum Seller: **{data["data"][4]}** R6 credits\n\tVolume Buyers: **{data["data"][5]}**\n\tLast Sold: **{data["sold"][-1][0]}**\n\n'
+                        msg += f'### Quick Analysis:\n\tHighest Buyer vs. Lowest Seller: **{(data["data"][3] or 0) - (data["data"][1] or 0)}** R6 credits\n\tLast Sale vs. Lowest Seller: **{(data["data"][3] or 0) - (data["sold"][-1][0] or 0)} ({round(100 -((data["sold"][-1][0] or 0) / (data["data"][3] or 1)) * 100, 2)}%)** R6 credits\n'
+                        msg += f'### RAP:\n\t10 - **{ten_RAP}**\n\t100 - **{hundred_RAP}**\n\tAll Time - **{all_time_RAP}**\n\n\t*(Total Data: {sold_len})*\n### Tags:\n\n{data["tags"]}\n### Item ID:\n\t{item_id}'
+                        embed=discord.Embed(title=f'{data["name"]} ({data["type"]})', url=f'https://www.ubisoft.com/en-us/game/rainbow-six/siege/marketplace?route=buy%252Fitem-details&itemId={item_id}', description=f'{msg}', color=0xFF5733)
+                        embed.set_thumbnail(url=data["asset_url"])
                         await message.channel.send(embed=embed)
                     case "name":
                         item_id = name_map[" ".join(cmd).lower()]
@@ -559,12 +559,12 @@ async def on_message(message):
                         hundred_RAP = round(sum(cleaned_data[-100:]) / max(1, min(100, sold_len)))
                         all_time_RAP = round(sum(cleaned_data) / max(1, sold_len))
 
-                        msg = f'# Buy:\n\tMinimum Buyer: **{_data["data"][0]}** R6 credits\n\tMaximum Buyer: **{_data["data"][1]}** R6 credits\n\tVolume Buyers: **{_data["data"][2]}**\n'
-                        msg += f'# Sell:\n\tMinimum Seller: **{_data["data"][3]}** R6 credits\n\tMaximum Seller: **{_data["data"][4]}** R6 credits\n\tVolume Sellers: **{_data["data"][5]}**\n\tLast Sold: **{_data["sold"][-1][0]}**\n\n'
-                        msg += f'### Quick Analysis:\n\tHighest Buyer vs. Lowest Seller: **{_data["data"][3] - _data["data"][1]}** R6 credits\n\tLast Sale vs. Lowest Seller: **{_data["data"][3] - _data["sold"][-1][0]} ({round(100 -(_data["sold"][-1][0] / _data["data"][3]) * 100, 2)}%)** R6 credits\n'
-                        msg += f'### RAP:\n\t10 - **{ten_RAP}**\n\t100 - **{hundred_RAP}**\n\tAll Time - **{all_time_RAP}**\n\n\t*(Total Data: {sold_len})*\n### Tags:\n\n{_data["tags"]}\n### Item ID:\n\t{item_id}'
-                        embed=discord.Embed(title=f'{_data["name"]} ({_data["type"]})', url=f'https://www.ubisoft.com/en-us/game/rainbow-six/siege/marketplace?route=buy%252Fitem-details&itemId={item_id}', description=f'{msg}', color=0xFF5733)
-                        embed.set_thumbnail(url=_data["asset_url"])
+                        msg = f'# Buy:\n\tMinimum Buyer: **{data["data"][0]}** R6 credits\n\tMaximum Buyer: **{data["data"][1]}** R6 credits\n\tVolume Buyers: **{data["data"][2]}**\n'
+                        msg += f'# Sell:\n\tMinimum Seller: **{data["data"][3]}** R6 credits\n\tMaximum Seller: **{data["data"][4]}** R6 credits\n\tVolume Buyers: **{data["data"][5]}**\n\tLast Sold: **{data["sold"][-1][0]}**\n\n'
+                        msg += f'### Quick Analysis:\n\tHighest Buyer vs. Lowest Seller: **{(data["data"][3] or 0) - (data["data"][1] or 0)}** R6 credits\n\tLast Sale vs. Lowest Seller: **{(data["data"][3] or 0) - (data["sold"][-1][0] or 0)} ({round(100 -((data["sold"][-1][0] or 0) / (data["data"][3] or 1)) * 100, 2)}%)** R6 credits\n'
+                        msg += f'### RAP:\n\t10 - **{ten_RAP}**\n\t100 - **{hundred_RAP}**\n\tAll Time - **{all_time_RAP}**\n\n\t*(Total Data: {sold_len})*\n### Tags:\n\n{data["tags"]}\n### Item ID:\n\t{item_id}'
+                        embed=discord.Embed(title=f'{data["name"]} ({data["type"]})', url=f'https://www.ubisoft.com/en-us/game/rainbow-six/siege/marketplace?route=buy%252Fitem-details&itemId={item_id}', description=f'{msg}', color=0xFF5733)
+                        embed.set_thumbnail(url=data["asset_url"])
                         await message.channel.send(embed=embed)
                     case "graph":
                         num = cmd.pop(0)
