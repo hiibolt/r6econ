@@ -500,7 +500,7 @@ async def on_message(message):
                         item_id = " ".join(cmd).lower()
                         _data = data[item_id]
 
-                        cleaned_data = [x[0] for x in _data["sold"] if x]
+                        cleaned_data = [x[0] for x in _data["sold"] if x[0]]
                         sold_len = len(cleaned_data)
                         ten_RAP = round(sum(cleaned_data[-10:]) / max(1, min(10, sold_len)))
                         hundred_RAP = round(sum(cleaned_data[-100:]) / max(1, min(100, sold_len)))
