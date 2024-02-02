@@ -25,6 +25,11 @@ Much of the data this gathers can be used to manipulate the market to your advan
 
   ![image](https://github.com/hiibolt/r6econ/assets/91273156/52babf14-2e8b-44e2-98b8-661704a443bb)
 
+- ### econ profit \<$ purchased for> \<item id>
+  Calculates how much you need to sell for to gain profit, and estimates your profit if sold right now
+
+  ![image](https://github.com/hiibolt/r6econ/assets/91273156/700c971f-da4e-4ff8-ac6f-6d3cfa04fb28)
+
 - ### econ help
   ![image](https://github.com/hiibolt/r6econ/assets/91273156/76efecb4-114d-4212-850b-1d6ff3825b47)
 

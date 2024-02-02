@@ -502,7 +502,7 @@ async def on_message(message):
                         try:
                             _data = data[item_id]
                         except:
-                            msg = "We aren't tracking this item!"
+                            msg = "We aren't tracking this item ID!"
                             embed=discord.Embed(title=f'Help', description=f'# Ask @hiibolt on GH/DC for help!\n\n## {msg}', color=0xFF5733)
                             embed.set_thumbnail(url="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwallpapercave.com%2Fwp%2Fwp7511401.png&f=1&nofb=1&ipt=774c2f1e44a99d33a82af5645f290c48fb316c0f43af86f11b4f167eb70d8a0a&ipo=images")
                             await message.channel.send(embed=embed)
@@ -528,7 +528,7 @@ async def on_message(message):
                             item_id = name_map[" ".join(cmd).lower()]
                             _data = data[item_id]
                         except:
-                            msg = "We aren't tracking this item!"
+                            msg = "We aren't tracking this item name, try a different name or run 'econ list'!"
                             embed=discord.Embed(title=f'Help', description=f'# Ask @hiibolt on GH/DC for help!\n\n## {msg}', color=0xFF5733)
                             embed.set_thumbnail(url="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwallpapercave.com%2Fwp%2Fwp7511401.png&f=1&nofb=1&ipt=774c2f1e44a99d33a82af5645f290c48fb316c0f43af86f11b4f167eb70d8a0a&ipo=images")
                             await message.channel.send(embed=embed)
@@ -599,8 +599,32 @@ async def on_message(message):
                         e = discord.Embed()
                         e.set_image(url=f'attachment://{item_id}.png')
                         await message.channel.send(file = file, embed=e)
+                    case "profit":
+                        purchase_price = float(cmd.pop(0))
+                        profitable_sell = purchase_price * 1.1
+
+                        item_id = " ".join(cmd).lower()
+                        _data = None
+                        try:
+                            _data = data[item_id]
+                        except:
+                            msg = "We aren't tracking this item ID!"
+                            embed=discord.Embed(title=f'Help', description=f'# Ask @hiibolt on GH/DC for help!\n\n## {msg}', color=0xFF5733)
+                            embed.set_thumbnail(url="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwallpapercave.com%2Fwp%2Fwp7511401.png&f=1&nofb=1&ipt=774c2f1e44a99d33a82af5645f290c48fb316c0f43af86f11b4f167eb70d8a0a&ipo=images")
+                            await message.channel.send(embed=embed)
+                        if ( _data == None):
+                            return
+                        
+                        cleaned_data = [x[0] for x in _data["sold"] if x[0]]
+                        sold_len = len(cleaned_data)
+                        ten_RAP = round(sum(cleaned_data[-10:]) / max(1, min(10, sold_len)))
+
+                        msg = f'\n### Purchased At:\n\t**{purchase_price}** R6 credits\n### Sale Price to Break Even:\n\t**{profitable_sell}** R6 credits\n### Current Net Gain if Sold:\n\t**{((ten_RAP or 0) - purchase_price) * 0.90}** R6 credits'
+                        embed=discord.Embed(title=f'Profit Margins', description=f'{msg}', color=0xFF5733)
+                        embed.set_thumbnail(url="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwallpapercave.com%2Fwp%2Fwp7511401.png&f=1&nofb=1&ipt=774c2f1e44a99d33a82af5645f290c48fb316c0f43af86f11b4f167eb70d8a0a&ipo=images")
+                        await message.channel.send(embed=embed)
                     case _:
-                        msg = "The following commands are available:\n\n\t- econ name <item name>\n\n\t- econ id <item id>\n\n\t- econ graph <# entries (1, 2, ... | all)> <unit (days | hours | minutes)>"
+                        msg = "The following commands are available:\n\n\t- econ name <item name>\n\n\t- econ id <item id>\n\n\t- econ graph <# entries (1, 2, ... | all)> <unit (days | hours | minutes)>\n\n\t- econ profit <what you purchased for> <item id>"
                         embed=discord.Embed(title=f'Help', description=f'# Ask @hiibolt on GH/DC for help!\n\n# Skins:\n{msg}', color=0xFF5733)
                         embed.set_thumbnail(url="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwallpapercave.com%2Fwp%2Fwp7511401.png&f=1&nofb=1&ipt=774c2f1e44a99d33a82af5645f290c48fb316c0f43af86f11b4f167eb70d8a0a&ipo=images")
                         await message.channel.send(embed=embed)
