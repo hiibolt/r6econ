@@ -503,7 +503,7 @@ async def on_message(message):
                             _data = data[item_id]
                         except:
                             msg = "We aren't tracking this item!"
-                            embed=discord.Embed(title=f'Help', description=f'# Ask @hiibolt on GH/DC for help!', color=0xFF5733)
+                            embed=discord.Embed(title=f'Help', description=f'# Ask @hiibolt on GH/DC for help!\n\n## {msg}', color=0xFF5733)
                             embed.set_thumbnail(url="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwallpapercave.com%2Fwp%2Fwp7511401.png&f=1&nofb=1&ipt=774c2f1e44a99d33a82af5645f290c48fb316c0f43af86f11b4f167eb70d8a0a&ipo=images")
                             await message.channel.send(embed=embed)
                         if ( _data == None):
@@ -523,13 +523,13 @@ async def on_message(message):
                         embed.set_thumbnail(url=_data["asset_url"])
                         await message.channel.send(embed=embed)
                     case "name":
-                        item_id = name_map[" ".join(cmd).lower()]
                         _data = None
                         try:
+                            item_id = name_map[" ".join(cmd).lower()]
                             _data = data[item_id]
                         except:
                             msg = "We aren't tracking this item!"
-                            embed=discord.Embed(title=f'Help', description=f'# Ask @hiibolt on GH/DC for help!', color=0xFF5733)
+                            embed=discord.Embed(title=f'Help', description=f'# Ask @hiibolt on GH/DC for help!\n\n## {msg}', color=0xFF5733)
                             embed.set_thumbnail(url="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwallpapercave.com%2Fwp%2Fwp7511401.png&f=1&nofb=1&ipt=774c2f1e44a99d33a82af5645f290c48fb316c0f43af86f11b4f167eb70d8a0a&ipo=images")
                             await message.channel.send(embed=embed)
                         if ( _data == None):
