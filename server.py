@@ -493,7 +493,7 @@ async def on_message(message):
                             if ( item_no > 99 ):
                                 break
                         embed=discord.Embed(title=f'Tracked Skins', description=f'# Ask Bolt for new Items.\n\n# Skins:\n{msg}', color=0xFF5733)
-                        embed.set_thumbnail(url="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwallpapercave.com%2Fwp%2Fwp7511401.png&f=1&nofb=1&ipt=774c2f1e44a99d33a82af5645f290c48fb316c0f43af86f11b4f167eb70d8a0a&ipo=images")
+                        embed.set_thumbnail(url="https://github.com/hiibolt/hiibolt/assets/91273156/4a7c1e36-bf24-4f5a-a501-4dc9c92514c4")
                         await message.channel.send(embed=embed)
                         return
                     case "id":
@@ -504,7 +504,7 @@ async def on_message(message):
                         except:
                             msg = "We aren't tracking this item ID!"
                             embed=discord.Embed(title=f'Help', description=f'# Ask @hiibolt on GH/DC for help!\n\n## {msg}', color=0xFF5733)
-                            embed.set_thumbnail(url="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwallpapercave.com%2Fwp%2Fwp7511401.png&f=1&nofb=1&ipt=774c2f1e44a99d33a82af5645f290c48fb316c0f43af86f11b4f167eb70d8a0a&ipo=images")
+                            embed.set_thumbnail(url="https://github.com/hiibolt/hiibolt/assets/91273156/4a7c1e36-bf24-4f5a-a501-4dc9c92514c4")
                             await message.channel.send(embed=embed)
                         if ( _data == None):
                             return
@@ -530,7 +530,7 @@ async def on_message(message):
                         except:
                             msg = "We aren't tracking this item name, try a different name or run 'econ list'!"
                             embed=discord.Embed(title=f'Help', description=f'# Ask @hiibolt on GH/DC for help!\n\n## {msg}', color=0xFF5733)
-                            embed.set_thumbnail(url="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwallpapercave.com%2Fwp%2Fwp7511401.png&f=1&nofb=1&ipt=774c2f1e44a99d33a82af5645f290c48fb316c0f43af86f11b4f167eb70d8a0a&ipo=images")
+                            embed.set_thumbnail(url="https://github.com/hiibolt/hiibolt/assets/91273156/4a7c1e36-bf24-4f5a-a501-4dc9c92514c4")
                             await message.channel.send(embed=embed)
                         if ( _data == None):
                             return
@@ -576,7 +576,7 @@ async def on_message(message):
                             case _:
                                 msg = "The following units are available:\n\t- days\n\t- hours\n\t- minutes"
                                 embed=discord.Embed(title=f'Help', description=f'# Ask @hiibolt on GH/DC for help!\n\n# Skins:\n{msg}', color=0xFF5733)
-                                embed.set_thumbnail(url="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwallpapercave.com%2Fwp%2Fwp7511401.png&f=1&nofb=1&ipt=774c2f1e44a99d33a82af5645f290c48fb316c0f43af86f11b4f167eb70d8a0a&ipo=images")
+                                embed.set_thumbnail(url="https://github.com/hiibolt/hiibolt/assets/91273156/4a7c1e36-bf24-4f5a-a501-4dc9c92514c4")
                                 await message.channel.send(embed=embed)
 
                         cleaned_data = [x[0] for x in _data["sold"] if x[0]]
@@ -610,7 +610,7 @@ async def on_message(message):
                         except:
                             msg = "We aren't tracking this item ID!"
                             embed=discord.Embed(title=f'Help', description=f'# Ask @hiibolt on GH/DC for help!\n\n## {msg}', color=0xFF5733)
-                            embed.set_thumbnail(url="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwallpapercave.com%2Fwp%2Fwp7511401.png&f=1&nofb=1&ipt=774c2f1e44a99d33a82af5645f290c48fb316c0f43af86f11b4f167eb70d8a0a&ipo=images")
+                            embed.set_thumbnail(url="https://github.com/hiibolt/hiibolt/assets/91273156/4a7c1e36-bf24-4f5a-a501-4dc9c92514c4")
                             await message.channel.send(embed=embed)
                         if ( _data == None):
                             return
@@ -621,12 +621,12 @@ async def on_message(message):
 
                         msg = f'\n### Purchased At:\n\t**{purchase_price}** R6 credits\n### Sale Price to Break Even:\n\t**{profitable_sell}** R6 credits\n### Current Net Gain if Sold:\n\t**{((ten_RAP or 0) - purchase_price) * 0.90}** R6 credits'
                         embed=discord.Embed(title=f'Profit Margins', description=f'{msg}', color=0xFF5733)
-                        embed.set_thumbnail(url="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwallpapercave.com%2Fwp%2Fwp7511401.png&f=1&nofb=1&ipt=774c2f1e44a99d33a82af5645f290c48fb316c0f43af86f11b4f167eb70d8a0a&ipo=images")
+                        embed.set_thumbnail(url="https://github.com/hiibolt/hiibolt/assets/91273156/4a7c1e36-bf24-4f5a-a501-4dc9c92514c4")
                         await message.channel.send(embed=embed)
                     case _:
                         msg = "The following commands are available:\n\n\t- econ name <item name>\n\n\t- econ id <item id>\n\n\t- econ graph <# entries (1, 2, ... | all)> <unit (days | hours | minutes)>\n\n\t- econ profit <what you purchased for> <item id>"
                         embed=discord.Embed(title=f'Help', description=f'# Ask @hiibolt on GH/DC for help!\n\n# Skins:\n{msg}', color=0xFF5733)
-                        embed.set_thumbnail(url="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwallpapercave.com%2Fwp%2Fwp7511401.png&f=1&nofb=1&ipt=774c2f1e44a99d33a82af5645f290c48fb316c0f43af86f11b4f167eb70d8a0a&ipo=images")
+                        embed.set_thumbnail(url="https://github.com/hiibolt/hiibolt/assets/91273156/4a7c1e36-bf24-4f5a-a501-4dc9c92514c4")
                         await message.channel.send(embed=embed)
 
 @tasks.loop(minutes=10)
