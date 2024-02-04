@@ -8,11 +8,13 @@ Much of the data this gathers can be used to manipulate the market to your advan
 ## Commands:
 - ### econ list
   Lists all available names you can search for. It's recommended that you use item IDs instead, however.
+  
   ![image](https://github.com/hiibolt/r6econ/assets/91273156/02ef4b4c-0965-408c-bda4-ff59da242ce2)
 
   Lists all tracked skins.
 - ### econ name \<skin name>
   Fetches the economical trends an item based on its name.
+  
   ![image](https://github.com/hiibolt/r6econ/assets/91273156/bc001157-4f17-41a1-a5fe-4ddd448e05b4)
   
 - ### econ id \<item id>
@@ -22,6 +24,8 @@ Much of the data this gathers can be used to manipulate the market to your advan
   
 - ### econ graph <# of entries | all> <unit of time (days | hours | minutes )> <item id>
   Displays a graph of the current state of an item.
+
+  This is the most useful command, and can be use to determine when to buy or sell. A basic example of how to make informed decisions is in the linked article in the description of this repo.
 
   ![image](https://github.com/hiibolt/r6econ/assets/91273156/52babf14-2e8b-44e2-98b8-661704a443bb)
 
