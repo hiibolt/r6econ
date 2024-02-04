@@ -358,7 +358,7 @@ class Auth:
         except:
             pass
         if (failed):
-            return
+            return -1
         
         name = None
         tags = None
@@ -640,7 +640,7 @@ async def save_agent():
 
         print("[ FINISHED WRITING TO 'data.json' ]")
 
-@tasks.loop(minutes=1)
+@tasks.loop(minutes=5)
 async def scan_market():
     auth = Auth(os.environ["AUTH_EMAIL"], os.environ["AUTH_PW"])
 
@@ -648,6 +648,7 @@ async def scan_market():
         auth.item_id = item_id
         res = await auth.try_query_db()
         if (not res):
+            print("Rate Limited!")
             continue
 
         # Meta: NAME | TYPE | TAGS - Buyers: LOW | HIGH | VOL - Sellers: LOW | HIGH | VOL

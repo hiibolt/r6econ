@@ -13,7 +13,7 @@ Much of the data this gathers can be used to manipulate the market to your advan
 
   Lists all tracked skins.
 - ### econ name \<skin name>
-  Fetches the economical trends an item based on its name in `ids.json`.
+  Fetches the economical trends of an item based on its name in `ids.json`.
   
   ![image](https://github.com/hiibolt/r6econ/assets/91273156/bc001157-4f17-41a1-a5fe-4ddd448e05b4)
   
