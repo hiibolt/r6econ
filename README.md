@@ -50,6 +50,8 @@ Much of the data this gathers can be used to manipulate the market to your advan
   
 First, clone the repo and add a 'data.json' file to /assets, and leave the contents as ```{}```
 
+Next, add an 'ids.json' file to /assets, and place any items and their item IDs in the contents. There is an starting example in the assets folder of this repo.
+
 ### Windows Command Prompt
 ```bat
 set AUTH_EMAIL=foo@example.com
