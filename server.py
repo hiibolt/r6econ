@@ -497,6 +497,10 @@ async def on_message(message):
                         if debug:
                             print(json.dumps(data, indent=3))
                             print("Profile ID: " + profile['profile_id'])
+                        
+                        if len(profile['profile_id']) < 15:
+                            profile_from_name = await auth.get(f"https://public-ubiservices.ubi.com/v3/profiles?nameOnPlatform={profile['profile_id']}&platformType=uplay")
+                            profile['profile_id'] = profile_from_name['profiles'][0]['idOnPlatform']
 
                         player = await auth.get(f"https://public-ubiservices.ubi.com/v1/profiles/{profile['profile_id']}")
                         persona = await auth.get(f"https://public-ubiservices.ubi.com/v1/profiles/persona?profileIds={profile['profile_id']}&spaceId=0d2ae42d-4c27-4cb7-af6c-2099062302bb")
