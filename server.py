@@ -446,30 +446,8 @@ class Auth:
 
 account_platform_blocklist = [
     'Coders Rank', 'Fiverr', 'HackerNews', 'Modelhub (NSFW)', 'metacritic', 'xHamster (NSFW)',
-    'CNET'
+    'CNET', 'YandexMusic', 'HackerEarth'
 ]
-async def get_all_accounts(name, sites):
-	print(f"Starting check for accounts on {name}...")
-
-	name = name.replace(" ", "%20")
-
-	if "#" in name:
-		return
-	
-	async with websockets.connect(f"wss://namefind.fly.dev/api/v1/handles/{name}") as websocket:
-		data = await websocket.recv()
-		while data != "null":
-			parsed_data = json.loads(data)
-
-			if not parsed_data['site'] in account_platform_blocklist:
-				print(f"\n**{parsed_data['site']}**: {parsed_data['url']}")
-
-				sites.append(f"\n**{parsed_data['site']}**: {parsed_data['url']}")
-			
-			data = await websocket.recv()
-		await websocket.close()
-		
-	print(f"Closing check for accounts on {name}...")
 
 intents = discord.Intents.default()
 intents.message_content = True
@@ -607,25 +585,52 @@ async def on_message(message):
                         if len(usernames) == 0:
                             return
                         
-                        joined_usernames = '\n'.join(usernames)
-                        embed=discord.Embed(title=f'Please wait while potential accounts are fetched!', description=f"This could take some time.\n\n## Usernames:\n{joined_usernames}", color=0xFF5733)
+                        links = []
+
+                        joined_links = ''.join(links)
+                        joined_usernames = ''.join(usernames)
+                        embed=discord.Embed(title=f'Potential Linked Accounts', description=f"## Usernames\n{joined_usernames}\n## Platforms:\nInitializing, please wait...", color=0xFF5733)
                         embed.set_thumbnail(url=f"https://ubisoft-avatars.akamaized.net/{profile['profile_id']}/default_tall.png")
                         
-                        await message.channel.send(embed=embed)
-
-                        links = []
+                        ebd = await message.channel.send(embed=embed)
 
                         for username in usernames:
                             links.append(f"\n\n## {username}")
 
-                            await get_all_accounts(username, links)
+                            print(f"Starting check for accounts on {username}...")
 
-                        links = ''.join(links)
+                            name = username.replace(" ", "%20")
 
-                        embed=discord.Embed(title=f'Potential Linked Accounts', description=links, color=0xFF5733)
-                        embed.set_thumbnail(url=f"https://ubisoft-avatars.akamaized.net/{profile['profile_id']}/default_tall.png")
+                            if "#" in name:
+                                return
+                            
+                            async with websockets.connect(f"wss://namefind.fly.dev/api/v1/handles/{name}") as websocket:
+                                data = await websocket.recv()
+                                while data != "null":
+                                    parsed_data = json.loads(data)
+
+                                    if not parsed_data['site'] in account_platform_blocklist:
+                                        print(f"\n**{parsed_data['site']}**: {parsed_data['url']}")
+
+                                        links.append(f"\n**{parsed_data['site']}**: {parsed_data['url']}")
+                                        
+                                        joined_links = ''.join(links)
+                                        new_embed=discord.Embed(title=f'Potential Linked Accounts', description=f"## Usernames\n{joined_usernames}\n## Platforms:\n{joined_links}\n\nPlease wait, not done...", color=0xFF5733)
+                                        new_embed.set_thumbnail(url=f"https://ubisoft-avatars.akamaized.net/{profile['profile_id']}/default_tall.png")
+                                        
+                                        await ebd.edit(embed=new_embed)
+                                    
+                                    data = await websocket.recv()
+                                await websocket.close()
+                                
+                            print(f"Closing check for accounts on {name}...")
+
                         
-                        await message.channel.send(embed=embed)
+                        joined_links = ''.join(links)
+                        new_embed=discord.Embed(title=f'Potential Linked Accounts', description=f"## Usernames\n{joined_usernames}\n## Platforms:\n{joined_links}\n### Done :3", color=0xFF5733)
+                        new_embed.set_thumbnail(url=f"https://ubisoft-avatars.akamaized.net/{profile['profile_id']}/default_tall.png")
+                                        
+                        await ebd.edit(embed=new_embed)
 
                         await auth.close()
                     case "list":
