@@ -452,6 +452,9 @@ async def get_all_accounts(name, sites):
 	print(f"Starting check for accounts on {name}...")
 
 	name = name.replace(" ", "%20")
+
+	if "#" in name:
+		return
 	
 	async with websockets.connect(f"wss://namefind.fly.dev/api/v1/handles/{name}") as websocket:
 		data = await websocket.recv()
