@@ -13,6 +13,7 @@ import contextlib
 import os
 import asyncio
 import discord
+import websockets
 from discord.ext import commands, tasks
 from os.path import exists
 
@@ -443,6 +444,24 @@ class Auth:
             asset_url
         ]
 
+async def get_all_accounts(name, sites):
+	print(f"Starting check for accounts on {name}...")
+
+	name = name.replace(" ", "%20")
+	
+	async with websockets.connect(f"wss://namefind.fly.dev/api/v1/handles/{name}") as websocket:
+		data = await websocket.recv()
+		while data != "null":
+			parsed_data = json.loads(data)
+
+			print(f"\n**{parsed_data['site']}**: {parsed_data['url']}")
+
+			sites.append(f"\n**{parsed_data['site']}**: {parsed_data['url']}")
+			
+			data = await websocket.recv()
+		await websocket.close()
+		
+	print(f"Closing check for accounts on {name}...")
 
 intents = discord.Intents.default()
 intents.message_content = True
@@ -499,7 +518,7 @@ async def on_message(message):
                             print(json.dumps(data, indent=3))
                             print("Profile ID: " + profile['profile_id'])
                         
-                        if len(profile['profile_id']) < 15:
+                        if len(profile['profile_id']) < 20:
                             profile_from_name = await auth.get(f"https://public-ubiservices.ubi.com/v3/profiles?nameOnPlatform={profile['profile_id']}&platformType=uplay")
                             profile['profile_id'] = profile_from_name['profiles'][0]['idOnPlatform']
 
@@ -571,6 +590,35 @@ async def on_message(message):
                         embed.set_thumbnail(url=f"https://ubisoft-avatars.akamaized.net/{profile['profile_id']}/default_tall.png")
                         
                         await message.channel.send(embed=embed)
+
+                        print(json.dumps(profiles['profiles'],indent=2))
+
+                        blacklist_platforms = ['epic', 'steam', 'amazon']
+                        usernames = list(set([x['nameOnPlatform'] for x in profiles['profiles'] if x['nameOnPlatform'] and not x['platformType'] in blacklist_platforms]))
+
+                        if len(usernames) == 0:
+                            return
+                        
+                        joined_usernames = '\n'.join(usernames)
+                        embed=discord.Embed(title=f'Please wait while potential accounts are fetched!', description=f"This could take some time.\n\n## Usernames:\n{joined_usernames}", color=0xFF5733)
+                        embed.set_thumbnail(url=f"https://ubisoft-avatars.akamaized.net/{profile['profile_id']}/default_tall.png")
+                        
+                        await message.channel.send(embed=embed)
+
+                        links = []
+
+                        for username in usernames:
+                            links.append(f"\n\n## {username}")
+
+                            await get_all_accounts(username, links)
+
+                        links = ''.join(links)
+
+                        embed=discord.Embed(title=f'Potential Linked Accounts', description=links, color=0xFF5733)
+                        embed.set_thumbnail(url=f"https://ubisoft-avatars.akamaized.net/{profile['profile_id']}/default_tall.png")
+                        
+                        await message.channel.send(embed=embed)
+
                         await auth.close()
                     case "list":
                         msg = ""
