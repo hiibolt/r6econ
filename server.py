@@ -8,6 +8,7 @@ import aiohttp
 import base64
 import time
 import json
+import copy
 import contextlib
 import os
 import asyncio
@@ -640,7 +641,7 @@ async def on_message(message):
                         unit_type = cmd.pop(0)
 
                         item_id = " ".join(cmd).lower()
-                        _data = data[item_id]
+                        _data = copy.deepcopy(data[item_id])
                         unit = "days"
                         dividend = 86400
                         
