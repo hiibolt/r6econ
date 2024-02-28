@@ -444,6 +444,10 @@ class Auth:
             asset_url
         ]
 
+account_platform_blocklist = [
+    'Coders Rank', 'Fiverr', 'HackerNews', 'Modelhub (NSFW)', 'metacritic', 'xHamster (NSFW)',
+    'CNET'
+]
 async def get_all_accounts(name, sites):
 	print(f"Starting check for accounts on {name}...")
 
@@ -454,9 +458,10 @@ async def get_all_accounts(name, sites):
 		while data != "null":
 			parsed_data = json.loads(data)
 
-			print(f"\n**{parsed_data['site']}**: {parsed_data['url']}")
+			if not parsed_data['site'] in account_platform_blocklist:
+				print(f"\n**{parsed_data['site']}**: {parsed_data['url']}")
 
-			sites.append(f"\n**{parsed_data['site']}**: {parsed_data['url']}")
+				sites.append(f"\n**{parsed_data['site']}**: {parsed_data['url']}")
 			
 			data = await websocket.recv()
 		await websocket.close()
