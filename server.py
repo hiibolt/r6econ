@@ -490,7 +490,7 @@ async def on_message(message):
         match cmd.pop(0):
             case "econ":
                 match cmd.pop(0):
-                    case "dox":
+                    case "dump":
                         auth = Auth(os.environ["AUTH_EMAIL"], os.environ["AUTH_PW"])
 
                         debug = False
@@ -526,20 +526,21 @@ async def on_message(message):
                         for platform in profiles["profiles"]:
                             match platform['platformType']:
                                 case "uplay":
-                                    profile['linked'].append(f"**Uplay**:\n\tLink: https://r6.tracker.network/r6/search?name={profile['profile_id']}&platform=4")
+                                    profile['linked'].append(f"**Uplay**:\n\t- Link: https://r6.tracker.network/r6/search?name={profile['profile_id']}&platform=4")
                                 case "steam":
-                                    profile['linked'].append(f"**Steam**:\n\tLink: https://findsteamid.com/steamid/{platform['idOnPlatform']}")
+                                    profile['linked'].append(f"**Steam**:\n\t- Link: https://findsteamid.com/steamid/{platform['idOnPlatform']}")
                                 case "xbl":
-                                    profile['linked'].append(f"**XBL**:\n\tLink: https://xboxgamertag.com/search/{platform['nameOnPlatform']}")
+                                    fixed = platform['nameOnPlatform'].replace(" ", "%20")
+                                    profile['linked'].append(f"**XBL**:\n\t- Link: https://xboxgamertag.com/search/{fixed}")
                                 case "twitch":
-                                    profile['linked'].append(f"**Twitch**:\n\tLink: https://www.twitch.tv/{platform['nameOnPlatform']}")
+                                    profile['linked'].append(f"**Twitch**:\n\t- Link: https://www.twitch.tv/{platform['nameOnPlatform']}")
                                 case _:
                                     # OCD
                                     upper_first = list(platform['platformType'])
                                     upper_first[0] = upper_first[0].upper()
                                     upper_first = ''.join(upper_first)
 
-                                    profile['linked'].append(f"**{upper_first}**:\n\tName: **{platform['nameOnPlatform']}**\n\tID: **{platform['idOnPlatform']}**")
+                                    profile['linked'].append(f"**{upper_first}**:\n- Name: **{platform['nameOnPlatform']}**\n- ID: **{platform['idOnPlatform']}**")
                         
                         profile['uplay'] = player['nameOnPlatform']
                         profile['nickname'] = persona['personas'][0]['nickname'] if (persona['personas'] and persona['personas'][0]['obj']['Enabled']) else "Offline/No Nickname"
@@ -565,37 +566,45 @@ async def on_message(message):
 
                         await client.wait_until_ready()
 
-                        msg = f"\n## Player:\n\tUplay: **{profile['uplay']}**\n\tNickname: **{profile['nickname']}**"
-                        msg += f"\n### Rank:\n\tCurrent: **{profile['mmr']}**\n\tPeak: **{profile['peak_mmr']}**)"
-                        msg += f"\n### Stats:\n\tKD: **{profile['kd']}**\n\tKills: **{profile['kills']}**\n\tDeaths: **{profile['deaths']}**\n\n\tWL: **{profile['wl']}**\n\tWins: **{profile['wins']}**\n\tLosses: **{profile['losses']}**"
+                        msg = f"\n## 👀 - Player:\n\tUplay: **{profile['uplay']}**\n\tNickname: **{profile['nickname']}**"
+                        msg += f"\n## 📈 - Rank:\n\tCurrent: **{profile['mmr']}**\n\tPeak: **{profile['peak_mmr']}**)"
+                        msg += f"\n## 🏆 - Stats:\n\tKD: **{profile['kd']}**\n\tKills: **{profile['kills']}**\n\tDeaths: **{profile['deaths']}**\n\n\tWL: **{profile['wl']}**\n\tWins: **{profile['wins']}**\n\tLosses: **{profile['losses']}**"
                     
                         profiles_str = '\n'.join(profile['linked'])
-                        msg += f"\n### Linked Accounts:\n{profiles_str}"
+                        msg += f"\n## ⛓️ - Linked Accounts:\n{profiles_str}"
 
-                        embed=discord.Embed(title=f'Blocked Player (@wydbolt)', description=f'{msg}', color=0xFF5733)
+                        embed=discord.Embed(title=f'[ Total Player Dump ]', description=f'{msg}\n\n*Checking for potential accounts, please wait...*', color=0xFF5733)
                         embed.set_thumbnail(url=f"https://ubisoft-avatars.akamaized.net/{profile['profile_id']}/default_tall.png")
                         
-                        await message.channel.send(embed=embed)
+                        ebd = await message.channel.send(embed=embed)
 
                         print(json.dumps(profiles['profiles'],indent=2))
 
                         blacklist_platforms = ['epic', 'steam', 'amazon']
-                        usernames = list(set([x['nameOnPlatform'] for x in profiles['profiles'] if x['nameOnPlatform'] and not x['platformType'] in blacklist_platforms]))
+                        usernames = list(set([x['nameOnPlatform'] for x in profiles['profiles'] if x['nameOnPlatform'] and not x['platformType'] in blacklist_platforms and not ' ' in x['nameOnPlatform']]))
 
                         if len(usernames) == 0:
+                            
+                            new_embed=discord.Embed(title=f'[ Total Player Dump ]', description=f'{msg}\n\n*Checking for potential accounts, please wait...*', color=0xFF5733)
+                            new_embed.set_thumbnail(url=f"https://ubisoft-avatars.akamaized.net/{profile['profile_id']}/default_tall.png")
+                            
+                            await client.wait_until_ready()
+                            await ebd.edit(embed=new_embed)
+
                             return
                         
                         links = []
 
                         joined_links = ''.join(links)
                         joined_usernames = '\n'.join(usernames)
-                        embed=discord.Embed(title=f'Potential Linked Accounts', description=f"## Usernames\n{joined_usernames}\n## Platforms:\nInitializing, please wait...", color=0xFF5733)
-                        embed.set_thumbnail(url=f"https://ubisoft-avatars.akamaized.net/{profile['profile_id']}/default_tall.png")
+                        new_embed=discord.Embed(title=f'[ Total Player Dump ]', description=f"{msg}\n## ❔ - Potential Platforms:\nInitializing, please wait...", color=0xFF5733)
+                        new_embed.set_thumbnail(url=f"https://ubisoft-avatars.akamaized.net/{profile['profile_id']}/default_tall.png")
                         
-                        ebd = await message.channel.send(embed=embed)
+                        await client.wait_until_ready()
+                        await ebd.edit(embed=new_embed)
 
                         for username in usernames:
-                            links.append(f"\n\n## {username}")
+                            links.append(f"\n\n### {username}")
 
                             print(f"Starting check for accounts on {username}...")
 
@@ -619,22 +628,34 @@ async def on_message(message):
                                         count += 1
 
                                         joined_links = ''.join(links)
-                                        new_embed=discord.Embed(title=f'Potential Linked Accounts', description=f"## Usernames\n{joined_usernames}\n## Platforms:\n{joined_links}\n\nPlease wait, not done...", color=0xFF5733)
+                                        new_embed=discord.Embed(title=f'[ Total Player Dump ]', description=f"{msg}\n## ❔ - Potential Platforms:\n{joined_links}\n\nPlease wait, not done...", color=0xFF5733)
                                         new_embed.set_thumbnail(url=f"https://ubisoft-avatars.akamaized.net/{profile['profile_id']}/default_tall.png")
                                         
+                                        await client.wait_until_ready()
                                         await ebd.edit(embed=new_embed)
                                     
                                     if count > 20:
                                         data = "null"
                                     else:
                                         data = await websocket.recv()
+                                
+                                if count == 0:
+                                    links.append(f"\n**Could not find any potential accounts!**")
+                                        
+                                    joined_links = ''.join(links)
+                                    new_embed=discord.Embed(title=f'[ Total Player Dump ]', description=f"{msg}\n## ❔ - Potential Platforms:\n{joined_links}\n\nPlease wait, not done...", color=0xFF5733)
+                                    new_embed.set_thumbnail(url=f"https://ubisoft-avatars.akamaized.net/{profile['profile_id']}/default_tall.png")
+                                        
+                                    await client.wait_until_ready()
+                                    await ebd.edit(embed=new_embed)
+                                    
                                 await websocket.close()
                                 
                             print(f"Closing check for accounts on {name}...")
 
                         
                         joined_links = ''.join(links)
-                        new_embed=discord.Embed(title=f'Potential Linked Accounts', description=f"## Usernames\n{joined_usernames}\n## Platforms:\n{joined_links}\n### Done :3", color=0xFF5733)
+                        new_embed=discord.Embed(title=f'[ Total Player Dump ]', description=f"{msg}\n## ❔ - Potential Platforms:\n{joined_links}\n\n\n**Done** *(@hiibolt on Github)*", color=0xFF5733)
                         new_embed.set_thumbnail(url=f"https://ubisoft-avatars.akamaized.net/{profile['profile_id']}/default_tall.png")
                                         
                         await ebd.edit(embed=new_embed)
