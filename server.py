@@ -446,7 +446,7 @@ class Auth:
 
 account_platform_blocklist = [
     'Coders Rank', 'Fiverr', 'HackerNews', 'Modelhub (NSFW)', 'metacritic', 'xHamster (NSFW)',
-    'CNET', 'YandexMusic', 'HackerEarth'
+    'CNET', 'YandexMusic', 'HackerEarth', 'OpenStreetMap', 'Pinkbike', 'Slides', 'Strava'
 ]
 
 intents = discord.Intents.default()
