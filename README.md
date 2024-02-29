@@ -29,9 +29,9 @@ python3.exe server.py
 
 ### PowerShell
 ```ps1
-$env:UTH_EMAIL=foo@example.com
-$env:AUTH_PW=mysecretpassword
-$env:TOKEN=as876df5as876df5as87d6f5
+$env:AUTH_EMAIL="foo@example.com"
+$env:AUTH_PW="mysecretpassword"
+$env:TOKEN="as876df5as876df5as87d6f5"
 pip install -r requirements.txt
 python3.exe server.py
 ```
