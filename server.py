@@ -616,9 +616,9 @@ async def on_message(message):
                             count = 0
 
                             async with websockets.connect(f"wss://namefind.fly.dev/api/v1/handles/{name}") as websocket:
-                                data = await websocket.recv()
-                                while data != "null":
-                                    parsed_data = json.loads(data)
+                                in_data = await websocket.recv()
+                                while in_data != "null":
+                                    parsed_data = json.loads(in_data)
 
                                     if not parsed_data['site'] in account_platform_blocklist:
                                         print(f"\n**{parsed_data['site']}**: {parsed_data['url']}")
@@ -635,9 +635,9 @@ async def on_message(message):
                                         await ebd.edit(embed=new_embed)
                                     
                                     if count > 20:
-                                        data = "null"
+                                        in_data = "null"
                                     else:
-                                        data = await websocket.recv()
+                                        in_data = await websocket.recv()
                                 
                                 if count == 0:
                                     links.append(f"\n**Could not find any potential accounts!**")
@@ -676,6 +676,7 @@ async def on_message(message):
                     case "id":
                         item_id = " ".join(cmd).lower()
                         _data = None
+                        print(json.dumps(data, indent=2))
                         try:
                             _data = data[item_id]
                         except:
