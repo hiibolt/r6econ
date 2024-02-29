@@ -588,7 +588,7 @@ async def on_message(message):
                         links = []
 
                         joined_links = ''.join(links)
-                        joined_usernames = ''.join(usernames)
+                        joined_usernames = '\n'.join(usernames)
                         embed=discord.Embed(title=f'Potential Linked Accounts', description=f"## Usernames\n{joined_usernames}\n## Platforms:\nInitializing, please wait...", color=0xFF5733)
                         embed.set_thumbnail(url=f"https://ubisoft-avatars.akamaized.net/{profile['profile_id']}/default_tall.png")
                         
@@ -604,6 +604,8 @@ async def on_message(message):
                             if "#" in name:
                                 return
                             
+                            count = 0
+
                             async with websockets.connect(f"wss://namefind.fly.dev/api/v1/handles/{name}") as websocket:
                                 data = await websocket.recv()
                                 while data != "null":
@@ -614,13 +616,18 @@ async def on_message(message):
 
                                         links.append(f"\n**{parsed_data['site']}**: {parsed_data['url']}")
                                         
+                                        count += 1
+
                                         joined_links = ''.join(links)
                                         new_embed=discord.Embed(title=f'Potential Linked Accounts', description=f"## Usernames\n{joined_usernames}\n## Platforms:\n{joined_links}\n\nPlease wait, not done...", color=0xFF5733)
                                         new_embed.set_thumbnail(url=f"https://ubisoft-avatars.akamaized.net/{profile['profile_id']}/default_tall.png")
                                         
                                         await ebd.edit(embed=new_embed)
                                     
-                                    data = await websocket.recv()
+                                    if count > 20:
+                                        data = "null"
+                                    else:
+                                        data = await websocket.recv()
                                 await websocket.close()
                                 
                             print(f"Closing check for accounts on {name}...")
