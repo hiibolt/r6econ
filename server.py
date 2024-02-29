@@ -581,7 +581,7 @@ async def on_message(message):
                         print(json.dumps(profiles['profiles'],indent=2))
 
                         blacklist_platforms = ['epic', 'steam', 'amazon']
-                        usernames = list(set([x['nameOnPlatform'] for x in profiles['profiles'] if x['nameOnPlatform'] and not x['platformType'] in blacklist_platforms and not ' ' in x['nameOnPlatform']]))
+                        usernames = list(set([x['nameOnPlatform'] for x in profiles['profiles'] if x['nameOnPlatform'] and not x['platformType'] in blacklist_platforms and not ' ' in x['nameOnPlatform'] and not '#' in x['nameOnPlatform'] and not '&' in x['nameOnPlatform'] and not '$' in x['nameOnPlatform'] and not '$' in x['nameOnPlatform']]))
 
                         if len(usernames) == 0:
                             
