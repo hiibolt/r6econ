@@ -489,6 +489,17 @@ async def on_message(message):
 
         match cmd.pop(0):
             case "econ":
+                try:
+                    os.environ["NO_COMMANDS"]
+
+                    embed=discord.Embed(title=f'Not available!', description=f'This bot no longer uses the `econ` prefix.\nInterested in seeing what it can do now? Run `r6 help`!\n\n*If you would like to purchase access or this message is in error, contact @hiibolt on Discord!*', color=0xFF5733)
+                    embed.set_thumbnail(url="https://github.com/hiibolt/hiibolt/assets/91273156/4a7c1e36-bf24-4f5a-a501-4dc9c92514c4")
+                    await message.channel.send(embed=embed)
+
+                    return
+                except:
+                    pass
+
                 match cmd.pop(0):
                     case "list":
                         msg = ""
