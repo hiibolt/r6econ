@@ -10,13 +10,30 @@ Much of the data this gathers can be used to manipulate the market to your advan
 ## Setup (Recommended)
 
 ### Prequisites
-- [python](https://www.python.org/)
-- [pip](https://pypi.org/project/pip/)
+- Experience with Git
+- Experience setting up a Discord Bot
+### Program Requirements
+- Python and Pip
+- Git CLI
 - [A discord bot and its token](https://www.writebots.com/discord-bot-token/)
   
-First, clone the repo and add a 'data.json' file to /assets, and leave the contents as ```{}```
+First, clone and navigate to the repo:
+```
+git clone https://github.com/hiibolt/r6econ.git
+cd r6econ
+```
 
-Next, add an 'ids.json' file to /assets, and place any items and their item IDs in the contents. There is an starting example in the assets folder of this repo.
+Next, add a 'data.json' file to `/assets`, and leave the contents as:
+```
+{
+}
+```
+
+Next, add an 'ids.json' file to `/assets`, and place any items and their item IDs in the contents. There is an starting example in the assets folder of this repo.
+
+Make sure you have enabled Privledge Message Intent in the bot settings on the Discord Developer portal.
+
+Finally, depending on your operating system and choice of terminal:
 
 ### Windows Command Prompt
 ```bat
@@ -45,6 +62,12 @@ pip install -r requirements.txt
 python3 server.py
 ```
 
+Congratulations, you're done! Invite the bot to your personal server and check that it works with `econ help`. 
+
+If you run into setup errors, please contact @hiibolt on Discord.
+
+Do not ask me to 'set up the bot' - if you don't have the experience listed in the prerequisites, I offer access to my personal copy for a set fee.
+
 ## Setup (Docker Compose)
 Be sure to bind a volume for your assets and add a `data.json` file with contents `{}`, as well as an `ids.json` file (template `ids.json` can be found in this repository).
 
@@ -63,30 +86,6 @@ volumes:
   assets:
 
 ```
-
-
-## Setup (Nix) (Not Recommended for Beginners)
-
-### Prerequisites
-
-- [nix](https://nixos.org/)
-- [nix flakes](https://nixos.wiki/wiki/Flakes)
-- [A discord bot and its token](https://www.writebots.com/discord-bot-token/)
-
-First, clone the repo and add a 'data.json' file to /assets, and leave the contents as ```{}```
-
-
-### Instructions
-
-Set the following environment variables:
-- AUTH_EMAIL: Your Ubisoft email.
-- AUTH_PW: Your associated Ubisoft password.
-- TOKEN: The run token for your Discord bot.
-
-With flake functionality enabled, run `nix develop`.
-
-Then, run `python server.py`.
-
 
 ## Commands:
 - ### econ list
