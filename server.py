@@ -686,11 +686,11 @@ async def scan_market():
                 }
             if data[item_id]["data"] == None or data[item_id]["data"] != [res[3], res[4], res[5], res[6], res[7], res[8]]:
                 data[item_id]["data"] = [res[3], res[4], res[5], res[6], res[7], res[8]]
-                print("NEW PRIMARY DATA")
+                print(f'{key} - NEW PRIMARY DATA')
             
             if len(data[item_id]["sold"]) == 0 or data[item_id]["sold"][len(data[item_id]["sold"]) - 1][0] != res[9]:
                 data[item_id]["sold"] = data[item_id]["sold"] + [[res[9], time.time()]]
-                print("NEW LAST SOLD")
+                print(f'{key} - NEW LAST SOLD')
             
         await auth.close()
         print("[ Closing Session ]")
