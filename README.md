@@ -39,7 +39,7 @@ Finally, depending on your operating system and choice of terminal:
 ```bat
 set AUTH_EMAIL=foo@example.com
 set AUTH_PW=mysecretpassword
-set TOKEN=as876df5as876df5as87d6f5
+set TOKEN=mydiscordbotstoken
 pip install -r requirements.txt
 python3.exe server.py
 ```
@@ -48,7 +48,7 @@ python3.exe server.py
 ```ps1
 $env:AUTH_EMAIL="foo@example.com"
 $env:AUTH_PW="mysecretpassword"
-$env:TOKEN="as876df5as876df5as87d6f5"
+$env:TOKEN="mydiscordbotstoken"
 pip install -r requirements.txt
 python3.exe server.py
 ```
@@ -57,7 +57,7 @@ python3.exe server.py
 ```sh
 export AUTH_EMAIL=foo@example.com
 export AUTH_PW=mysecretpassword
-export TOKEN=as876df5as876df5as87d6f5
+export TOKEN=mydiscordbotstoken
 pip install -r requirements.txt
 python3 server.py
 ```
