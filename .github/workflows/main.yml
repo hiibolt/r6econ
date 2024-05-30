@@ -53,6 +53,6 @@ jobs:
           context: .
           push: true
           tags: |
-            hiibolt/r6econ:latest-amd64
-            hiibolt/r6econ:latest-arm64
+            ghcr.io/${{ github.repository }}:latest-amd64
+            ghcr.io/${{ github.repository }}:latest-arm64
           platforms: linux/amd64,linux/arm64
