@@ -24,6 +24,8 @@ COPY . .
 # Leverage a bind mount to requirements.txt to avoid having to copy them into
 # into this layer.
 RUN python -m venv .venv
+RUN apt update
+RUN apt install cmake
 RUN .venv/bin/pip install numpy
 RUN .venv/bin/pip install -r requirements.txt
 
