@@ -23,10 +23,10 @@ COPY . .
 # Leverage a cache mount to /root/.cache/pip to speed up subsequent builds.
 # Leverage a bind mount to requirements.txt to avoid having to copy them into
 # into this layer.
-RUN python -m pip install --upgrade pip
-RUN python -m pip install --upgrade setuptools
-RUN python -m pip install numpy
-RUN python -m pip install -r requirements.txt
+RUN python -m venv .venv
+RUN source .venv/bin/activate
+RUN pip install numpy
+RUN pip install -r requirements.txt
 
 VOLUME /app/assets
 
