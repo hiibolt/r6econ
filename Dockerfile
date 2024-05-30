@@ -24,11 +24,10 @@ COPY . .
 # Leverage a bind mount to requirements.txt to avoid having to copy them into
 # into this layer.
 RUN python -m venv .venv
-RUN source .venv/bin/activate
-RUN pip install numpy
-RUN pip install -r requirements.txt
+RUN .venv/bin/pip install numpy
+RUN .venv/bin/pip install -r requirements.txt
 
 VOLUME /app/assets
 
 # Run the application.
-CMD ["python", "server.py"]
+CMD [".venv/bin/pip/python", "server.py"]
