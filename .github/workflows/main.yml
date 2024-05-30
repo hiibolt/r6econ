@@ -55,4 +55,4 @@ jobs:
           tags: |
             myregistry/myapp:latest-amd64
             myregistry/myapp:latest-arm64
-          platforms: linux/amd64,linux/arm64,linux/arm/v8
+          platforms: linux/arm/v8,linux/amd64,linux/arm64
