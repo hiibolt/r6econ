@@ -25,7 +25,7 @@ COPY . .
 # into this layer.
 RUN python -m venv .venv
 RUN apt update
-RUN apt install cmake
+RUN apt install -y cmake
 RUN .venv/bin/pip install numpy
 RUN .venv/bin/pip install -r requirements.txt
 
