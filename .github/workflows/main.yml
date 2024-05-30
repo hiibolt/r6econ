@@ -53,6 +53,7 @@ jobs:
           context: .
           push: true
           tags: |
+            ghcr.io/${{ github.repository }}:latest-arm64-v8
             ghcr.io/${{ github.repository }}:latest-amd64
             ghcr.io/${{ github.repository }}:latest-arm64
-          platforms: linux/amd64,linux/arm64
+          platforms: linux/arm/v8,linux/amd64,linux/arm64
