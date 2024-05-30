@@ -23,6 +23,7 @@ COPY . .
 # Leverage a cache mount to /root/.cache/pip to speed up subsequent builds.
 # Leverage a bind mount to requirements.txt to avoid having to copy them into
 # into this layer.
+RUN apt install python3-full
 RUN pip install --upgrade pip
 RUN pip install numpy
 RUN python -m pip install -r requirements.txt
