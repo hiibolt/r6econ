@@ -201,7 +201,7 @@ class Auth:
                 message = data["message"]
             elif "httpCode" in data:
                 message = str(data["httpCode"])
-            print(f"[ Error: \"{message}\"")
+            print(f"[ Error: \"{message}\" ]")
             raise FailedToConnect(message)
 
         self.save_creds()
@@ -332,6 +332,7 @@ class Auth:
                 text = await resp.text()
                 message = text.split("h1>")
                 message = message[1][:-2] if len(message) > 1 else text
+                print(f"[ Error: \"{message}\" ]")
                 raise InvalidRequest(f"Received a text response, expected JSON response. Message: {message}")
 
             if "httpCode" in data:
@@ -342,11 +343,16 @@ class Auth:
 
                     # key no longer works, so remove key and let the following .get() call refresh it
                     self.key = None
+
+                    print("[ Broken Key! ]")
+
                     return await self.get(*args, retries=retries + 1, **kwargs)
                 else:
                     msg = data.get("message", "")
                     if data["httpCode"] == 404:
                         msg = f"Missing resource {data.get('resource', args[0])}"
+
+                    print(f"[ Error: \"{msg}\" ]")
                     raise InvalidRequest(f"HTTP {data['httpCode']}: {msg}", code=data["httpCode"])
 
             return data
