@@ -156,6 +156,8 @@ class Auth:
                 return
         else:
             if self.key and datetime.fromisoformat(self.expiration[:26]+"+00:00") > datetime.now(timezone.utc):
+                print("[ Outdated key detected, re-authenticating... ]")
+                
                 await self.connect(_new=True)
                 return
 
@@ -190,6 +192,7 @@ class Auth:
             self.sessionid = data.get("sessionId")
             self.spaceid = data.get("spaceId")
             self.userid = data.get("userId")
+            print("[ Logged in successfully ]")
         else:
             message = "Unknown Error"
             if "message" in data and "httpCode" in data:
@@ -198,6 +201,7 @@ class Auth:
                 message = data["message"]
             elif "httpCode" in data:
                 message = str(data["httpCode"])
+            print(f"[ Error: \"{message}\"")
             raise FailedToConnect(message)
 
         self.save_creds()
@@ -217,6 +221,8 @@ class Auth:
                     break
                 except FailedToConnect as e:
                     last_error = e
+
+                    print(f"[ Failed to connect for reason \"{e}\" ]")
             else:
                 # assume this error is going uncaught, so we close the session
                 await self.close()
@@ -663,7 +669,6 @@ async def save_agent():
 async def scan_market():
     with contextlib.suppress(Exception):
         auth = Auth(os.environ["AUTH_EMAIL"], os.environ["AUTH_PW"])
-        print("[ Authenticated ]")
 
         for key, item_id in item_ids.items():
             auth.item_id = item_id
