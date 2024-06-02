@@ -484,11 +484,12 @@ client = commands.Bot(command_prefix='.', intents=intents)
 
 @client.event
 async def on_ready():
-    print("Connected!")
+    print("[ Connected to Discord ]")
     print(time.time())
 
-    save_agent.start()
+    print("[ Starting market scan daemon ]")
     scan_market.start()
+    print("[ Started market scan daemon ]")
 
 @client.event
 async def on_message(message):
@@ -660,23 +661,17 @@ async def on_message(message):
                         embed.set_thumbnail(url="https://github.com/hiibolt/hiibolt/assets/91273156/4a7c1e36-bf24-4f5a-a501-4dc9c92514c4")
                         await message.channel.send(embed=embed)
 
-@tasks.loop(minutes=10)
-async def save_agent():
-    with contextlib.suppress(Exception):
-        print("[ WRITING TO 'data.json' ]")
-
-        data_file = open("assets/data.json", "w")
-        data_file.write(json.dumps(data, indent=2))
-        data_file.close()
-
-        print("[ FINISHED WRITING TO 'data.json' ]")
-
 @tasks.loop(minutes=5)
 async def scan_market():
     with contextlib.suppress(Exception):
+        print("[ Opening Session ]")
+
         auth = Auth(os.environ["AUTH_EMAIL"], os.environ["AUTH_PW"])
 
+        print("[ Preparing to scan market... ]")
         for key, item_id in item_ids.items():
+            print(f'[ [ Scanning {key} ] ]')
+
             auth.item_id = item_id
             res = await auth.try_query_db()
             if (not res):
@@ -697,14 +692,24 @@ async def scan_market():
                 }
             if data[item_id]["data"] == None or data[item_id]["data"] != [res[3], res[4], res[5], res[6], res[7], res[8]]:
                 data[item_id]["data"] = [res[3], res[4], res[5], res[6], res[7], res[8]]
-                print(f'{key} - NEW PRIMARY DATA')
+                print('[ - NEW PRIMARY DATA ]')
             
             if len(data[item_id]["sold"]) == 0 or data[item_id]["sold"][len(data[item_id]["sold"]) - 1][0] != res[9]:
                 data[item_id]["sold"] = data[item_id]["sold"] + [[res[9], time.time()]]
-                print(f'{key} - NEW LAST SOLD')
+                print('[ - NEW LAST SOLD ]')
+
+            print(f'[ - Done checking {key} ]')
             
-        await auth.close()
         print("[ Closing Session ]")
+        await auth.close()
+
+        print("[ WRITING TO 'data.json' ]")
+
+        data_file = open("assets/data.json", "w")
+        data_file.write(json.dumps(data, indent=2))
+        data_file.close()
+
+        print("[ FINISHED WRITING TO 'data.json' ]")
                             
 
 client.run(os.environ["TOKEN"])
