@@ -47,14 +47,16 @@ class Auth:
             creds_path: str = None,
             cachetime: int = 120,
             max_connect_retries: int = 1,
-            session: aiohttp.ClientSession() = None,
+            session: aiohttp.ClientSession = None,
             refresh_session_period: int = 180,
             item_id: str = "",
     ):
-        self.session: aiohttp.ClientSession() = session or aiohttp.ClientSession()
+        print("[ - Generating session data... ]")
+        self.session: aiohttp.ClientSession = session or aiohttp.ClientSession()
         self.max_connect_retries: int = max_connect_retries
         self.refresh_session_period: int = refresh_session_period
 
+        print("[ - Generating token data... ]")
         self.token: str = token or Auth.get_basic_token(email, password)
         self.creds_path: str = creds_path or f"{os.getcwd()}/creds/{self.token}.json"
         self.appid: str = appid or 'e3d5ea9e-50bd-43b7-88bf-39794f4e3d40'
@@ -72,9 +74,11 @@ class Auth:
         self.expiration: str = ""
         self.new_expiration: str = ""
 
+        print("[ - Generating cache data... ]")
         self.cachetime: int = cachetime
         self.cache = {}
 
+        print("[ - Generating time data... ]")
         self._login_cooldown: int = 0
         self._session_start: float = time.time()
 
@@ -95,7 +99,7 @@ class Auth:
         self.session = aiohttp.ClientSession()
         self._session_start = time.time()
 
-    async def get_session(self) -> aiohttp.ClientSession():
+    async def get_session(self) -> aiohttp.ClientSession:
         """ Retrieves the current session, ensuring it's valid first """
         await self._ensure_session_valid()
         return self.session
@@ -668,9 +672,9 @@ async def scan_market():
 
         auth = Auth(os.environ["AUTH_EMAIL"], os.environ["AUTH_PW"])
 
-        print("[ Preparing to scan market... ]")
+        print("[ Scanning market... ]")
         for key, item_id in item_ids.items():
-            print(f'[ [ Scanning {key} ] ]')
+            print(f'[ - [ Scanning {key} ] ]')
 
             auth.item_id = item_id
             res = await auth.try_query_db()
@@ -692,13 +696,13 @@ async def scan_market():
                 }
             if data[item_id]["data"] == None or data[item_id]["data"] != [res[3], res[4], res[5], res[6], res[7], res[8]]:
                 data[item_id]["data"] = [res[3], res[4], res[5], res[6], res[7], res[8]]
-                print('[ - NEW PRIMARY DATA ]')
+                print('[ - - NEW PRIMARY DATA ]')
             
             if len(data[item_id]["sold"]) == 0 or data[item_id]["sold"][len(data[item_id]["sold"]) - 1][0] != res[9]:
                 data[item_id]["sold"] = data[item_id]["sold"] + [[res[9], time.time()]]
-                print('[ - NEW LAST SOLD ]')
+                print('[ - - NEW LAST SOLD ]')
 
-            print(f'[ - Done checking {key} ]')
+            print(f'[ ~ [ Done checking {key} ] ]')
             
         print("[ Closing Session ]")
         await auth.close()
