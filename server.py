@@ -59,7 +59,7 @@ class Auth:
         print("[ - Generating token data... ]")
         self.token: str = token or Auth.get_basic_token(email, password)
         self.creds_path: str = creds_path or f"{os.getcwd()}/creds/{self.token}.json"
-        self.appid: str = appid or 'e3d5ea9e-50bd-43b7-88bf-39794f4e3d40'
+        self.appid: str = appid or '4391c956-8943-48eb-8859-07b0778f47b9'
         self.sessionid: str = ""
         self.key: str = ""
         self.new_key: str = ""
